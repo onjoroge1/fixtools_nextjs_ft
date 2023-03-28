@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import CssTool from '@/dbTools/CssTool';
 
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 

@@ -7,7 +7,7 @@ import CssTool from '@/dbTools/CssTool';
 
 import HeaderNav from '@/components/HeaderNav';
 
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 

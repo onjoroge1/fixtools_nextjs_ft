@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 import HtmlTool from '@/dbTools/HtmlTool';
 
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';

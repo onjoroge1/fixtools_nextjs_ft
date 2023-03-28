@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import JsonTools from '../../dbTools/JsonTool';
 
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';

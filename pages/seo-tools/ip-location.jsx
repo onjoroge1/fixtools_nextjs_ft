@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import seoTools from '@/dbTools/seoTools';
 
 import Footer from '@/components/Footer/Footer';

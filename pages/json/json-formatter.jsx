@@ -6,7 +6,7 @@ import HeaderNav from '@/components/HeaderNav';
 import { toast, ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import JsonTools from '../../dbTools/JsonTool';
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 

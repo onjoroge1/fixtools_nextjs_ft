@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter } from 'react-router-dom';
-import Head from 'next/head';
+import { Head } from 'next/document';
 import CustomHead from '@/components/CustomHead';
 import { Metadata } from 'next';
 

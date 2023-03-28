@@ -21,14 +21,14 @@ export default function AiToolComp({ page }) {
   const [disableBtn, setDisableBtn] = useState(true);
   const [characterLength, setCharacterLength] = useState('');
 
-  console.log('curren item ', selectedItem);
+  console.log('current item ', selectedItem);
   useEffect(() => {
     if (selectedItem) {
       if (
         selectedItem.title !== 'Q & A' &&
         selectedItem.title !== 'Movie To Emoji' &&
         selectedItem.title !== 'Interview Questions' &&
-        selectedItem.title !== 'Essay Outline' &&
+        selectedItem.title !== 'Write an Essay Outline online' &&
         selectedItem.title !== 'Explain Code' &&
         selectedItem.title !== 'Micro Horror Story' &&
         selectedItem.title !== 'Factual Answering' &&
@@ -116,10 +116,12 @@ export default function AiToolComp({ page }) {
     setbuttonLoading(true);
     setDisableBtn(true);
     // https://sturdayapp.herokuapp.com
+    // https://salty-fjord-37519.herokuapp.com/
+    // `http://localhost:4000/api/${page.type}`,
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/${page.type}`,
+        `https://salty-fjord-37519.herokuapp.com/api/${page.type}`,
 
         {
           method: 'POST',

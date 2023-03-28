@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import CssTool from '@/dbTools/CssTool';
 
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';

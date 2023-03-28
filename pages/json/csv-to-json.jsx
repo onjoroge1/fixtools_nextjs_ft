@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import JsonTools from '../../dbTools/JsonTool';
 import { useRouter } from 'next/router';
-import { GetCurrentPageContent } from '../../../utils';
+import { GetCurrentPageContent } from '../utils';
 import CustomHead from '@/components/CustomHead';
 
 import Footer from '@/components/Footer/Footer';
