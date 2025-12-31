@@ -21,7 +21,46 @@ export default function AiToolComp({ page }) {
   const [disableBtn, setDisableBtn] = useState(true);
   const [characterLength, setCharacterLength] = useState('');
 
-  console.log('current item ', selectedItem);
+  const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
+  const canonicalUrl = siteHost + route.asPath;
+
+  const faqs =
+    page.type === 'questionAnswer'
+      ? [
+          {
+            question: 'What can I ask the chat?',
+            answer:
+              'You can ask general questions, coding help, or troubleshooting prompts. Avoid sharing sensitive data.',
+          },
+          {
+            question: 'Is there a character limit?',
+            answer:
+              'Inputs are capped at roughly 250 characters to keep responses fast and lightweight.',
+          },
+          {
+            question: 'Is my text stored?',
+            answer:
+              'No. Your prompt is sent only to the configured AI endpoint for a response and not stored for reuse.',
+          },
+        ]
+      : [];
+
+  const faqStructuredData =
+    faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        }
+      : null;
+
   useEffect(() => {
     if (selectedItem) {
       if (
@@ -50,7 +89,6 @@ export default function AiToolComp({ page }) {
     }
   }, [formData]);
 
-  console.log(selectedItem);
   function changeHandler(e) {
     if (page.title === 'Explain Code') {
       setFormData(e.target.value);
@@ -82,8 +120,6 @@ export default function AiToolComp({ page }) {
       } else {
         setFormData('5');
       }
-
-      console.log(formData);
     } else {
       if (e.target.value.trim().length > 0) {
         // let inp = e.target.value.replace(/[^a-zA-Z0-9 ]/g, '')
@@ -133,15 +169,12 @@ export default function AiToolComp({ page }) {
       );
       const data = await response.json();
 
-      console.log('res is ', data);
       if (data.result) {
         if (selectedItem.title === 'Explain Code') {
           const res = data.result.replace(/[0123456789.]/g, '');
           setResult(res);
         } else if (selectedItem.title === 'Summarization') {
-          console.log('come inside ');
           const res = data.result.replace(/[:@#$%^&*()_.]/g, '');
-          console.log(data.result, '  resuklt');
           setResult(res);
         } else {
           setResult(data.result);
@@ -161,49 +194,54 @@ export default function AiToolComp({ page }) {
 
   //
 
-  console.log(page);
-  console.log({ route: route.asPath });
   return (
     <>
+      {faqStructuredData ? (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(faqStructuredData),
+            }}
+          />
+        </Head>
+      ) : null}
       <CustomHead
         title={page.title}
-        ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
+        ogUrl={canonicalUrl}
         metaDescription={page.desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
 
       {/*  */}
       <StyledAIToolsFormatter>
         <StyledContainer>
           <div
-            className='tools-for-better-thinking'
+            className="tools-for-better-thinking"
             // style={{ padding: "5rem 0px 5rem 0px" }}
           >
             <div
             // className="container"
             >
-              <div className='ai_tools_heading'>
+              <div className="ai_tools_heading">
                 <h1>{page.title}</h1>
               </div>
-              <div className='ai_tools_description'>
+              <div className="ai_tools_description">
                 <p>{page.desc}</p>
               </div>
-              <label className='my-1 mr-2'></label>
-              <div
-                className='inp-out-container'
-                style={{}}
-              >
-                <div className='inp-container'>
+              <label className="my-1 mr-2"></label>
+              <div className="inp-out-container" style={{}}>
+                <div className="inp-container">
                   <h2>Type Text Here {characterLength}</h2>
                   <form onSubmit={handleSubmit}>
-                    <div className='form-group text-area-container'>
+                    <div className="form-group text-area-container">
                       <textarea
                         maxLength={250}
                         placeholder={page.desc + '...'}
-                        className='form-control inp-textarea'
+                        className="form-control inp-textarea"
                         // rows="8"
-                        id='input-comment'
+                        id="input-comment"
                         value={formData}
                         onChange={changeHandler}
                         style={{ fontSize: '1.5rem', minHeight: '195px' }}
@@ -229,13 +267,10 @@ export default function AiToolComp({ page }) {
                         disableBtn ? 'btn-disable' : ''
                       }`}
                       disabled={`${disableBtn ? 'true' : ''}`}
-                      type='submit'
+                      type="submit"
                     >
                       {buttonLoading ? (
-                        <div
-                          class='spinner-border text-dark'
-                          role='status'
-                        >
+                        <div class="spinner-border text-dark" role="status">
                           {/* <span class='sr-only'>Loading...</span> */}
                         </div>
                       ) : (
@@ -245,11 +280,11 @@ export default function AiToolComp({ page }) {
                   </form>
                 </div>
 
-                <div className=' ai-tools-results-container'>
+                <div className=" ai-tools-results-container">
                   <h2>Output</h2>
-                  <div className='ai-tools-results'>
-                    {result?.split('\n').map((data) => (
-                      <div className=''>{data}</div>
+                  <div className="ai-tools-results">
+                    {result?.split('\n').map((data, index) => (
+                      <div key={index} className="">{data}</div>
                     ))}
                   </div>
                 </div>
@@ -258,6 +293,51 @@ export default function AiToolComp({ page }) {
           </div>
         </StyledContainer>
       </StyledAIToolsFormatter>
+      {page.type === 'questionAnswer' ? (
+        <div className="text-body" style={{ padding: '0 16px' }}>
+          <h2>How to use Chat with AI</h2>
+          <ol>
+            <li>Enter a clear question or prompt (keep it concise).</li>
+            <li>Click Submit to get a response in seconds.</li>
+            <li>
+              Refine your prompt for follow-ups; results stay on the page.
+            </li>
+          </ol>
+
+          <h3>Prompt tips</h3>
+          <ul>
+            <li>
+              Add context (language, framework, goal) to get sharper answers.
+            </li>
+            <li>
+              For code, paste the snippet and describe the expected behavior.
+            </li>
+            <li>Avoid personal or sensitive data—keep prompts generic.</li>
+          </ul>
+
+          <h3>FAQs</h3>
+          <ul>
+            {faqs.map((item) => (
+              <li key={item.question}>
+                <strong>{item.question}</strong> — {item.answer}
+              </li>
+            ))}
+          </ul>
+
+          <h3>Related tools</h3>
+          <ul>
+            <li>
+              <a href="/aitools/summarize">Summarize for 2nd grader</a>
+            </li>
+            <li>
+              <a href="/aitools/explainCode">Explain code</a>
+            </li>
+            <li>
+              <a href="/json/json-formatter">JSON formatter</a>
+            </li>
+          </ul>
+        </div>
+      ) : null}
       {/*  */}
     </>
   );

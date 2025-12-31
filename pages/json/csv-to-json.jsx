@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import JsonTools from '../../dbTools/JsonTool';
 import { useRouter } from 'next/router';
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 
 import Footer from '@/components/Footer/Footer';
@@ -101,19 +101,19 @@ export default function CsvToJson() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
       <div
-        className='detail-hero'
+        className="detail-hero"
         style={{ minHeight: '320px', maxHeight: '320px' }}
       >
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>CSV To JSON Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Generate CSV To JSON with our generator tool. Preview the result
               and copy the generated code to your website.
@@ -122,44 +122,37 @@ export default function CsvToJson() {
         </div>
       </div>
       <div
-        className='tools-for-better-thinking'
+        className="tools-for-better-thinking"
         style={{ padding: '5rem 0px 5rem 0px' }}
       >
-        <div className='container d-flex align-items-center justify-content-center row col-md-8'>
-          <div className='col-md-12 col-lg-12 offset-lg-6'>
-            <label className='my-1 mr-2'>
+        <div className="container d-flex align-items-center justify-content-center row col-md-8">
+          <div className="col-md-12 col-lg-12 offset-lg-6">
+            <label className="my-1 mr-2">
               <h2>Input CSV</h2>
             </label>
-            <form
-              className=''
-              role='form'
-              onSubmit={handleSubmit}
-            >
-              <div className='form-group'>
+            <form className="" role="form" onSubmit={handleSubmit}>
+              <div className="form-group">
                 <textarea
                   required
-                  className='form-control'
+                  className="form-control"
                   placeholder={place}
-                  rows='15'
-                  id='input-comment'
+                  rows="15"
+                  id="input-comment"
                   onChange={handleChange}
                   style={{ fontSize: '1.5rem' }}
                 ></textarea>
               </div>
               <p></p>
-              <div className='d-grid gap-3 col-md-2'>
+              <div className="d-grid gap-3 col-md-2">
                 <button
                   style={{ borderRadius: '3px' }}
                   className={`${disableBtn ? 'btn-disable' : ''}`}
                   disabled={`${disableBtn ? 'true' : ''}`}
-                  type='submit'
+                  type="submit"
                 >
                   {buttonLoading ? (
-                    <div
-                      className='spinner-border text-dark'
-                      role='status'
-                    >
-                      <span className='sr-only'>Loading...</span>
+                    <div className="spinner-border text-dark" role="status">
+                      <span className="sr-only">Loading...</span>
                     </div>
                   ) : (
                     'Submit'
@@ -168,21 +161,21 @@ export default function CsvToJson() {
               </div>
             </form>
           </div>
-          <div className='col-md-12 col-lg-12 offset-lg-6'>
+          <div className="col-md-12 col-lg-12 offset-lg-6">
             <i
               style={{ cursor: 'pointer', float: 'right', padding: '10px' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
-            <div className='form-group'>
+            <div className="form-group">
               <textarea
-                className='form-control element-code'
-                rows='15'
-                id='input-comment'
+                className="form-control element-code"
+                rows="15"
+                id="input-comment"
                 value={result}
                 style={{ fontSize: '2rem' }}
                 disabled
-                placeholder='Output'
+                placeholder="Output"
               ></textarea>
             </div>
           </div>
@@ -190,7 +183,7 @@ export default function CsvToJson() {
       </div>
       <Footer />
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -199,7 +192,7 @@ export default function CsvToJson() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
     </>
   );

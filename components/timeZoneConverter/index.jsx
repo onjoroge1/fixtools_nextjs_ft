@@ -86,67 +86,59 @@ const TimeZoneConverter = () => {
       /> */}
       {/* <HeaderNav /> */}
       <StyledConversionTool>
-        <div className='conversion-tools-container'>
+        <div className="conversion-tools-container">
           <StyledContainer>
             <form onSubmit={submitHandler}>
-              <div className='text'>
-                <h1 className='main-heading'>Time Zone Conversion</h1>
-                <p className='tag-line'>Convert time zone.</p>
+              <div className="text">
+                <h1 className="main-heading">Time Zone Conversion</h1>
+                <p className="tag-line">Convert time zone.</p>
               </div>
               <StyledFlexContainer>
-                <div className='select-container'>
-                  <div className='from-to'>
-                    <div className='from'>
+                <div className="select-container">
+                  <div className="from-to">
+                    <div className="from">
                       <select
-                        id='convertFrom'
+                        id="convertFrom"
                         value={convertFrom}
                         onChange={changeHandler}
                       >
-                        <option
-                          value=''
-                          disabled
-                          selected
-                        >
+                        <option value="" disabled selected>
                           Convert From
                         </option>
-                        {timeZoneData.map((data) => (
-                          <option>{data}</option>
+                        {timeZoneData.map((data, index) => (
+                          <option key={`from-${index}`}>{data}</option>
                         ))}
                       </select>
                     </div>
-                    <div className='to'>
+                    <div className="to">
                       <select
-                        id='convertTo'
+                        id="convertTo"
                         value={convertTo}
                         onChange={changeHandler}
                       >
-                        <option
-                          value=''
-                          disabled
-                          selected
-                        >
+                        <option value="" disabled selected>
                           Convert To
                         </option>
-                        {timeZoneData.map((data) => (
-                          <option>{data}</option>
+                        {timeZoneData.map((data, index) => (
+                          <option key={index}>{data}</option>
                         ))}
                       </select>
                     </div>
                   </div>
                 </div>
-                <div className='time-selector-inputs-container'>
-                  <div className='time-input-cnt'>
+                <div className="time-selector-inputs-container">
+                  <div className="time-input-cnt">
                     <input
-                      type='time'
-                      id='time'
+                      type="time"
+                      id="time"
                       onChange={changeHandler}
                       value={time}
                     />
-                    <div className='time-format'>{amPm}</div>
+                    <div className="time-format">{amPm}</div>
                   </div>
                 </div>
               </StyledFlexContainer>
-              <div className='button-container'>
+              <div className="button-container">
                 <button
                   className={`${
                     convertFrom && convertTo && hours && minutes
@@ -156,14 +148,14 @@ const TimeZoneConverter = () => {
                   disabled={`${
                     convertFrom && convertTo && hours && minutes ? '' : 'true'
                   }`}
-                  type='submit'
+                  type="submit"
                 >
                   Convert
                 </button>
               </div>
             </form>
-            <div className='result-container'>
-              <div className='result'>
+            <div className="result-container">
+              <div className="result">
                 <h1>Output</h1>
                 <div>{result}</div> {`${result ? convertTo : ''}`}
               </div>

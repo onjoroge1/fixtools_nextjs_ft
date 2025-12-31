@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import HtmlTool from '@/dbTools/HtmlTool';
 
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';
@@ -47,16 +47,16 @@ export default function HtmlButton() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
-      <div className='detail-hero'>
+      <div className="detail-hero">
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>HTML Button Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Generate HTML Button with our generator tool. Preview the result
               and copy the generated code to your website.
@@ -64,10 +64,10 @@ export default function HtmlButton() {
           </div>
         </div>
       </div>
-      <div className='screen'>
-        <div className='screen-editor'>
+      <div className="screen">
+        <div className="screen-editor">
           <h1>Options</h1>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Type</label>
 
             <select onChange={(e) => settype(e.target.value)}>
@@ -77,17 +77,17 @@ export default function HtmlButton() {
             </select>
           </div>
 
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Text</label>
 
             <input
-              placeholder='Click here'
+              placeholder="Click here"
               onChange={(e) => settext(e.target.value)}
             />
           </div>
 
           <div
-            className='screen-editor-color'
+            className="screen-editor-color"
             style={{ flexDirection: 'column' }}
           >
             <label style={{ 'align-items': 'flex-end' }}>
@@ -108,38 +108,34 @@ export default function HtmlButton() {
             </label>
           </div>
         </div>
-        <div className='screen-preview'>
+        <div className="screen-preview">
           <h1>Preview</h1>
-          <div className='screen-preview-box'>
+          <div className="screen-preview-box">
             <div
-              className='screen-preview-box-sample'
+              className="screen-preview-box-sample"
               style={{ overflow: 'hidden' }}
             >
               <div style={{ width: '100%' }}>
-                <button
-                  type={type}
-                  autofocus={focus}
-                  disabled={disable}
-                >
+                <button type={type} autofocus={focus} disabled={disable}>
                   {text}
                 </button>
               </div>
             </div>
           </div>
           <h1>Code</h1>
-          <div className='screen-preview-code'>
-            <code className='element-code'> {tag} </code>
+          <div className="screen-preview-code">
+            <code className="element-code"> {tag} </code>
             <i
               style={{ cursor: 'pointer' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
           </div>
         </div>
       </div>
 
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -148,7 +144,7 @@ export default function HtmlButton() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
       <Footer />
     </>

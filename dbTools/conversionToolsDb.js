@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const conversionToolsDb = [
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Currency Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -13,7 +13,7 @@ const conversionToolsDb = [
 
   // {
   //   id: uuidv4(),
-  //   image: 'images/keyword selection.svg',
+  //   image: '/images/keyword selection.svg',
   //   title: 'Text To PDF File',
   //   category: 'Conversion Tools',
   //   categorysty: 'dec',
@@ -23,7 +23,7 @@ const conversionToolsDb = [
   // },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Temperature Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -34,7 +34,7 @@ const conversionToolsDb = [
 
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Pressure Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -44,7 +44,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Volume Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -54,7 +54,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Area Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -64,7 +64,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Time Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -74,7 +74,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Mass Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -84,7 +84,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Power Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -94,7 +94,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Length Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -104,7 +104,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Speed Units Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -114,7 +114,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Fuel Economy Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -124,7 +124,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Energy Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -134,7 +134,7 @@ const conversionToolsDb = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Plane Angle Conversion',
     category: 'Conversion Tools',
     categorysty: 'dec',
@@ -145,7 +145,7 @@ const conversionToolsDb = [
 
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Data Storage Units',
     category: 'Conversion Tools',
     categorysty: 'dec',

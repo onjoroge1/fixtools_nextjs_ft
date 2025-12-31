@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import JsonTools from '../../dbTools/JsonTool';
 
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';
@@ -71,19 +71,19 @@ export default function JSONValidator() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
       <div
-        className='detail-hero'
+        className="detail-hero"
         style={{ minHeight: '320px', maxHeight: '320px' }}
       >
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>JSON Validator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Validate Json with our generator tool. Preview the result and copy
               the generated code to your website.
@@ -92,45 +92,38 @@ export default function JSONValidator() {
         </div>
       </div>
       <div
-        className='tools-for-better-thinking'
+        className="tools-for-better-thinking"
         style={{ padding: '5rem 0px 5rem 0px' }}
       >
-        <div className='container d-flex align-items-center justify-content-center row col-md-8'>
-          <div className='col-md-12 col-lg-12 offset-lg-6'>
-            <label className='my-1 mr-2'>
+        <div className="container d-flex align-items-center justify-content-center row col-md-8">
+          <div className="col-md-12 col-lg-12 offset-lg-6">
+            <label className="my-1 mr-2">
               <h2>Input JSON</h2>
             </label>
-            <form
-              className=''
-              role='form'
-              onSubmit={handleSubmit}
-            >
-              <div className='form-group'>
+            <form className="" role="form" onSubmit={handleSubmit}>
+              <div className="form-group">
                 <textarea
-                  className='form-control'
+                  className="form-control"
                   required
                   placeholder={place}
-                  rows='15'
-                  id='input-comment'
+                  rows="15"
+                  id="input-comment"
                   value={formdata}
                   onChange={handleChange}
                   style={{ fontSize: '1.5rem' }}
                 ></textarea>
               </div>
               <p></p>
-              <div className='d-grid gap-3 col-md-2'>
+              <div className="d-grid gap-3 col-md-2">
                 <button
                   style={{ borderRadius: '3px' }}
                   className={`${disableBtn ? 'btn-disable' : ''}`}
                   disabled={`${disableBtn ? 'true' : ''}`}
-                  type='submit'
+                  type="submit"
                 >
                   {buttonLoading ? (
-                    <div
-                      className='spinner-border text-dark'
-                      role='status'
-                    >
-                      <span className='sr-only'>Loading...</span>
+                    <div className="spinner-border text-dark" role="status">
+                      <span className="sr-only">Loading...</span>
                     </div>
                   ) : (
                     'Submit'
@@ -142,7 +135,7 @@ export default function JSONValidator() {
         </div>
       </div>
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

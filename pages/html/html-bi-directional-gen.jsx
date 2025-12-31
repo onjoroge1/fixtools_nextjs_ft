@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import HtmlTool from '@/dbTools/HtmlTool';
 
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';
@@ -45,16 +45,16 @@ export default function BiDirectional() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
-      <div className='detail-hero'>
+      <div className="detail-hero">
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>HTML Bi Directional Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Generate HTML Bi Directional with our generator tool. Preview the
               result and copy the generated code to your website.
@@ -62,10 +62,10 @@ export default function BiDirectional() {
           </div>
         </div>
       </div>
-      <div className='screen'>
-        <div className='screen-editor'>
+      <div className="screen">
+        <div className="screen-editor">
           <h1>Options</h1>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Type</label>
 
             <select onChange={(e) => settype(e.target.value)}>
@@ -74,21 +74,21 @@ export default function BiDirectional() {
             </select>
           </div>
 
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Text</label>
 
             <textarea
               style={{ padding: '10px' }}
-              placeholder='Click here'
+              placeholder="Click here"
               onChange={(e) => settext(e.target.value)}
             ></textarea>
           </div>
         </div>
-        <div className='screen-preview'>
+        <div className="screen-preview">
           <h1>Preview</h1>
-          <div className='screen-preview-box'>
+          <div className="screen-preview-box">
             <div
-              className='screen-preview-box-sample'
+              className="screen-preview-box-sample"
               style={{ overflow: 'hidden' }}
             >
               <div>
@@ -97,18 +97,18 @@ export default function BiDirectional() {
             </div>
           </div>
           <h1>Code</h1>
-          <div className='screen-preview-code'>
-            <code className='element-code'> {tag} </code>
+          <div className="screen-preview-code">
+            <code className="element-code"> {tag} </code>
             <i
               style={{ cursor: 'pointer' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
           </div>
         </div>
       </div>
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -117,7 +117,7 @@ export default function BiDirectional() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
 
       <Footer />

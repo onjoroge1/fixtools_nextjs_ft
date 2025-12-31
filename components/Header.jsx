@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
+import Image from 'next/image';
 import CustomHead from './CustomHead';
 import HeaderNav from './HeaderNav';
-// import './header.css';
 import data from '../dbTools/index';
 import { useEffect } from 'react';
 
@@ -12,15 +12,11 @@ export default function Header() {
   const [filteredCard, setfilteredCard] = useState(data);
   const [activeTab, setactiveTab] = useState('All');
 
-  console.log('----==>> ', data);
-  // console.log({ filteredCard });
-
   if (!cards) {
     return <h1>Loading</h1>;
   }
 
   const filterItems = (cate) => {
-    console.log(cate);
     setactiveTab(cate);
     if (cate === 'All') {
       setfilteredCard(cards);
@@ -34,19 +30,19 @@ export default function Header() {
 
   return (
     <>
-      <div className='hero'>
+      <div className="hero">
         <HeaderNav />
-        <div className='hero-content'>
-          <div className='hero-content-heading'>
+        <div className="hero-content">
+          <div className="hero-content-heading">
             <h1>Tools To Fix File Problems</h1>
           </div>
-          <div className='hero-content-des'>
+          <div className="hero-content-des">
             <p>
               Find below a collection of tools to help with any of your file
               needs.
             </p>
           </div>
-          <div className='hero-content-nav'>
+          <div className="hero-content-nav">
             <Button
               className={
                 activeTab === 'All'
@@ -139,26 +135,16 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className='main-content'>
+      <div className="main-content">
         {filteredCard.map((ele) => {
           const { id, title, image, desc, category, categorysty, link } = ele;
           return (
-            <Link href={link}>
-              <div
-                className={`main-content-card ${categorysty}`}
-                key={id}
-              >
-                {/* <img
-                  src={image}
-                  alt={image}
-                /> */}
-                <img
-                  src={image}
-                  alt={image}
-                />
+            <Link href={link} key={id}>
+              <div className={`main-content-card ${categorysty}`}>
+                <Image src={image} alt={title} width={64} height={64} />
 
-                <h2 className='main-content-card-heading'>{title}</h2>
-                <p className='card-des'>{desc}</p>
+                <h2 className="main-content-card-heading">{title}</h2>
+                <p className="card-des">{desc}</p>
               </div>
             </Link>
           );

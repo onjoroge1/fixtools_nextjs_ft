@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const seoTools = [
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'IP Locator',
     category: 'SEO Tools',
     categorysty: 'dec',
@@ -12,7 +12,7 @@ const seoTools = [
   },
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'Site Map Generator',
     category: 'SEO Tools',
     categorysty: 'dec',

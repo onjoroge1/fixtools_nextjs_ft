@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const JsonTool = [
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON Minify Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -12,7 +12,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON Formatter',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -22,7 +22,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON Validator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -32,7 +32,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To XML Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -42,7 +42,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'XML To JSON Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -52,7 +52,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To YAML Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -62,7 +62,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To Base64 Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -72,7 +72,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'Base64 To JSON Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -82,7 +82,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To Text Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -92,7 +92,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To CSV Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -102,7 +102,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'CSV To JSON Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -112,7 +112,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'TSV To JSON Generator',
     category: 'JSON Tools',
     categorysty: 'dec',
@@ -122,7 +122,7 @@ const JsonTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/json-file.png',
+    image: '/images/json-file.png',
     title: 'JSON To TSV Generator',
     category: 'JSON Tools',
     categorysty: 'dec',

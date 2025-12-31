@@ -1,12 +1,11 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 import HeaderNav from '@/components/HeaderNav';
 
 import { toast, ToastContainer } from 'react-toastify';
-import { useEffect } from 'react';
 import JsonTools from '../../dbTools/JsonTool';
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 
@@ -19,10 +18,42 @@ export default function JSONFormatter() {
   const [place, setplace] = useState('Type (or paste) here...');
   const [disableBtn, setDisableBtn] = useState(true);
   const route = useRouter();
-  console.log(route);
   const path = route.pathname;
-  const { title, desc, image } = GetCurrentPageContent(path, JsonTools);
-  console.log({ title });
+  const { title, desc } = GetCurrentPageContent(path, JsonTools);
+
+  const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
+  const canonicalUrl = siteHost + route.asPath;
+
+  const faqs = [
+    {
+      question: 'How do I format JSON online?',
+      answer:
+        'Paste or type your JSON, click Format, and the tool will pretty-print with indentation and validation.',
+    },
+    {
+      question: 'Will my JSON data be stored?',
+      answer:
+        'No. Formatting happens in your browser; nothing is persisted or sent to a server.',
+    },
+    {
+      question: 'What happens if my JSON is invalid?',
+      answer:
+        'You will get a validation error. Fix missing commas, braces, or quotes and try again.',
+    },
+  ];
+
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
 
   const handleChange = (e) => {
     setformdata(e.target.value);
@@ -83,23 +114,31 @@ export default function JSONFormatter() {
 
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqStructuredData),
+          }}
+        />
+      </Head>
       <CustomHead
         title={title}
-        ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
+        ogUrl={canonicalUrl}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
       <div
-        className='detail-hero'
+        className="detail-hero"
         style={{ minHeight: '320px', maxHeight: '320px' }}
       >
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>JSON Formatter Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Formate JSON Formatter with our generator tool. Preview the result
               and copy the generated code to your website.
@@ -108,44 +147,37 @@ export default function JSONFormatter() {
         </div>
       </div>
       <div
-        className='tools-for-better-thinking'
+        className="tools-for-better-thinking"
         style={{ padding: '5rem 0px 5rem 0px' }}
       >
-        <div className='container d-flex align-items-center justify-content-center row col-md-8'>
-          <div className='col-md-12 col-lg-12 offset-lg-6'>
-            <label className='my-1 mr-2'>
+        <div className="container d-flex align-items-center justify-content-center row col-md-8">
+          <div className="col-md-12 col-lg-12 offset-lg-6">
+            <label className="my-1 mr-2">
               <h2>Input JSON</h2>
             </label>
-            <form
-              className=''
-              role='form'
-              onSubmit={handleSubmit}
-            >
-              <div className='form-group'>
+            <form className="" role="form" onSubmit={handleSubmit}>
+              <div className="form-group">
                 <textarea
                   required
-                  className='form-control'
+                  className="form-control"
                   placeholder={place}
-                  rows='15'
-                  id='input-comment'
+                  rows="15"
+                  id="input-comment"
                   onChange={handleChange}
                   style={{ fontSize: '1.5rem' }}
                 ></textarea>
               </div>
               <p></p>
-              <div className='d-grid gap-3 col-md-2'>
+              <div className="d-grid gap-3 col-md-2">
                 <button
                   style={{ borderRadius: '3px' }}
                   className={`${disableBtn ? 'btn-disable' : ''}`}
                   disabled={`${disableBtn ? 'true' : ''}`}
-                  type='submit'
+                  type="submit"
                 >
                   {buttonLoading ? (
-                    <div
-                      className='spinner-border text-dark'
-                      role='status'
-                    >
-                      <span className='sr-only'>Loading...</span>
+                    <div className="spinner-border text-dark" role="status">
+                      <span className="sr-only">Loading...</span>
                     </div>
                   ) : (
                     'Format JSON'
@@ -154,28 +186,28 @@ export default function JSONFormatter() {
               </div>
             </form>
           </div>
-          <div className='col-md-12 col-lg-12 offset-lg-6'>
+          <div className="col-md-12 col-lg-12 offset-lg-6">
             <i
               style={{ cursor: 'pointer', float: 'right', padding: '10px' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
-            <div className='form-group'>
+            <div className="form-group">
               <textarea
-                className='form-control element-code'
-                rows='15'
-                id='input-comment'
+                className="form-control element-code"
+                rows="15"
+                id="input-comment"
                 value={result}
                 style={{ fontSize: '2rem' }}
                 disabled
-                placeholder='Output'
+                placeholder="Output"
               ></textarea>
             </div>
           </div>
         </div>
       </div>
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -184,47 +216,51 @@ export default function JSONFormatter() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
-      <div className='text-body'>
-        <h2>Welcome to our JSON Minify Generator!</h2>
+      <div className="text-body">
+        <h2>How to format JSON online</h2>
+        <ol>
+          <li>Paste or type your JSON in the input box above.</li>
+          <li>Click “Format JSON” to pretty-print with indentation.</li>
+          <li>Copy the formatted output or continue editing directly.</li>
+        </ol>
+
+        <h3>Tips for valid JSON</h3>
+        <ul>
+          <li>Wrap property names and string values in double quotes.</li>
+          <li>Use commas between array and object items.</li>
+          <li>Check for matching braces and brackets before formatting.</li>
+        </ul>
+
+        <h3>Common use cases</h3>
         <p>
-          Are you looking for a way to reduce the size of your JavaScript Object
-          Notation (JSON) files? Our JSON Minify Generator is the perfect tool
-          for you. Using our generator, you can quickly and easily convert your
-          JSON files into a smaller, more efficient format.
+          Quickly beautify API responses, validate payloads before sending them
+          to production, or reformat config files while debugging. Everything
+          runs in your browser, so your data stays private.
         </p>
-        With our JSON Minify Generator, you can minify your JSON files in just a
-        few clicks.
-        <p>
-          All you need to do is upload your JSON file and let our generator do
-          the work for you. Once you've uploaded your file, our generator will
-          automatically minify it, reducing the size and improving readability.
-        </p>
-        <p>
-          The JSON Minify Generator also removes unnecessary whitespace and
-          comments, making your JSON files easier to read and understand. This
-          can save you time and effort when editing or debugging your code.
-        </p>
-        <p>
-          Our JSON Minify Generator is also completely free to use. No matter
-          how big or small your JSON files are, you can rest assured that our
-          generator will minify them quickly and efficiently. You can also save
-          your minified files to your device — perfect for sharing with others
-          or keeping as a backup.
-        </p>
-        <p>
-          So, if you're looking for an easy and effective way to reduce the size
-          of your JSON files, look
-        </p>
-        <h2>what is a json formatter?</h2>
-        <p>
-          A JSON Formatter is a tool used for formatting and validating JSON
-          data. It helps to improve the readability and structure of JSON
-          documents, making them easier to read and debug. A JSON Formatter can
-          also be used to check for syntax errors in the JSON data and to
-          validate the JSON data against a JSON schema.
-        </p>
+
+        <h3>FAQs</h3>
+        <ul>
+          {faqs.map((item) => (
+            <li key={item.question}>
+              <strong>{item.question}</strong> — {item.answer}
+            </li>
+          ))}
+        </ul>
+
+        <h3>Related tools</h3>
+        <ul>
+          <li>
+            <a href="/json/minify-json">Minify JSON</a>
+          </li>
+          <li>
+            <a href="/json/json-to-csv">JSON to CSV</a>
+          </li>
+          <li>
+            <a href="/json/json-validator">JSON Validator</a>
+          </li>
+        </ul>
       </div>
       <Footer />
     </>

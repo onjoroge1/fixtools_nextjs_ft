@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import HtmlTool from '@/dbTools/HtmlTool';
 
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 import HeaderNav from '@/components/HeaderNav';
@@ -49,16 +49,16 @@ export default function HtmlLinkGen() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
-      <div className='detail-hero'>
+      <div className="detail-hero">
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>HTML Link Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Generate HTML Link with our generator tool. Preview the result and
               copy the generated code to your website.
@@ -66,25 +66,25 @@ export default function HtmlLinkGen() {
           </div>
         </div>
       </div>
-      <div className='screen'>
-        <div className='screen-editor'>
+      <div className="screen">
+        <div className="screen-editor">
           <h1>Options</h1>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Source</label>
             <input
-              placeholder='http://'
+              placeholder="http://"
               onChange={(e) => setPosition(e.target.value)}
             />
           </div>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Text</label>
 
             <input
-              placeholder='Click here'
+              placeholder="Click here"
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Target</label>
 
             <select onChange={(e) => setTarget(e.target.value)}>
@@ -95,7 +95,7 @@ export default function HtmlLinkGen() {
               <option value={'wavy '}>wavy </option>
             </select>
           </div>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Rel</label>
             <select onChange={(e) => setRel(e.target.value)}>
               <option value={'alternate '}>alternate </option>
@@ -114,38 +114,34 @@ export default function HtmlLinkGen() {
             </select>
           </div>
         </div>
-        <div className='screen-preview'>
+        <div className="screen-preview">
           <h1>Preview</h1>
-          <div className='screen-preview-box'>
+          <div className="screen-preview-box">
             <div
-              className='screen-preview-box-sample'
+              className="screen-preview-box-sample"
               style={{ overflow: 'hidden' }}
             >
               <div style={{ width: '100%' }}>
-                <a
-                  href={position}
-                  rel={rel}
-                  target={target}
-                >
+                <a href={position} rel={rel} target={target}>
                   {description}
                 </a>
               </div>
             </div>
           </div>
           <h1>Code</h1>
-          <div className='screen-preview-code'>
-            <code className='element-code'> {tag} </code>
+          <div className="screen-preview-code">
+            <code className="element-code"> {tag} </code>
             <i
               style={{ cursor: 'pointer' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
           </div>
         </div>
       </div>
 
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -154,7 +150,7 @@ export default function HtmlLinkGen() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
 
       <Footer />

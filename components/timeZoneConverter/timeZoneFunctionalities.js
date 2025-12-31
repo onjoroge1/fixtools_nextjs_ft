@@ -1,314 +1,314 @@
 function timeZoneFunction(from, to, value) {
-  if (from === "Coordinated Universal Time" && to === "Central Standard Time") {
+  if (from === 'Coordinated Universal Time' && to === 'Central Standard Time') {
     return Number(value) - 6;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Chamorro Time Zone"
+    from === 'Coordinated Universal Time' &&
+    to === 'Chamorro Time Zone'
   ) {
     return Number(value) + 10;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Pacific Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) - 8;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) - 9;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 10;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) - 4;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Eastern Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) - 5;
   } else if (
-    from === "Coordinated Universal Time" &&
-    to === "Mountain Standard Time"
+    from === 'Coordinated Universal Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number(value) - 7;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Central Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 6;
-  } else if (from === "Central Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Central Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 16;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) - 2;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) - 3;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 4;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 2;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) + 1;
   } else if (
-    from === "Central Standard Time" &&
-    to === "Mountain Standard Time"
+    from === 'Central Standard Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number(value) - 1;
   } else if (
-    from === "Chamorro Time Zone" &&
-    to === "Coordinated Universal Time"
+    from === 'Chamorro Time Zone' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) - 10;
-  } else if (from === "Chamorro Time Zone" && to === "Central Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Central Standard Time') {
     return Number(value) - 16;
-  } else if (from === "Chamorro Time Zone" && to === "Pacific Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Pacific Standard Time') {
     return Number(value) - 18;
-  } else if (from === "Chamorro Time Zone" && to === "Alaskan Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Alaskan Standard Time') {
     return Number(value) - 19;
-  } else if (from === "Chamorro Time Zone" && to === "Hawaii Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Hawaii Standard Time') {
     return Number(value) - 20;
-  } else if (from === "Chamorro Time Zone" && to === "Atlantic Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Atlantic Standard Time') {
     return Number(value) - 14;
-  } else if (from === "Chamorro Time Zone" && to === "Eastern Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Eastern Standard Time') {
     return Number(value) - 15;
-  } else if (from === "Chamorro Time Zone" && to === "Mountain Standard Time") {
+  } else if (from === 'Chamorro Time Zone' && to === 'Mountain Standard Time') {
     return Number(value) - 17;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 8;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) + 2;
-  } else if (from === "Pacific Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Pacific Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 18;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) - 1;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 2;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 4;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) + 3;
   } else if (
-    from === "Pacific Standard Time" &&
-    to === "Mountain Standard Time"
+    from === 'Pacific Standard Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number(value) + 1;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 9;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) + 3;
-  } else if (from === "Alaskan Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Alaskan Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 19;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 1;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) + 1;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 5;
   } else if (
-    from === "Alaskan Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Alaskan Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) + 4;
-  } else if (from === "Alaskan Standard Time" && to === "Mountain Standard") {
+  } else if (from === 'Alaskan Standard Time' && to === 'Mountain Standard') {
     return Number(value) + 2;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 10;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) + 4;
-  } else if (from === "Hawaii Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Hawaii Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 20;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) + 2;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) + 1;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 6;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) + 5;
   } else if (
-    from === "Hawaii Standard Time" &&
-    to === "Mountain Standard Time"
+    from === 'Hawaii Standard Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 4;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) - 2;
-  } else if (from === "Atlantic Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Atlantic Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 14;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) - 4;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "ALaskan Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'ALaskan Standard Time'
   ) {
     return Number(value) - 5;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 6;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) - 1;
   } else if (
-    from === "Atlantic Standard Time" &&
-    to === "Mountain Standard Time"
+    from === 'Atlantic Standard Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number(value) - 3;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 5;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) - 1;
-  } else if (from === "Eastern Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Eastern Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 15;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) - 3;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) - 4;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 5;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 1;
   } else if (
-    from === "Eastern Standard Time" &&
-    to === "Mountain Standard Time"
+    from === 'Eastern Standard Time' &&
+    to === 'Mountain Standard Time'
   ) {
     return Number(value) - 2;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Coordinated Universal Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Coordinated Universal Time'
   ) {
     return Number(value) + 7;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Central Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Central Standard Time'
   ) {
     return Number(value) + 1;
-  } else if (from === "Mountain Standard Time" && to === "Chamorro Time Zone") {
+  } else if (from === 'Mountain Standard Time' && to === 'Chamorro Time Zone') {
     return Number(value) + 17;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Pacific Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Pacific Standard Time'
   ) {
     return Number(value) - 1;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Alaskan Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Alaskan Standard Time'
   ) {
     return Number(value) - 2;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Hawaii Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Hawaii Standard Time'
   ) {
     return Number(value) - 3;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Atlantic Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Atlantic Standard Time'
   ) {
     return Number(value) + 3;
   } else if (
-    from === "Mountain Standard Time" &&
-    to === "Eastern Standard Time"
+    from === 'Mountain Standard Time' &&
+    to === 'Eastern Standard Time'
   ) {
     return Number(value) + 2;
   }

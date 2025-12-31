@@ -29,7 +29,6 @@ const LanguageTranslator = () => {
   const [loading, setLoading] = useState(false);
 
   const [disableBtn, setDisableBtn] = useState(true);
-  console.log(disableBtn);
 
   // const location = useLocation();
   // const path = location.pathname;
@@ -107,10 +106,7 @@ const LanguageTranslator = () => {
         }
       );
 
-      console.log(response, 'response____');
-
       const data = await response.json();
-      console.log('result ', data);
       if (data.translatedText) {
         setResult(data.translatedText);
       } else {
@@ -141,32 +137,25 @@ const LanguageTranslator = () => {
       /> */}
       {/* <HeaderNav /> */}
       <StyledConversionTool>
-        <div className='conversion-tools-container'>
+        <div className="conversion-tools-container">
           <StyledContainer>
             <form onSubmit={submitHandler}>
-              <div className='text'>
-                <h1 className='main-heading'>{title}</h1>
-                <p className='tag-line'>{description}.</p>
+              <div className="text">
+                <h1 className="main-heading">{title}</h1>
+                <p className="tag-line">{description}.</p>
               </div>
 
-              <div className='select-container'>
-                <div className='from-to'>
-                  <div className='from'>
-                    <select
-                      id={languageData.id}
-                      onChange={fromHandler}
-                    >
-                      <option
-                        value=''
-                        disabled
-                        selected
-                      >
+              <div className="select-container">
+                <div className="from-to">
+                  <div className="from">
+                    <select id={languageData.id} onChange={fromHandler}>
+                      <option value="" disabled selected>
                         Convert From
                       </option>
 
                       {propsArray.map((prop, index) => (
                         <option
-                          className='convertFrom'
+                          className="convertFrom"
                           value={prop}
                           key={index}
                         >
@@ -175,22 +164,15 @@ const LanguageTranslator = () => {
                       ))}
                     </select>
                   </div>
-                  <div className='to'>
-                    <select
-                      id={languageData.id}
-                      onChange={toHandler}
-                    >
-                      <option
-                        value=''
-                        disabled
-                        selected
-                      >
+                  <div className="to">
+                    <select id={languageData.id} onChange={toHandler}>
+                      <option value="" disabled selected>
                         Convert To
                       </option>
 
                       {propsArray.map((prop, index) => (
                         <option
-                          className='convertFrom'
+                          className="convertFrom"
                           value={prop}
                           key={index}
                         >
@@ -200,32 +182,32 @@ const LanguageTranslator = () => {
                     </select>
                   </div>
                 </div>
-                <div className='input-value'>
-                  <label for='inputValue'></label>
+                <div className="input-value">
+                  <label for="inputValue"></label>
                   <input
-                    type='text'
-                    id='inputValue'
+                    type="text"
+                    id="inputValue"
                     value={inputValue}
                     onChange={changeHandler}
-                    placeholder='Input value'
+                    placeholder="Input value"
                   />
                   <br />
                   <button
                     className={`${disableBtn ? 'btn-disable' : ''}`}
                     disabled={`${disableBtn ? 'true' : ''}`}
-                    type='submit'
+                    type="submit"
                   >
                     Convert
                   </button>
-                  <div className='result'>
+                  <div className="result">
                     <h1>Output</h1>
                     {loading ? (
                       <LineWave
-                        height='80'
-                        width='80'
-                        radius='9'
-                        color='royalBlue'
-                        ariaLabel='loading'
+                        height="80"
+                        width="80"
+                        radius="9"
+                        color="royalBlue"
+                        ariaLabel="loading"
                         wrapperStyle
                         wrapperClass
                       />

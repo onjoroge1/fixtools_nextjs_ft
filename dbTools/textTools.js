@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const textTool = [
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'Remove Space',
     category: 'Text Tools',
     categorysty: 'dec',
@@ -12,7 +12,7 @@ const textTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'Extract Email',
     category: 'Text Tools',
     categorysty: 'dec',
@@ -22,7 +22,7 @@ const textTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'Extract Link',
     category: 'Text Tools',
     categorysty: 'dec',

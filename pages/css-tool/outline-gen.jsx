@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import CssTool from '@/dbTools/CssTool';
 
-import { GetCurrentPageContent } from '../utils';
+import { GetCurrentPageContent } from '@/lib/utils';
 import CustomHead from '@/components/CustomHead';
 import { useRouter } from 'next/router';
 
@@ -46,16 +46,16 @@ export default function OutlineGen() {
         title={title}
         ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
         metaDescription={desc}
-        ogImageUrl='/programming_tools.jpg'
-        ogImageAlt='Fix tools og image'
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Fix tools og image"
       />
-      <div className='detail-hero'>
+      <div className="detail-hero">
         <HeaderNav />
-        <div className='detail-hero-content'>
-          <div className='detail-hero-content-heading'>
+        <div className="detail-hero-content">
+          <div className="detail-hero-content-heading">
             <h1>CSS Outline Generator</h1>
           </div>
-          <div className='detail-hero-content-des'>
+          <div className="detail-hero-content-des">
             <p>
               Generate CSS outline with our generator tool. Preview the result
               and copy the generated code to your website.
@@ -63,23 +63,23 @@ export default function OutlineGen() {
           </div>
         </div>
       </div>
-      <div className='screen'>
-        <div className='screen-editor'>
+      <div className="screen">
+        <div className="screen-editor">
           <h1>Options</h1>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Width</label>
             <input
-              id='horizontal'
-              type='range'
-              min='1'
-              max='20'
+              id="horizontal"
+              type="range"
+              min="1"
+              max="20"
               onChange={(e) => setwidth(e.target.value)}
               value={width}
             />
             <code>{width}px</code>
           </div>
 
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Style</label>
             <select onChange={(e) => setstyle(e.target.value)}>
               <option value={'dotted'}>dotted </option>
@@ -92,7 +92,7 @@ export default function OutlineGen() {
               <option value={'outset'}>outset</option>
             </select>
           </div>
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label> Color </label>
             <code>{color}</code>
             <input
@@ -102,24 +102,24 @@ export default function OutlineGen() {
             />
           </div>
 
-          <div className='screen-editor-color'>
+          <div className="screen-editor-color">
             <label>Offset</label>
             <input
-              id='horizontal'
-              type='range'
-              min='1'
-              max='100'
+              id="horizontal"
+              type="range"
+              min="1"
+              max="100"
               onChange={(e) => setOffset(e.target.value)}
               value={offset}
             />
             <code>{offset}px</code>
           </div>
         </div>
-        <div className='screen-preview'>
+        <div className="screen-preview">
           <h1>Preview</h1>
-          <div className='screen-preview-box'>
+          <div className="screen-preview-box">
             <div
-              className='screen-preview-box-sample'
+              className="screen-preview-box-sample"
               style={{ overflow: 'hidden' }}
             >
               <div
@@ -134,22 +134,22 @@ export default function OutlineGen() {
             </div>
           </div>
           <h1>Code</h1>
-          <div className='screen-preview-code'>
-            <code className='element-code'>
+          <div className="screen-preview-code">
+            <code className="element-code">
               offset: {width}px {style} {color}; <br></br>outline-offset:{' '}
               {offset}px;
             </code>
             <i
               style={{ cursor: 'pointer' }}
               onClick={copyText}
-              className='fa-regular fa-clone'
+              className="fa-regular fa-clone"
             ></i>
           </div>
         </div>
       </div>
 
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -158,7 +158,7 @@ export default function OutlineGen() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='dark'
+        theme="dark"
       />
       {/* <Footer /> */}
     </>

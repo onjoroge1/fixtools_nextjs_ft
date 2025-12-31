@@ -1,11 +1,11 @@
 const timeZoneData = [
-  "Coordinated Universal Time",
-  "Central Standard Time",
-  "Eastern Standard Time",
-  "Pacific Standard Time",
-  "Atlantic Standard Time",
-  "Chamorro Time Zone",
-  "Mountain Standard Time",
+  'Coordinated Universal Time',
+  'Central Standard Time',
+  'Eastern Standard Time',
+  'Pacific Standard Time',
+  'Atlantic Standard Time',
+  'Chamorro Time Zone',
+  'Mountain Standard Time',
 ];
 
 const hoursArr = [];

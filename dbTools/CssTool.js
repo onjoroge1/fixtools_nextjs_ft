@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const CssTool = [
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Minify Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -12,7 +12,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Formatter Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -22,7 +22,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Box Shadow Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -32,7 +32,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/card-icon-21.png',
+    image: '/images/card-icon-21.png',
     title: 'CSS Gradient Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -42,7 +42,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Shadow Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -52,7 +52,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Columns Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -62,7 +62,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Display Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -72,7 +72,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Visibility Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -82,7 +82,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Border Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -92,7 +92,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Border Radius Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -102,7 +102,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Transform Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -112,7 +112,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Border Image Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -122,7 +122,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Box Resize Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -132,7 +132,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Opacity Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -142,7 +142,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Outline Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -152,7 +152,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Overflow Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -162,7 +162,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Background Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -172,7 +172,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Color Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -182,7 +182,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Blur Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -192,7 +192,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Brightness Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -202,7 +202,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Contrast Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -212,7 +212,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Grayscale Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -222,7 +222,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Hue Rotate Generator ',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -232,7 +232,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Invert Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -242,7 +242,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Saturate Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -252,7 +252,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Sepia Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -262,7 +262,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS List Style Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -272,7 +272,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Cursor Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -282,7 +282,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Letter Spacing Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -293,7 +293,7 @@ const CssTool = [
 
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Align Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -303,7 +303,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Decoration Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -313,7 +313,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Indent Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -323,7 +323,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Text Transform Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -333,7 +333,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS White Space Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -343,7 +343,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Word Break Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -353,7 +353,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Word Spacing Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -363,7 +363,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Line Height Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -373,7 +373,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Overflow Wrap Generator',
     category: 'CSS Tools',
     categorysty: 'dec',
@@ -383,7 +383,7 @@ const CssTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/css-file-format.png',
+    image: '/images/css-file-format.png',
     title: 'CSS Tab Size',
     category: 'CSS Tools',
     categorysty: 'dec',

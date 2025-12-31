@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 const AiTool = [
   {
     id: uuidv4(),
-    image: 'images/Grammer correction.svg',
+    image: '/images/Grammer correction.svg',
     title: 'Grammar Correction',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -23,7 +23,7 @@ const AiTool = [
   // },
   {
     id: uuidv4(),
-    image: 'images/Q & A.svg',
+    image: '/images/Q & A.svg',
     title: 'Q & A',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -33,7 +33,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/Q & A.svg',
+    image: '/images/Q & A.svg',
     title: 'ai content detector',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -43,7 +43,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/summarize.svg',
+    image: '/images/summarize.svg',
     title: 'Summarize For 2nd Grader',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -53,7 +53,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/movie to emoji.svg',
+    image: '/images/movie to emoji.svg',
     title: 'Movie To Emoji',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -63,7 +63,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Keywords',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -73,7 +73,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Friend Chat',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -83,7 +83,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Study Notes',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -93,7 +93,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Interview Questions',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -103,7 +103,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Chat With AI',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -113,7 +113,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Turn By Turn Directions',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -123,7 +123,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Essay Outline',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -133,7 +133,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Notes To Summary',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -143,7 +143,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Analogy Maker',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -153,7 +153,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Classification',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -163,7 +163,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Third Person Converter',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -173,7 +173,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Explain Code',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -183,7 +183,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Tweets Sentiment Classifier',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -193,7 +193,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Recipe Maker From Ingredients',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -203,7 +203,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Micro Horror Story',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -223,7 +223,7 @@ const AiTool = [
   // },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Factual Answering',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -233,7 +233,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Javascript Helper Chatbot',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -243,7 +243,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Science Fiction Books List Maker',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -253,7 +253,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Text Description To Color',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -283,7 +283,7 @@ const AiTool = [
   // },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Summarization',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -293,7 +293,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Ad From Product Description',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -303,7 +303,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'ESRB Rating',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -313,7 +313,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Marv The Sarcastic Chatbot',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -323,7 +323,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Calculate Time Complexity',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -333,7 +333,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Python Bug Fixer',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -343,7 +343,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'SQL Request',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -353,7 +353,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'ML/AI Language Model Tutor',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -363,7 +363,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Extract Contact Information',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -373,7 +373,7 @@ const AiTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Restaurant Review Creator',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -393,7 +393,7 @@ const AiTool = [
   // },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'Airport Code Extractor',
     category: 'AI Tools',
     categorysty: 'dec',
@@ -413,7 +413,7 @@ const AiTool = [
   // },
   {
     id: uuidv4(),
-    image: 'images/keyword selection.svg',
+    image: '/images/keyword selection.svg',
     title: 'VR Fitness Idea Generator',
     category: 'AI Tools',
     categorysty: 'dec',

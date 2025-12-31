@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 const HtmlTool = [
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Minify Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -12,7 +12,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Formatter',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -22,7 +22,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Image Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -32,7 +32,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Iframe Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -42,7 +42,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Link Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -52,7 +52,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Button Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -62,7 +62,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Color Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -72,7 +72,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Date Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -82,7 +82,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Email Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -92,7 +92,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML File Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -102,7 +102,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Image Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -112,7 +112,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Number Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -122,7 +122,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Password Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -132,7 +132,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Range Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -142,7 +142,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Search Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -152,7 +152,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Submit Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -162,7 +162,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Telephone Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -172,7 +172,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Text Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -182,7 +182,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML URL Input Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -192,7 +192,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Text Area Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -202,7 +202,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Audio Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -212,7 +212,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Video Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -222,7 +222,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Bi Directional Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -232,7 +232,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Bold Generator ',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -242,7 +242,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Citation Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -252,7 +252,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Code Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -262,7 +262,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Italic Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -272,7 +272,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Highlight  Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -282,7 +282,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Strikethrough Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -292,7 +292,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Underline Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -302,7 +302,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Quote & Blockquote Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -312,7 +312,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Superscript & Subscript Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -322,7 +322,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Details Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -332,7 +332,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Meter Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
@@ -342,7 +342,7 @@ const HtmlTool = [
   },
   {
     id: uuidv4(),
-    image: 'images/html-file.png',
+    image: '/images/html-file.png',
     title: 'HTML Progress Bar Generator',
     category: 'HTML Tools',
     categorysty: 'dec',
