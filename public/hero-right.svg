@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="220" viewBox="0 0 280 220" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="280" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFCCB"/>
+      <stop offset="0.5" stop-color="#FEF3C7"/>
+      <stop offset="1" stop-color="#E0E7FF"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="280" height="220" rx="28" fill="url(#bg2)"/>
+  <rect x="46" y="46" width="188" height="128" rx="22" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <rect x="64" y="66" width="92" height="18" rx="9" fill="#E2E8F0"/>
+  <rect x="64" y="96" width="152" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="64" y="118" width="132" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="64" y="140" width="110" height="12" rx="6" fill="#E2E8F0"/>
+  <path d="M210 156c0 12-10 22-22 22s-22-10-22-22 10-22 22-22 22 10 22 22z" fill="#ECFEFF" stroke="#A5F3FC"/>
+  <path d="M188 144l8 12-8 12-8-12 8-12z" fill="url(#chip)"/>
+</svg>
+
+

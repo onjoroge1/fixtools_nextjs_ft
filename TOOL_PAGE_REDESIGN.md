@@ -268,3 +268,4 @@ The HTML Minify page is now:
 - 💯 Ready to ship!
 
 **Test it at:** `http://localhost:3000/html/html-minify`
+

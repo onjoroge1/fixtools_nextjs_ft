@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="220" viewBox="0 0 280 220" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="280" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="0.5" stop-color="#EDE9FE"/>
+      <stop offset="1" stop-color="#CFFAFE"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="280" height="220" rx="28" fill="url(#bg)"/>
+  <circle cx="52" cy="60" r="10" fill="#FDE68A"/>
+  <circle cx="80" cy="44" r="6" fill="#A7F3D0"/>
+  <circle cx="230" cy="52" r="7" fill="#BFDBFE"/>
+  <rect x="38" y="58" width="170" height="120" rx="18" fill="url(#card)" stroke="#E2E8F0"/>
+  <rect x="56" y="80" width="120" height="12" rx="6" fill="#E2E8F0"/>
+  <rect x="56" y="104" width="96" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="56" y="124" width="132" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="56" y="144" width="74" height="10" rx="5" fill="#E2E8F0"/>
+  <path d="M205 136c12 0 22 10 22 22s-10 22-22 22-22-10-22-22 10-22 22-22z" fill="#EEF2FF" stroke="#C7D2FE"/>
+  <path d="M205 145l7 8-7 8-7-8 7-8z" fill="#7C3AED"/>
+</svg>
+
+

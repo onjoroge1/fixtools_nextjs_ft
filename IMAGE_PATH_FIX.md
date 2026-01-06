@@ -66,3 +66,4 @@ npm run dev
 ---
 
 **All image paths are now compatible with Next.js Image component! 🎉**
+

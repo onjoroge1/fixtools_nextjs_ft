@@ -18,3 +18,4 @@ export async function getServerSideProps({ res }) {
 export default function Robots() {
   return null;
 }
+

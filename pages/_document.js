@@ -44,6 +44,23 @@ export default class MyDocument extends Document {
             content="default"
           />
           <meta name="apple-mobile-web-app-title" content="Fixtools" />
+          {/* Tailwind CSS CDN for tool pages */}
+          <script src="https://cdn.tailwindcss.com"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                tailwind.config = {
+                  theme: {
+                    extend: {
+                      boxShadow: {
+                        soft: "0 12px 40px rgba(2, 6, 23, 0.08)"
+                      }
+                    }
+                  }
+                }
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />

@@ -73,3 +73,4 @@ After generating icons:
 - Service Worker: 🔲 Future enhancement
 
 **Next:** Generate the icons using one of the methods above!
+

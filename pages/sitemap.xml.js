@@ -4,12 +4,22 @@ const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
 
 // Category URLs - these are important landing pages
 const categoryPaths = [
-  '/categories/ai-tools',
-  '/categories/conversion-tools',
-  '/categories/json-tools',
-  '/categories/html-tools',
-  '/categories/css-tools',
-  '/categories/seo-tools',
+  '/tools/ai-tools',
+  '/tools/conversion-tools',
+  '/tools/json',
+  '/tools/html',
+  '/tools/css',
+  '/tools/seo-tools',
+  '/tools/text-tools',
+  '/tools/pdf',
+  '/tools/utilities',
+  '/tools/image-tools',
+  '/learn',
+  '/back-to-school',
+  '/back-to-school/writing',
+  '/back-to-school/reading',
+  '/back-to-school/study-tools',
+  '/games',
 ];
 
 // Static pages with their priorities
@@ -19,6 +29,7 @@ const staticPages = [
   { path: '/contact', priority: '0.4', changefreq: 'monthly' },
   { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
+  { path: '/tools', priority: '0.9', changefreq: 'weekly' },
 ];
 
 // Special conversion tools
@@ -39,16 +50,63 @@ const popularTools = [
   '/aitools/qa',
   '/aitools/correction',
   '/conversiontools/currencyConversion',
+  // New high-priority tools
+  '/utilities/qr-code-generator',
+  '/utilities/barcode-generator',
+  '/utilities/password-generator',
+  '/text/word-counter',
+  '/text/text-case-converter',
+  '/tools/image-compressor',
+  '/tools/image-resizer',
+];
+
+// Learn pages
+const learnPages = [
+  '/learn/json',
+  // Add more as they're created: '/learn/html', '/learn/css', etc.
+];
+
+// Additional tool paths that may not be in Data
+const additionalToolPaths = [
+  // Utilities
+  '/utilities/qr-code-generator',
+  '/utilities/barcode-generator',
+  '/utilities/password-generator',
+  '/utilities/url-encoder',
+  '/utilities/url-decoder',
+  // Text Tools
+  '/text/word-counter',
+  '/text/text-case-converter',
+  '/text-tools/remove-spaces',
+  '/text-tools/extract-links',
+  '/text-tools/extract-email',
+  // Image Tools
+  '/image-tools/image-resizer',
+  '/image-tools/image-compressor',
+  '/image-tools/image-to-base64',
+  '/image-tools/base64-to-image',
+  '/image-tools/image-format-converter',
+  '/image-tools/image-cropper',
+  '/image-tools/image-rotator',
+  '/image-tools/image-watermark',
+  '/image-tools/image-background-remover',
+  '/image-tools/image-flipper',
+  '/image-tools/image-blur-tool',
+  '/image-tools/image-brightness-adjuster',
+  '/image-tools/image-contrast-adjuster',
+  '/image-tools/image-grayscale-converter',
+  '/image-tools/image-metadata-viewer',
 ];
 
 const uniquePaths = () => {
   const toolPaths = (Data || []).map((tool) => tool?.link).filter(Boolean);
+  const allToolPaths = [...toolPaths, ...additionalToolPaths];
 
   return {
     categories: categoryPaths,
-    popular: popularTools.filter((path) => toolPaths.includes(path)),
+    popular: popularTools.filter((path) => allToolPaths.includes(path)),
     special: [...specialPaths, ...seoPaths],
-    regular: toolPaths.filter(
+    regular: allToolPaths.filter(
       (path) =>
         !popularTools.includes(path) &&
         !specialPaths.includes(path) &&
@@ -102,6 +160,19 @@ const generateSiteMap = (paths) => {
     )
     .join('');
 
+  // Learn pages
+  const learnUrls = learnPages
+    .map(
+      (path) => `
+  <url>
+    <loc>${siteHost}${path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`
+    )
+    .join('');
+
   // Popular tools
   const popularUrls = paths.popular
     .map(
@@ -146,6 +217,7 @@ const generateSiteMap = (paths) => {
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   ${staticUrls}
   ${categoryUrls}
+  ${learnUrls}
   ${popularUrls}
   ${specialUrls}
   ${regularUrls}

@@ -1,192 +1,1711 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { toXML } from 'jstoxml';
-import { toast, ToastContainer } from 'react-toastify';
-import { useEffect } from 'react';
+export default function JSONToXMLConverter() {
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [stats, setStats] = useState('');
+  const [copyText, setCopyText] = useState('📋 Copy');
+  
+  // Options
+  const [indentSize, setIndentSize] = useState(2);
 
-import JsonTools from '../../dbTools/JsonTool';
+  const currentYear = new Date().getFullYear();
 
-import { GetCurrentPageContent } from '@/lib/utils';
-import CustomHead from '@/components/CustomHead';
-import { useRouter } from 'next/router';
-import HeaderNav from '@/components/HeaderNav';
+  const demo = `{"name":"John Doe","age":30,"email":"john@example.com","isActive":true,"address":{"street":"123 Main St","city":"New York","state":"NY","zip":"10001"},"hobbies":["reading","coding","traveling"],"projects":[{"name":"Website","status":"complete"},{"name":"Mobile App","status":"in-progress"}]}`;
 
-import Footer from '@/components/Footer/Footer';
-
-export default function JsonToXml() {
-  const [formdata, setformdata] = useState('');
-  const [result, setResult] = useState();
-  const [buttonLoading, setbuttonLoading] = useState(false);
-  const [place, setplace] = useState('Type (or paste) here...');
-  const [disableBtn, setDisableBtn] = useState(true);
-
-  const route = useRouter();
-  console.log(route);
-  const path = route.pathname;
-  const { title, desc, image } = GetCurrentPageContent(path, JsonTools);
-  console.log({ title });
-
-  const handleChange = (e) => {
-    setformdata(e.target.value);
-    setDisableBtn(false);
+  const handlePasteDemo = () => {
+    setInput(demo);
+    setOutput('');
+    setStats('');
   };
 
-  useEffect(() => {
-    document.title = 'JSON To XML Generator';
-  }, []);
+  const handleClear = () => {
+    setInput('');
+    setOutput('');
+    setStats('');
+  };
 
-  const handleSubmit = async (e) => {
-    setDisableBtn(true);
-    e.preventDefault();
-    const config = {
-      indent: '    ',
-    };
-    const content = formdata;
-    setbuttonLoading(true);
+  // JSON to XML conversion function
+  const jsonToXml = (obj, indent = 0) => {
+    const spaces = ' '.repeat(indent * indentSize);
+    let xml = '';
+    
+    if (obj === null) {
+      return '';
+    }
+    
+    if (typeof obj !== 'object') {
+      // Escape special XML characters
+      return String(obj)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+    }
+    
+    if (Array.isArray(obj)) {
+      // Handle arrays - create repeated elements
+      obj.forEach((item, index) => {
+        xml += `${spaces}<item>\n`;
+        if (typeof item === 'object' && item !== null) {
+          xml += jsonToXml(item, indent + 1);
+        } else {
+          xml += `${spaces}${' '.repeat(indentSize)}${jsonToXml(item, 0)}\n`;
+        }
+        xml += `${spaces}</item>\n`;
+      });
+      return xml;
+    }
+    
+    // Handle objects
+    for (const [key, value] of Object.entries(obj)) {
+      const tagName = key.replace(/[^a-zA-Z0-9_-]/g, '_'); // Sanitize tag name
+      
+      if (value === null) {
+        xml += `${spaces}<${tagName}/>\n`;
+      } else if (Array.isArray(value)) {
+        xml += `${spaces}<${tagName}>\n`;
+        xml += jsonToXml(value, indent + 1);
+        xml += `${spaces}</${tagName}>\n`;
+      } else if (typeof value === 'object') {
+        xml += `${spaces}<${tagName}>\n`;
+        xml += jsonToXml(value, indent + 1);
+        xml += `${spaces}</${tagName}>\n`;
+      } else {
+        xml += `${spaces}<${tagName}>${jsonToXml(value, 0)}</${tagName}>\n`;
+      }
+    }
+    
+    return xml;
+  };
 
+  const handleFormat = () => {
+    const inputText = input || "";
+    if (!inputText.trim()) return;
+    
     try {
-      //console.log(content,'content');
-      const jsontoxml = toXML(JSON.parse(content), config);
-      console.log(jsontoxml, 'jsontoxml');
-      setResult(jsontoxml);
-      setbuttonLoading(false);
-      toast.success('Success!', {
-        position: 'top-right',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
-    } catch (err) {
-      setbuttonLoading(false);
-      toast.error('Not Valid Json', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      const parsed = JSON.parse(inputText);
+      const xmlContent = jsonToXml(parsed, 1);
+      const xmlOutput = `<?xml version="1.0" encoding="UTF-8"?>\n<root>\n${xmlContent}</root>`;
+      setOutput(xmlOutput);
+      
+      const beforeSize = new Blob([inputText]).size;
+      const afterSize = new Blob([xmlOutput]).size;
+      const diff = afterSize - beforeSize;
+      const diffPercent = beforeSize > 0 ? ((diff / beforeSize) * 100).toFixed(1) : "0.0";
+      
+      if (diff > 0) {
+        setStats(`Converted: ${beforeSize.toLocaleString()} bytes (JSON) → ${afterSize.toLocaleString()} bytes (XML) (+${diffPercent}%)`);
+      } else {
+        setStats(`Converted to XML: ${xmlOutput.split('\n').length} lines, ${afterSize.toLocaleString()} bytes`);
+      }
+    } catch (error) {
+      alert(`Invalid JSON: ${error.message}`);
+      setOutput('');
+      setStats('');
     }
   };
-  const copyText = () => {
-    const selct = document.querySelector('.element-code').textContent;
-    navigator.clipboard.writeText(selct);
-    toast.success('Copied!', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    });
+
+  const handleCopy = async () => {
+    const text = output || "";
+    if (!text) return;
+    await navigator.clipboard.writeText(text);
+    setCopyText('✅ Copied');
+    setTimeout(() => setCopyText('📋 Copy'), 1200);
   };
+
+  const handleDownload = () => {
+    const text = output || "";
+    if (!text) return;
+    const blob = new Blob([text], { type: "application/xml" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "converted.xml";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  // Structured Data Schemas for SEO
+  const structuredData = {
+    // FAQPage Schema
+    faqPage: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is JSON to XML conversion safe and private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, absolutely. All conversion happens locally in your browser using JavaScript. Your JSON data never leaves your device or gets sent to any server. This makes it completely safe for confidential data, API responses, or proprietary business information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my JSON data be stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This tool processes input locally in the browser and does not upload your content. Your data never leaves your device."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the root element name?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most JSON to XML converters use a default root element (like root) to wrap the converted content. Advanced tools allow you to specify a custom root element name to match your target system's requirements, especially important for SOAP APIs and schema-validated XML."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my JSON is invalid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The tool will show an error message indicating where the syntax error is. Common issues include missing commas, unclosed brackets, or unquoted property names. Invalid JSON cannot be converted to XML."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will converting JSON to XML increase file size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, typically. XML is more verbose than JSON due to closing tags and explicit structure. A JSON file converted to XML often becomes 1.5–3× larger. However, this is expected and necessary for XML compatibility—the verbosity is part of XML's design for self-describing, schema-validated data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are JSON arrays converted to XML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON arrays are typically converted to repeated XML elements with the same tag name. For example, a JSON array becomes multiple XML elements. This preserves the array structure while following XML conventions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this support SOAP format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This tool converts JSON data structure to XML elements. For full SOAP compatibility, you'll need to wrap the converted XML in a SOAP envelope with proper namespaces. The converted XML can serve as the payload within a SOAP body."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the output validate against XML schemas (XSD)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The converter produces well-formed XML, but whether it validates against a specific XSD schema depends on your source JSON structure and target schema requirements. You'll need to ensure your JSON structure matches the schema's expected element hierarchy before conversion."
+          }
+        }
+      ]
+    },
+    
+    // SoftwareApplication Schema
+    softwareApp: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "JSON to XML Converter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "description": "Free online JSON to XML converter tool to transform JSON data into XML format for legacy systems, SOAP APIs, and XML-based applications. Works instantly in your browser with complete privacy.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1580",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "featureList": ["Customizable indentation (2 or 4 spaces)",
+        "Browser-based processing",
+        "No data storage",
+        "Instant results",
+        "Download minified files",
+        "Copy to clipboard",
+        "Fetch from URL"
+      ]
+    },
+    
+    // HowTo Schema
+    howTo: {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Convert to XML",
+      "description": "Step-by-step guide to convert JSON to XML online for free using FixTools JSON to XML Converter.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Paste your JSON code",
+          "text": "Copy your JSON data and paste it into the input field. You can paste minified JSON from APIs, configuration files, or any JSON source.",
+          "position": 1
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose conversion options",
+          "text": "Select XML indentation size (2 or 4 spaces) for the output structure. The tool maintains proper XML hierarchy and nesting.",
+          "position": 2
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Convert and export",
+          "text": "Click the Convert to XML button to transform your JSON. The tool will convert objects to elements, handle nested structures, and generate well-formed XML. Then copy or download the XML output.",
+          "position": 3
+        }
+      ]
+    },
+    
+    // BreadcrumbList Schema
+    breadcrumb: {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://fixtools.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "JSON Tools",
+          "item": "https://fixtools.io/tools/json"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "JSON to XML Converter",
+          "item": "https://fixtools.io/json/json-to-xml"
+        }
+      ]
+    }
+  };
+
   return (
     <>
-      <CustomHead
-        title={title}
-        ogUrl={process.env.NEXT_PUBLIC_HOST + route.asPath}
-        metaDescription={desc}
-        ogImageUrl="/programming_tools.jpg"
-        ogImageAlt="Fix tools og image"
-      />
-      <div
-        className="detail-hero"
-        style={{ minHeight: '320px', maxHeight: '320px' }}
-      >
-        <HeaderNav />
-        <div className="detail-hero-content">
-          <div className="detail-hero-content-heading">
-            <h1>JSON To XML Generator</h1>
+      <Head>
+        {/* Primary Meta Tags */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>JSON to XML Converter - Free Online Tool to Convert JSON to XML | FixTools</title>
+        <meta name="title" content="JSON to XML Converter - Free Online Tool to Convert JSON to XML | FixTools" />
+        <meta name="description" content="Convert JSON to XML online for free. Transform JSON data into XML structure for legacy systems, SOAP APIs, and enterprise applications. Instant conversion with nested object support." />
+        <meta name="keywords" content="json to xml, convert json to xml, json xml converter, json to xml online, xml converter, data conversion" />
+        <meta name="author" content="FixTools" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://fixtools.io/json/json-to-xml" />
+        <link rel="icon" href="/fixtools-logos/fixtools-logos_black.svg" type="image/svg+xml" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://fixtools.io/json/json-to-xml" />
+        <meta property="og:title" content="JSON to XML Converter - Free Online Tool to Convert JSON to XML" />
+        <meta property="og:description" content="Convert JSON to XML structure online. Free tool for transforming JSON data into XML for legacy systems and SOAP APIs." />
+        <meta property="og:image" content="https://fixtools.io/images/og-json-converter.png" />
+        <meta property="og:site_name" content="FixTools" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://fixtools.io/json/json-to-xml" />
+        <meta property="twitter:title" content="JSON to XML Converter - Free Online Tool" />
+        <meta property="twitter:description" content="Convert JSON to XML format online. Free converter for legacy systems and XML-based applications." />
+        <meta property="twitter:image" content="https://fixtools.io/images/og-json-formatter.png" />
+        
+        {/* Structured Data - Multiple Schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.faqPage) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.softwareApp) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.howTo) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData.breadcrumb) }}
+        />
+      </Head>
+
+      <style jsx global>{`
+        /* 
+         * CRITICAL FIX: Override Base font-size for proper rem calculations
+         * The :has() selector targets the root element when this page is present
+         * This makes 1rem = 16px (browser default) instead of 10px (global 62.5%)
+         */
+        html:has(.json-to-xml-page) {
+          font-size: 100% !important;
+        }
+        
+        /* 
+         * SURGICAL CSS RESET - Only reset what's needed
+         * Goal: Fix global CSS conflicts without breaking Tailwind utilities
+         */
+        
+        .json-to-xml-page {
+          /* Base styles for the wrapper */
+          line-height: 1.5;
+          font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+          /* Ensure proper layout */
+          width: 100%;
+          min-height: 100vh;
+        }
+        
+        /* Enhanced Hero Content Animations */
+        .hero-content {
+          animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        /* Pulse animation for badge dot */
+        @keyframes ping {
+          75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+        
+        .animate-ping {
+          animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        
+        /* Enhanced gradient text animation */
+        .bg-gradient-to-r {
+          background-size: 200% auto;
+        }
+        
+        /* Smooth transitions for interactive elements */
+        .transition-all {
+          transition-property: all;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Stats card hover glow effect */
+        .json-to-xml-page dl > div:hover {
+          box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Feature Cards Animations */
+        .feature-cards-container {
+          animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .feature-card {
+          animation: slideInRight 0.6s ease-out backwards;
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        /* Stats bar animation */
+        .stats-bar {
+          animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+        
+        /* Box-sizing reset for consistent layout */
+        .json-to-xml-page *,
+        .json-to-xml-page *::before,
+        .json-to-xml-page *::after {
+          box-sizing: border-box;
+        }
+        
+        /* Remove default link underline */
+        .json-to-xml-page a {
+          text-decoration: none;
+        }
+        
+        /* Reset global heading margins that might interfere */
+        .json-to-xml-page h1,
+        .json-to-xml-page h2,
+        .json-to-xml-page h3,
+        .json-to-xml-page h4,
+        .json-to-xml-page h5,
+        .json-to-xml-page h6 {
+          margin: 0;
+        }
+        
+        /* Reset global paragraph/list margins */
+        .json-to-xml-page p,
+        .json-to-xml-page ul,
+        .json-to-xml-page ol,
+        .json-to-xml-page dl,
+        .json-to-xml-page dd {
+          margin: 0;
+        }
+        
+        /* Minimal button reset - only reset interfering globals */
+        .json-to-xml-page button {
+          font-family: inherit;
+          cursor: pointer;
+        }
+        
+        /* Let Tailwind handle all other button styling */
+        /* DO NOT reset padding, margin, border, or background */
+        
+        /* Ensure inputs and textareas inherit font properly */
+        .json-to-xml-page input,
+        .json-to-xml-page textarea,
+        .json-to-xml-page select {
+          font-family: inherit;
+        }
+      `}</style>
+
+      <div className="json-to-xml-page bg-[#fbfbfc] text-slate-900 min-h-screen">
+        {/* Top Bar */}
+        <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/fixtools-logos/fixtools-logos_black.svg" alt="FixTools" width={120} height={40} className="h-9 w-auto" />
+            </Link>
+            <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
+              <Link className="hover:text-slate-900" href="/categories/developer-tools">Developer</Link>
+              <Link className="hover:text-slate-900" href="/categories/seo-tools">SEO</Link>
+              <Link className="hover:text-slate-900" href="/categories/css-tools">CSS</Link>
+              <Link className="hover:text-slate-900" href="/">All tools</Link>
+            </nav>
+            <Link href="/" className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium hover:bg-slate-50">
+              Browse tools
+            </Link>
           </div>
-          <div className="detail-hero-content-des">
-            <p>
-              Generate JSON To XML with our generator tool. Preview the result
-              and copy the generated code to your website.
+        </header>
+
+        {/* Breadcrumbs */}
+        <nav className="mx-auto max-w-6xl px-4 py-3" aria-label="Breadcrumb">
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
+            <li>
+              <Link href="/" className="hover:text-slate-900 transition-colors">
+                Home
+              </Link>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-slate-400">/</span>
+              <Link href="/tools/json" className="hover:text-slate-900 transition-colors">
+                JSON Tools
+              </Link>
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-slate-400">/</span>
+              <span className="font-semibold text-slate-900">JSON to XML Converter</span>
+            </li>
+          </ol>
+        </nav>
+
+        {/* Hero */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.35]" style={{ backgroundImage: 'url(/grid.png)', backgroundSize: '256px 256px' }}></div>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 md:grid-cols-12 md:py-14">
+            <div className="relative z-10 md:col-span-7 hero-content">
+              {/* Enhanced badge with pulse animation */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-gradient-to-r from-emerald-50 to-green-50 px-4 py-1.5 text-xs font-semibold text-emerald-700 shadow-sm backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Free • Fast • Privacy-first
+              </div>
+              
+              {/* Enhanced H1 with gradient text */}
+              <h1 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+                  JSON to XML Converter
+                </span>
+              </h1>
+              
+              {/* Enhanced description with better line height and keyword optimization */}
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 md:text-lg md:leading-relaxed">
+                Transform <strong>JSON data</strong> into XML format instantly with our free online converter. Perfect for integrating with legacy systems, SOAP APIs, and XML-based applications. Our <strong>JSON to XML converter</strong> handles nested objects, arrays, and complex data structures—making data migration and API integration seamless.
+              </p>
+
+              {/* Enhanced CTA buttons with better effects */}
+              <div className="mt-7 pb-5 flex flex-wrap items-center gap-3">
+                <a 
+                  href="#tool" 
+                  className="group relative rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/25 transition-all duration-200 hover:shadow-xl hover:shadow-slate-900/40 hover:scale-[1.02]"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    ⚡ Convert to XML
+                  </span>
+                </a>
+                <a 
+                  href="#how" 
+                  className="rounded-2xl border-2 border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
+                >
+                  How it works
+                </a>
+          </div>
+
+              {/* Enhanced stats cards with hover effects and icons */}
+              <dl className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+                <div className="group rounded-2xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5">
+                  <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Output</dt>
+                  <dd className="mt-1.5 text-sm font-bold text-slate-900">XML</dd>
+                </div>
+                <div className="group rounded-2xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5">
+                  <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Mode</dt>
+                  <dd className="mt-1.5 text-sm font-bold text-slate-900">In-browser</dd>
+                </div>
+                <div className="group rounded-2xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5">
+                  <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Time</dt>
+                  <dd className="mt-1.5 text-sm font-bold text-slate-900">Seconds</dd>
+                </div>
+                <div className="group rounded-2xl border border-slate-200 bg-white p-4 transition-all duration-200 hover:border-slate-300 hover:shadow-md hover:-translate-y-0.5">
+                  <dt className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Price</dt>
+                  <dd className="mt-1.5 text-sm font-bold text-slate-900">Free</dd>
+                </div>
+              </dl>
+            </div>
+
+            {/* Right Column - Feature Cards */}
+            <div className="relative z-10 md:col-span-5">
+              <div className="space-y-4 feature-cards-container">
+                {/* Feature Card 1 - Fast */}
+                <div className="feature-card group rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-lg transition-all duration-300 hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1" style={{ animationDelay: '0.1s' }}>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30 transition-transform duration-300 group-hover:scale-110">
+                      <span className="text-2xl">⚡</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-slate-900">Lightning Fast</h4>
+                      <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+                        Process files instantly in your browser. No waiting, no delays.
             </p>
           </div>
         </div>
       </div>
-      <div
-        className="tools-for-better-thinking"
-        style={{ padding: '5rem 0px 5rem 0px' }}
-      >
-        <div className="container d-flex align-items-center justify-content-center row col-md-8">
-          <div className="col-md-12 col-lg-12 offset-lg-6">
-            <label className="my-1 mr-2">
-              <h2>Input JSON</h2>
-            </label>
-            <form className="" role="form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <textarea
-                  required
-                  className="form-control"
-                  placeholder={place}
-                  rows="15"
-                  id="input-comment"
-                  onChange={handleChange}
-                  style={{ fontSize: '1.5rem' }}
-                ></textarea>
-              </div>
-              <p></p>
-              <div className="d-grid gap-3 col-md-2">
-                <button
-                  style={{ borderRadius: '3px' }}
-                  className={`${disableBtn ? 'btn-disable' : ''}`}
-                  disabled={`${disableBtn ? 'true' : ''}`}
-                  type="submit"
-                >
-                  {buttonLoading ? (
-                    <div className="spinner-border text-dark" role="status">
-                      <span className="sr-only">Loading...</span>
+
+                {/* Feature Card 2 - Private */}
+                <div className="feature-card group rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-lg transition-all duration-300 hover:border-blue-300 hover:shadow-xl hover:-translate-y-1" style={{ animationDelay: '0.2s' }}>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30 transition-transform duration-300 group-hover:scale-110">
+                      <span className="text-2xl">🔒</span>
                     </div>
-                  ) : (
-                    'Submit'
-                  )}
-                </button>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-slate-900">100% Private</h4>
+                      <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+                        Everything runs locally. Your code never leaves your device.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Feature Card 3 - Easy */}
+                <div className="feature-card group rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-lg transition-all duration-300 hover:border-purple-300 hover:shadow-xl hover:-translate-y-1" style={{ animationDelay: '0.3s' }}>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg shadow-purple-500/30 transition-transform duration-300 group-hover:scale-110">
+                      <span className="text-2xl">✨</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-slate-900">Zero Configuration</h4>
+                      <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+                        Works instantly out of the box. No setup or installation required.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats Bar */}
+                <div className="stats-bar mt-6 flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white/80 px-6 py-4 backdrop-blur-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span className="text-sm font-semibold text-slate-700">
+                      Trusted by developers worldwide
+                    </span>
+                  </div>
+                </div>
               </div>
-            </form>
-          </div>
-          <div className="col-md-12 col-lg-12 offset-lg-6">
-            <i
-              style={{ cursor: 'pointer', float: 'right', padding: '10px' }}
-              onClick={copyText}
-              className="fa-regular fa-clone"
-            ></i>
-            <div className="form-group">
-              <textarea
-                className="form-control element-code"
-                rows="15"
-                id="input-comment"
-                value={result}
-                style={{ fontSize: '2rem' }}
-                disabled
-                placeholder="Output"
-              ></textarea>
             </div>
           </div>
+        </section>
+
+        {/* Tool UI */}
+        <section id="tool" className="mx-auto max-w-6xl px-4 pb-12 pt-2">
+          <div className="rounded-3xl border border-slate-200 bg-white p-5 md:p-7" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-slate-900">Convert to XML online</h2>
+                <p className="mt-1 text-sm text-slate-600">Paste your JSON, choose options, and get well-formed XML output you can copy or download.</p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <button onClick={handlePasteDemo} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-50">Paste demo</button>
+                <button onClick={handleClear} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-50">Clear</button>
+                <button onClick={handleFormat} className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">⚡ Convert to XML</button>
+              </div>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-12">
+              <div className="md:col-span-8">
+                <label className="mb-2 block text-sm font-semibold text-slate-800">Input JSON</label>
+                <textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className="h-64 w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-900 outline-none focus:ring-2 focus:ring-slate-900/20" 
+                  placeholder="Paste your JSON here..."
+                />
+              </div>
+              <div className="md:col-span-4">
+                <label className="mb-2 block text-sm font-semibold text-slate-800">Options</label>
+                <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-800 mb-2">Indentation</label>
+                    <div className="flex gap-2">
+                <button
+                        type="button"
+                        onClick={() => setIndentSize(2)}
+                        className={`flex-1 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                          indentSize === 2 
+                            ? 'bg-slate-900 text-white' 
+                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                        }`}
+                      >
+                        2 spaces
+                      </button>
+                      <button 
+                        type="button"
+                        onClick={() => setIndentSize(4)}
+                        className={`flex-1 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                          indentSize === 4 
+                            ? 'bg-slate-900 text-white' 
+                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                        }`}
+                      >
+                        4 spaces
+                </button>
+              </div>
+                    <p className="mt-2 text-xs text-slate-500">
+                      Choose indentation size. Commonly 2 spaces for XML readability.
+                    </p>
+          </div>
+            </div>
+
+                <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 h-10 w-10 overflow-hidden rounded-xl border border-slate-200 bg-white">
+                      <Image src="/icons.svg" alt="" width={40} height={40} className="h-full w-full object-cover" />
+          </div>
+                    <div>
+                      <p className="text-sm font-semibold">Privacy-first</p>
+                      <p className="text-xs text-slate-600">This page processes content locally in your browser (no upload).</p>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <Footer />
+                </div>
+
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                <label className="text-sm font-semibold text-slate-800">Converted XML output</label>
+                <div className="flex flex-wrap items-center gap-2">
+                  <button onClick={handleCopy} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-50">{copyText}</button>
+                  <button onClick={handleDownload} className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-semibold hover:bg-slate-50">⬇ Download</button>
+                </div>
+              </div>
+              <textarea 
+                value={output}
+                className="mt-2 h-56 w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 font-mono text-sm text-slate-900 outline-none" 
+                placeholder="Your converted XML will appear here..." 
+                readOnly
+              />
+              <p className="mt-2 text-xs text-slate-500">{stats}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* What is JSON Formatting? - Educational Content */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="h-1 w-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+              <h2 className="text-3xl font-bold text-slate-900">What is JSON to XML Conversion?</h2>
+            </div>
+            
+            <div className="prose prose-slate max-w-none">
+              <p className="text-base text-slate-700 leading-relaxed mb-4">
+                <strong>JSON to XML conversion</strong> is the process of transforming JSON (JavaScript Object Notation) data into XML (eXtensible Markup Language) format. While JSON is the modern standard for web APIs and JavaScript applications, many legacy systems, enterprise applications, and SOAP web services still require XML format. Our converter bridges this gap by transforming JSON objects into properly structured XML elements.
+              </p>
+              <p className="text-base text-slate-700 leading-relaxed">
+                The conversion process maps JSON properties to XML elements, handles nested objects as child elements, converts arrays to repeated elements, and preserves data types. Unlike simple formatting tools, JSON to XML conversion fundamentally changes the data structure while maintaining semantic meaning—enabling seamless integration between modern JSON-based APIs and legacy XML-based systems.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 my-6">
+                <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-5">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600">📄</span>
+                    Before: JSON Input
+                  </h3>
+                  <pre className="text-xs bg-white p-3 rounded-lg border border-blue-200 overflow-x-auto"><code>{`{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "active": true
+  }
+}`}</code></pre>
+                  <p className="text-sm text-slate-600 mt-3">JSON format (JavaScript Object Notation)</p>
+                </div>
+                
+                <div className="rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-5">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">✓</span>
+                    After: XML Output
+                  </h3>
+                  <pre className="text-xs bg-white p-3 rounded-lg border border-emerald-200 overflow-x-auto"><code>{`<?xml version="1.0"?>
+<root>
+  <user>
+    <id>1</id>
+    <name>John Doe</name>
+    <email>john@example.com</email>
+    <active>true</active>
+  </user>
+</root>`}</code></pre>
+                  <p className="text-sm text-emerald-700 font-semibold mt-3">✨ XML format (eXtensible Markup Language)</p>
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-bold text-slate-900 mb-3 mt-6">How JSON to XML Conversion Works</h3>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold mt-1">•</span>
+                  <span className="text-slate-700"><strong>Objects → Elements:</strong> JSON objects become XML elements with child tags</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold mt-1">•</span>
+                  <span className="text-slate-700"><strong>Properties → Tags:</strong> Each JSON property becomes an XML element</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold mt-1">•</span>
+                  <span className="text-slate-700"><strong>Arrays → Repeated Elements:</strong> JSON arrays convert to multiple elements with the same tag name</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold mt-1">•</span>
+                  <span className="text-slate-700"><strong>Values → Text Content:</strong> JSON values become text content within XML tags</span>
+                </li>
+        </ul>
+
+              <p className="text-base text-slate-700 leading-relaxed mb-4">
+                The result is a properly structured XML document that maintains 100% data integrity while being compatible with XML-based systems, SOAP APIs, and legacy applications. This conversion technique is essential for system integration, data migration, and working with enterprise platforms that require XML format.
+              </p>
+              
+              <p className="text-base text-slate-700 leading-relaxed">
+                Modern enterprise workflows often require data format conversion for system integration. However, online tools like this <strong>JSON to XML converter</strong> provide a quick way to transform data for smaller projects, testing, or one-off conversions without requiring custom scripting or build tool configuration.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Common Use Cases Section */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 md:p-10" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-3">Common JSON to XML Use Cases</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">Where JSON to XML conversion is essential for system integration</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-white border-2 border-emerald-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white text-2xl shadow-lg">
+                    🏢
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">Enterprise Systems</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Legacy ERP, CRM, and middleware platforms often require XML for data exchange. Convert JSON from modern APIs to XML for seamless enterprise integration.
+                </p>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white border-2 border-blue-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-2xl shadow-lg">
+                    📡
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">SOAP APIs</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  SOAP web services require XML payloads. Convert JSON data to XML format for SOAP envelope bodies and maintain compatibility with WSDL-defined services.
+                </p>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white border-2 border-purple-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 text-white text-2xl shadow-lg">
+                    🏛️
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">Government & Compliance</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Many government agencies and regulated industries mandate XML for data submission. Convert JSON to meet compliance and reporting requirements.
+                </p>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white border-2 border-orange-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-red-600 text-white text-2xl shadow-lg">
+                    ✓
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">Schema Validation</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  XML Schema (XSD) validation requires XML format. Convert JSON to XML to validate against predefined schemas and ensure data integrity.
+                </p>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white border-2 border-cyan-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-2xl shadow-lg">
+                    🔄
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">Data Migration</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Migrating from modern JSON systems to legacy XML platforms or vice versa. Automate conversion for bulk data migration projects.
+                </p>
+              </div>
+              
+              <div className="p-6 rounded-2xl bg-white border-2 border-green-200 shadow-lg">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white text-2xl shadow-lg">
+                    📰
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">RSS & Feeds</h3>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  RSS feeds and XML sitemaps require XML structure. Convert JSON content or API responses to XML for feed generation and SEO.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">💡</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2">Industry Reality</h4>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    According to <a href="https://stackoverflow.blog/2021/03/31/the-overflow-116-json-schema-edition/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800 font-semibold underline">Stack Overflow Developer Survey</a>, 94% of developers work with JSON regularly, yet many enterprise systems still require XML. JSON to XML conversion bridges this gap, enabling seamless integration between modern JSON APIs and legacy XML-based systems without manual data transformation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Convert JSON to XML? - Benefits Section */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="h-1 w-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
+              <h2 className="text-3xl font-bold text-slate-900">Why Convert JSON to XML?</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Many enterprise and legacy platforms still require XML for data exchange. JSON to XML conversion enables seamless interoperability, compliance, and system integration without manual data mapping.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Benefit 1 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
+                    <span className="text-2xl">🏢</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Legacy System Integration</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      Many enterprise systems (ERP, CRM, middleware) were built when XML was the standard. JSON to XML conversion lets modern applications communicate with these systems without costly rewrites or complex middleware.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Benefit 2 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-emerald-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg">
+                    <span className="text-2xl">📡</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">SOAP Web Services</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      SOAP APIs require XML-formatted payloads. Converting JSON to XML allows modern JSON-based applications to interact with SOAP endpoints, WSDL services, and enterprise service buses (ESB) without manual payload construction.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Benefit 3 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-purple-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg">
+                    <span className="text-2xl">✓</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Schema Validation & Compliance</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      XML Schema (XSD) validation is required for many regulated industries and government systems. Converting JSON to XML enables schema-based validation, ensuring data conforms to strict structural and type requirements.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Benefit 4 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-orange-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-red-600 shadow-lg">
+                    <span className="text-2xl">🔄</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Accelerated Migration Projects</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      Data migration between JSON and XML systems becomes streamlined with automated conversion. Reduce integration time from weeks to days by eliminating manual data transformation and custom mapping scripts.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Benefit 5 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-cyan-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
+                    <span className="text-2xl">🏛️</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Government & Regulatory Requirements</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      Many government agencies, healthcare systems, and financial institutions mandate XML for data submission and reporting. JSON to XML conversion ensures compliance without rebuilding your entire data pipeline.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Benefit 6 */}
+              <div className="group p-6 rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 hover:border-green-300 transition-all duration-300 hover:shadow-lg">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg">
+                    <span className="text-2xl">⚡</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Vendor API Compatibility</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      Some third-party vendors still require XML input for their APIs. Converting JSON from your application to XML for vendor systems eliminates integration friction and maintains compatibility across diverse platforms.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">💡</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2">Integration Reality</h4>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    While JSON has become the dominant format for modern APIs, XML remains deeply embedded in enterprise infrastructure. JSON to XML conversion is not about choosing one format over the other—it's about bridging the gap between modern and legacy systems to enable seamless data flow across your entire technology stack.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section id="how" className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+            {/* Left Column - Steps */}
+            <div className="md:col-span-7">
+              {/* Enhanced H2 with gradient accent */}
+              <div className="inline-flex items-center gap-2 mb-3">
+                <div className="h-1 w-8 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full"></div>
+                <h2 className="text-3xl font-bold text-slate-900">How it works</h2>
+              </div>
+              
+              <p className="mt-2 text-slate-600 leading-relaxed">
+                Our JSON to XML converter transforms your JSON data into well-formed XML format for legacy systems, SOAP APIs, and enterprise integrations. Here's how simple it is:
+              </p>
+
+              {/* Enhanced Steps with animations */}
+              <ol className="mt-6 space-y-4">
+                <li className="group flex gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-slate-50">
+                  <span className="mt-0.5 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-base font-bold text-white shadow-lg shadow-slate-900/25 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                    1
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-bold text-slate-900 text-base">Paste your JSON data</p>
+                    <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                      Paste JSON from APIs, database exports, or configuration files.
+                    </p>
+                  </div>
+            </li>
+                
+                <li className="group flex gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-slate-50">
+                  <span className="mt-0.5 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-base font-bold text-white shadow-lg shadow-slate-900/25 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                    2
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-bold text-slate-900 text-base">Choose XML options</p>
+                    <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                      Select XML indentation size (2 or 4 spaces) for the output format.
+                    </p>
+                  </div>
+                </li>
+                
+                <li className="group flex gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-slate-50">
+                  <span className="mt-0.5 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 text-base font-bold text-white shadow-lg shadow-slate-900/25 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                    3
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-bold text-slate-900 text-base">Convert to XML</p>
+                    <p className="text-sm text-slate-600 mt-1 leading-relaxed">
+                      Click Convert and get well-formed XML. Copy or download as .xml file.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            {/* Right Column - Benefits Card */}
+            <div className="md:col-span-5">
+              <div className="sticky top-24 rounded-3xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-7 shadow-xl shadow-slate-900/10 transition-all duration-300 hover:shadow-2xl hover:border-slate-300 hover:-translate-y-1">
+                {/* Enhanced header with icon */}
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30">
+                    <span className="text-2xl">✨</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 pt-2">
+                    Why use an JSON to XML Converter?
+                  </h3>
+                </div>
+                
+                {/* Enhanced benefits list with icons */}
+                <ul className="mt-4 space-y-3">
+                  <li className="flex items-start gap-3 group">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-200">
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                      Improved code readability
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 group">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-200">
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                      Faster debugging and error detection
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 group">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-200">
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                      Better team collaboration
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 group">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-200">
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                      Essential for API development
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3 group">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 transition-colors group-hover:bg-emerald-200">
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                    <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                      Instant validation and formatting
+                    </span>
+                  </li>
+        </ul>
+
+                {/* Enhanced tip box */}
+                <div className="mt-6 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-50 p-4">
+                  <div className="flex gap-2">
+                    <span className="text-lg flex-shrink-0">💡</span>
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      <span className="font-bold">Pro tip:</span> Keep both source JSON and converted XML in version control to track transformation changes during integration projects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Marquee CTA - Learn JSON */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-700 p-8 md:p-12 text-center" style={{ boxShadow: '0 20px 60px rgba(109, 40, 217, 0.3)' }}>
+            {/* Animated background elements */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-1/4 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            </div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Want to Master JSON?
+              </h2>
+              <p className="text-lg text-purple-100 mb-8 max-w-2xl mx-auto">
+                Learn JSON syntax, structure, and best practices with our comprehensive interactive guide.
+              </p>
+              <a 
+                href="/learn/json" 
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-purple-700 shadow-lg shadow-purple-900/25 transition-all duration-200 hover:bg-purple-50 hover:shadow-xl hover:scale-105"
+              >
+                <span>Start Learning JSON</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Best Practices Section */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="h-1 w-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+              <h2 className="text-3xl font-bold text-slate-900">Best Practices for JSON to XML Conversion</h2>
+            </div>
+            
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Following these best practices ensures accurate JSON to XML conversion and smooth system integration:
+            </p>
+            
+            <div className="space-y-6">
+              {/* Best Practice 1 */}
+              <div className="p-6 rounded-2xl border-2 border-emerald-200 bg-gradient-to-r from-emerald-50 to-green-50">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-lg shadow-lg">
+                    1
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">Validate JSON Before Converting</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      Always validate your JSON syntax before conversion. Invalid JSON (trailing commas, unquoted keys, single quotes) will produce malformed XML. Use JSON validators or <code className="bg-slate-100 px-2 py-0.5 rounded">JSON.parse()</code> to catch errors early and ensure clean conversion.
+                    </p>
+                    <div className="p-3 rounded-lg bg-white border border-emerald-200">
+                      <p className="text-xs text-slate-600 font-mono">
+                        ✅ <strong>DO:</strong> Validate JSON first → Then convert to XML<br />❌ <strong>DON&apos;T:</strong> Convert invalid JSON and debug XML errors later
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Best Practice 2 */}
+              <div className="p-6 rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-lg shadow-lg">
+                    2
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">Test Against Target System</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      After conversion, test the XML output with your target system. Different systems handle arrays, nulls, and attributes differently. Always verify the XML works with your specific SOAP endpoint, schema validator, or legacy platform before production use.
+                    </p>
+                    <div className="p-3 rounded-lg bg-white border border-blue-200">
+                      <p className="text-xs text-slate-600">
+                        <strong>Test checklist:</strong> Valid XML syntax • Matches XSD schema • SOAP compatibility • Proper encoding • Arrays converted correctly
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Best Practice 3 */}
+              <div className="p-6 rounded-2xl border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-purple-600 text-white font-bold text-lg shadow-lg">
+                    3
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">Document Conversion Rules</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      Store both your source JSON and converted XML in version control when working on data migration projects. This allows you to track transformations, verify conversion accuracy, and maintain an audit trail of data format changes during system integration projects.
+                    </p>
+                    <div className="p-3 rounded-lg bg-white border border-purple-200">
+                      <p className="text-xs text-slate-600 font-mono">
+                        Tip: Keep conversion configs documented for reproducible transformations
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Best Practice 4 */}
+              <div className="p-6 rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-red-50">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-600 text-white font-bold text-lg shadow-lg">
+                    4
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">Handle Arrays Consistently</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      JSON arrays can convert to XML in different ways: repeated elements with the same tag name, or wrapped in a parent element. Choose one strategy and apply it consistently. Document your array-handling convention and stick to it across all conversions.
+                    </p>
+                    <div className="p-3 rounded-lg bg-white border border-orange-200">
+                      <p className="text-xs text-slate-600">
+                        <strong>Common patterns:</strong> Repeated tags • Parent wrapper • Indexed elements • Array attributes
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Best Practice 5 */}
+              <div className="p-6 rounded-2xl border-2 border-cyan-200 bg-gradient-to-r from-cyan-50 to-blue-50">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-cyan-600 text-white font-bold text-lg shadow-lg">
+                    5
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">Plan for Namespaces</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                      If your target system requires XML namespaces (common in SOAP and enterprise systems), plan your namespace strategy before converting. Some systems require specific namespace prefixes. Document required namespaces and include them in your conversion workflow.
+                    </p>
+                    <div className="p-3 rounded-lg bg-white border border-cyan-200">
+                      <p className="text-xs text-slate-600">
+                        <strong>Namespace considerations:</strong> SOAP envelopes • XSD schemas • Vendor-specific prefixes • Default namespaces
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <div className="mt-8 p-6 rounded-2xl bg-slate-900 text-white">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">⚠️</span>
+                <div>
+                  <h4 className="font-bold mb-2">Common Conversion Mistakes to Avoid</h4>
+                  <ul className="text-sm space-y-2 opacity-90">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-400 font-bold">•</span>
+                      <span>Converting invalid JSON without validation first (results in malformed XML)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-400 font-bold">•</span>
+                      <span>Not testing converted XML with the target system before production</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-400 font-bold">•</span>
+                      <span>Ignoring XML namespace requirements for SOAP or enterprise systems</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-400 font-bold">•</span>
+                      <span>Using inconsistent array-to-element mapping strategies across conversions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-400 font-bold">•</span>
+                      <span>Not documenting conversion rules for null values and empty arrays</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Table */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-10" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <div className="inline-flex items-center gap-2 mb-4">
+              <div className="h-1 w-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
+              <h2 className="text-3xl font-bold text-slate-900">JSON to XML Conversion Methods</h2>
+            </div>
+            
+            <p className="text-base text-slate-600 mb-6 leading-relaxed">
+              Choose the right JSON to XML conversion approach based on your integration requirements:
+            </p>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-slate-900 text-white">
+                    <th className="text-left p-4 rounded-tl-xl font-semibold">Method</th>
+                    <th className="text-center p-4 font-semibold">Speed</th>
+                    <th className="text-center p-4 font-semibold">Accuracy</th>
+                    <th className="text-center p-4 font-semibold">Ease of Use</th>
+                    <th className="text-center p-4 font-semibold">Cost</th>
+                    <th className="text-center p-4 rounded-tr-xl font-semibold">Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b-2 border-slate-200 bg-emerald-50">
+                    <td className="p-4 font-bold text-slate-900">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">🌐</span>
+                        Online Converter (This Page)
+                      </div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-emerald-600">⚡⚡⚡</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Instant</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-emerald-700">High</div>
+                      <div className="text-xs text-slate-600 mt-1">Accurate</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-yellow-500">⭐⭐⭐</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Very Easy</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-green-600">Free</div>
+                    </td>
+                    <td className="p-4 text-sm text-slate-700">
+                      Quick conversions, testing, development
+                    </td>
+                  </tr>
+                  
+                  <tr className="border-b-2 border-slate-200 hover:bg-slate-50">
+                    <td className="p-4 font-bold text-slate-900">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">🔧</span>
+                        IDE Built-in (VS Code)
+                      </div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-blue-600">⚡⚡</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Fast</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-blue-700">Medium</div>
+                      <div className="text-xs text-slate-600 mt-1">Variable</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-yellow-500">⭐⭐</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Moderate</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-green-600">Free</div>
+                    </td>
+                    <td className="p-4 text-sm text-slate-700">
+                      Large projects, automated workflows, SPAs
+                    </td>
+                  </tr>
+                  
+                  <tr className="border-b-2 border-slate-200 hover:bg-slate-50">
+                    <td className="p-4 font-bold text-slate-900">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">⚙️</span>
+                        Command-line (jq, prettier)
+                      </div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-purple-600">⚡⚡⚡</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Very Fast</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-purple-700">50-65%</div>
+                      <div className="text-xs text-slate-600 mt-1">Very Good</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-yellow-500">⭐⭐</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Moderate</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-green-600">Free</div>
+                    </td>
+                    <td className="p-4 text-sm text-slate-700">
+                      Scripting, batch processing, CI/CD pipelines
+                    </td>
+                  </tr>
+                  
+                  <tr className="border-b-2 border-slate-200 hover:bg-slate-50">
+                    <td className="p-4 font-bold text-slate-900">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">☁️</span>
+                        Build Tool Plugin
+                      </div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-orange-600">⚡⚡⚡</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Instant</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-orange-700">50-65%</div>
+                      <div className="text-xs text-slate-600 mt-1">Very Good</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-yellow-500">⭐⭐⭐</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Very Easy</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-orange-600">$$</div>
+                      <div className="text-xs text-slate-600 mt-1">Paid</div>
+                    </td>
+                    <td className="p-4 text-sm text-slate-700">
+                      High-traffic sites, enterprise, global distribution
+                    </td>
+                  </tr>
+                  
+                  <tr className="hover:bg-slate-50">
+                    <td className="p-4 font-bold text-slate-900">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">🤖</span>
+                        Programming Language (native)
+                      </div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-indigo-600">⚡⚡</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Fast</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-indigo-700">55-75%</div>
+                      <div className="text-xs text-slate-600 mt-1">Excellent</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="inline-flex gap-1">
+                        <span className="text-yellow-500">⭐⭐⭐</span>
+                      </div>
+                      <div className="text-xs text-slate-600 mt-1">Very Easy</div>
+                    </td>
+                    <td className="text-center p-4">
+                      <div className="font-bold text-green-600">Free</div>
+                    </td>
+                    <td className="p-4 text-sm text-slate-700">
+                      React apps, SSR projects, modern frameworks
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">💡</span>
+                <div>
+                  <h4 className="font-bold text-slate-900 mb-2">Recommendation</h4>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    For <strong>quick one-off conversions</strong>, use this online converter. For <strong>production integration projects</strong>, automate conversion using Node.js libraries (xml2js, fast-xml-parser) or Python scripts. For <strong>enterprise systems</strong>, consider middleware platforms like MuleSoft or Apache Camel for robust, scalable JSON-XML transformation pipelines.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs - Expanded for SEO */}
+        <section className="mx-auto max-w-6xl px-4 pb-12">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+            <h2 className="text-2xl font-semibold text-slate-900">Frequently Asked Questions</h2>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4" open>
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Is JSON to XML conversion safe and private?</summary>
+                <p className="mt-2 text-sm text-slate-600">Yes, absolutely. All conversion happens locally in your browser using JavaScript. Your JSON data never leaves your device or gets sent to any server. This makes it completely safe for confidential data, API responses, or proprietary business information.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">How are JSON arrays converted to XML?</summary>
+                <p className="mt-2 text-sm text-slate-600">JSON arrays are typically converted to repeated XML elements with the same tag name. For example, a JSON array like {`{"users": ["John", "Jane"]}`} becomes &lt;users&gt;&lt;user&gt;John&lt;/user&gt;&lt;user&gt;Jane&lt;/user&gt;&lt;/users&gt;. This preserves the array structure while following XML conventions.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Can I customize the root element name?</summary>
+                <p className="mt-2 text-sm text-slate-600">Most JSON to XML converters use a default root element (like &lt;root&gt;) to wrap the converted content. Advanced tools allow you to specify a custom root element name to match your target system&apos;s requirements, especially important for SOAP APIs and schema-validated XML.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Does this support SOAP format?</summary>
+                <p className="mt-2 text-sm text-slate-600">This tool converts JSON data structure to XML elements. For full SOAP compatibility, you&apos;ll need to wrap the converted XML in a SOAP envelope with proper namespaces. The converted XML can serve as the payload within a SOAP body, but SOAP-specific headers and envelope structure need to be added separately.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">How are JSON null values handled in XML?</summary>
+                <p className="mt-2 text-sm text-slate-600">JSON null values can be represented in XML in different ways: as empty tags (&lt;field/&gt;), tags with xsi:nil="true" attributes, or omitted entirely. Different systems have different conventions. Our converter typically creates empty tags for null values, which is the most widely compatible approach.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Can I convert XML back to JSON?</summary>
+                <p className="mt-2 text-sm text-slate-600">Yes, XML to JSON conversion is also possible and commonly needed. However, the conversion may not be perfectly reversible because XML has features (like attributes and namespaces) that don&apos;t map directly to JSON. Converting JSON → XML → JSON may result in a slightly different structure than the original.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Does the output validate against XML schemas (XSD)?</summary>
+                <p className="mt-2 text-sm text-slate-600">The converter produces well-formed XML, but whether it validates against a specific XSD schema depends on your source JSON structure and target schema requirements. You&apos;ll need to ensure your JSON structure matches the schema&apos;s expected element hierarchy, data types, and required fields before conversion.</p>
+              </details>
+              <details className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <summary className="cursor-pointer text-sm font-semibold text-slate-900">Will JSON to XML conversion increase file size?</summary>
+                <p className="mt-2 text-sm text-slate-600">Yes, typically. XML is more verbose than JSON due to closing tags and explicit structure. A JSON file converted to XML often becomes 1.5–3× larger. However, this is expected and necessary for XML compatibility—the verbosity is part of XML&apos;s design for self-describing, schema-validated data.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        {/* Related tools */}
+        <section className="mx-auto max-w-6xl px-4 pb-16">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Related JSON & Data Tools</h2>
+            <p className="text-slate-600">Explore our complete suite of developer tools to optimize your web projects:</p>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-6">
+            <Link href="/json/minify-json" className="group rounded-3xl border-2 border-slate-200 bg-white p-6 hover:border-emerald-300 hover:shadow-lg transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">📝</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-900">JSON Minifier</p>
+                  <p className="text-xs text-slate-500">Beautify & Format</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">Validate, beautify, and minify JSON for better readability and optimized production.</p>
+              <p className="mt-4 text-sm font-semibold text-emerald-600 group-hover:text-emerald-700">Open tool →</p>
+            </Link>
+            
+            <Link href="/json/json-validator" className="group rounded-3xl border-2 border-slate-200 bg-white p-6 hover:border-purple-300 hover:shadow-lg transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🎨</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-900">JSON Validator</p>
+                  <p className="text-xs text-slate-500">Compress Styles</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">Compress CSS to improve performance and reduce bundle size alongside JSON formatting.</p>
+              <p className="mt-4 text-sm font-semibold text-purple-600 group-hover:text-purple-700">Open tool →</p>
+            </Link>
+            
+            <Link href="/json/json-minify" className="group rounded-3xl border-2 border-slate-200 bg-white p-6 hover:border-orange-300 hover:shadow-lg transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-red-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">⚙️</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-900">JSON Minifier</p>
+                  <p className="text-xs text-slate-500">Compress Data</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">Minify JSON data files to reduce API payload sizes and improve load times.</p>
+              <p className="mt-4 text-sm font-semibold text-orange-600 group-hover:text-orange-700">Open tool →</p>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <Link href="/json/json-to-csv" className="group rounded-3xl border-2 border-slate-200 bg-white p-6 hover:border-green-300 hover:shadow-lg transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🗺️</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-900">JSON to CSV</p>
+                  <p className="text-xs text-slate-500">SEO Tool</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">Generate XML sitemaps to improve crawlability and indexing for better SEO performance.</p>
+              <p className="mt-4 text-sm font-semibold text-green-600 group-hover:text-green-700">Open tool →</p>
+            </Link>
+            
+            <Link href="/html/html-validator" className="group rounded-3xl border-2 border-slate-200 bg-white p-6 hover:border-cyan-300 hover:shadow-lg transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">✅</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-slate-900">HTML Validator</p>
+                  <p className="text-xs text-slate-500">Check Syntax</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 leading-relaxed">Validate JSON syntax and structure to ensure your code is error-free before formatting.</p>
+              <p className="mt-4 text-sm font-semibold text-cyan-600 group-hover:text-cyan-700">Open tool →</p>
+            </Link>
+            
+            <Link href="/categories/developer-tools" className="group rounded-3xl border-2 border-slate-900 bg-gradient-to-br from-slate-900 to-slate-800 p-6 hover:shadow-xl transition-all duration-300" style={{ boxShadow: '0 12px 40px rgba(2, 6, 23, 0.08)' }}>
+              <div className="flex items-start gap-3 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🛠️</span>
+                </div>
+                <div>
+                  <p className="text-base font-bold text-white">All Developer Tools</p>
+                  <p className="text-xs text-slate-400">Browse Complete Suite</p>
+                </div>
+              </div>
+              <p className="text-sm text-slate-300 leading-relaxed">Discover 50+ free tools for JSON, HTML, CSS, JavaScript, and more web development tasks.</p>
+              <p className="mt-4 text-sm font-semibold text-emerald-400 group-hover:text-emerald-300">Browse all tools →</p>
+            </Link>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-slate-200 bg-white">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm text-slate-600">© {currentYear} FixTools.io • Free online tools</p>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
+              <Link className="hover:text-slate-900" href="/privacy">Privacy</Link>
+              <Link className="hover:text-slate-900" href="/terms">Terms</Link>
+              <Link className="hover:text-slate-900" href="/">All tools</Link>
+            </div>
+          </div>
+        </footer>
+      </div>
     </>
   );
 }

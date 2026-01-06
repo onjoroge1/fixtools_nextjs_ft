@@ -6,12 +6,14 @@ import styles from './Footer.module.css';
 export default function Footer() {
   const footerLinks = {
     categories: [
-      { name: 'AI Tools', href: '/categories/ai-tools' },
-      { name: 'JSON Tools', href: '/categories/json-tools' },
-      { name: 'HTML Tools', href: '/categories/html-tools' },
-      { name: 'CSS Tools', href: '/categories/css-tools' },
-      { name: 'Converters', href: '/categories/conversion-tools' },
-      { name: 'SEO Tools', href: '/categories/seo-tools' },
+      { name: 'JSON Tools', href: '/tools/json' },
+      { name: 'HTML Tools', href: '/tools/html' },
+      { name: 'CSS Tools', href: '/tools/css' },
+      { name: 'Image Tools', href: '/tools/image-tools' },
+      { name: 'AI Tools', href: '/tools/ai-tools' },
+      { name: 'SEO Tools', href: '/tools/seo-tools' },
+      { name: 'Converters', href: '/tools/conversion-tools' },
+      { name: 'Text Tools', href: '/tools/text-tools' },
     ],
     popular: [
       { name: 'JSON Formatter', href: '/json/json-formatter' },

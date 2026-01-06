@@ -5,129 +5,76 @@
 
 /* Hero Section */
 .heroSection {
-  padding: 6rem 2rem 4rem;
+  position: relative;
+  padding: 8rem 2rem 5rem;
   background: linear-gradient(
     135deg,
-    rgba(59, 130, 246, 0.05) 0%,
-    rgba(139, 92, 246, 0.05) 100%
+    rgba(59, 130, 246, 0.03) 0%,
+    rgba(139, 92, 246, 0.03) 100%
   );
   border-bottom: 1px solid var(--border-primary);
+  overflow: hidden;
 }
 
 .heroContent {
+  position: relative;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  z-index: 1;
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-.titleAccent {
+.highlight {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
 }
 
-.heroDescription {
+.heroSubtitle {
   font-size: 1.25rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
-}
-
-.heroButtons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.primaryButton {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
-.primaryButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-}
-
-.buttonKbd {
-  padding: 0.25rem 0.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-family: ui-monospace, monospace;
-}
-
-.secondaryButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  background: var(--bg-secondary);
-  border: 2px solid var(--border-primary);
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.secondaryButton:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
+  max-width: 650px;
+  margin: 0 auto 3rem;
+  font-weight: 400;
 }
 
 /* Quick Stats */
 .quickStats {
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border-primary);
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.stat {
-  text-align: center;
+.statText {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.statNumber {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: var(--primary-color);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.statLabel {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+.statDivider {
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  opacity: 0.5;
 }
 
 /* Categories Section */
@@ -373,29 +320,27 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .heroSection {
-    padding: 4rem 1.5rem 3rem;
+    padding: 5rem 1.5rem 4rem;
   }
 
   .heroTitle {
-    font-size: 2.25rem;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
   }
 
-  .heroDescription {
+  .heroSubtitle {
     font-size: 1.0625rem;
-  }
-
-  .heroButtons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    justify-content: center;
+    margin-bottom: 2.5rem;
   }
 
   .quickStats {
-    gap: 2rem;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .statText {
+    font-size: 0.875rem;
   }
 
   .categoriesSection,
@@ -437,7 +382,19 @@
 
 @media (max-width: 480px) {
   .heroTitle {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .quickStats {
+    gap: 1rem;
+  }
+
+  .statText {
+    font-size: 0.8125rem;
   }
 
   .categoryCard {

@@ -1,0 +1,64 @@
+.illustration {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+}
+
+.illustration.left {
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.illustration.right {
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation-delay: -3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(10px);
+  }
+}
+
+/* Floating elements inside SVG */
+.float1 {
+  animation: floatElement 3s ease-in-out infinite;
+}
+
+.float2 {
+  animation: floatElement 4s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.float3 {
+  animation: floatElement 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.3;
+  }
+}
+
+/* Hide on smaller screens */
+@media (max-width: 1280px) {
+  .illustration {
+    display: none;
+  }
+}
+
+

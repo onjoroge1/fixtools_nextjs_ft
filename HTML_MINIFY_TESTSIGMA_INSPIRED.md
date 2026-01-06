@@ -261,3 +261,4 @@ Your HTML Minify tool now:
 - ✅ Professional, modern design
 
 **Want to apply this design to other tools?** 🎨
+

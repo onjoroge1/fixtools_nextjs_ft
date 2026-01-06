@@ -42,3 +42,4 @@ export function ProgressBar({ progress = 0 }) {
     </div>
   );
 }
+

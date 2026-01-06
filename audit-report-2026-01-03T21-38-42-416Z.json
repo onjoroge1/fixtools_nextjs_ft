@@ -1,0 +1,4379 @@
+{
+  "timestamp": "2026-01-03T21:38:42.423Z",
+  "summary": {
+    "totalFiles": 49,
+    "filesWithIssues": 15,
+    "totalIssues": 1605
+  },
+  "results": [
+    {
+      "file": "base64-to-json.jsx",
+      "toolType": "converter",
+      "issueCount": 247,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in converter tool"
+        },
+        {
+          "line": 37,
+          "term": "formatted",
+          "context": "const formatted = JSON.stringify(parsed, null, indentSize);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 38,
+          "term": "formatted",
+          "context": "setOutput(formatted);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 41,
+          "term": "formatted",
+          "context": "const afterSize = new Blob([formatted]).size;",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 48,
+          "term": "formatted",
+          "context": "setStats(`Valid JSON! Lines: ${formatted.split('\\n').length}, Size: ${afterSize.toLocaleString()} by",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 71,
+          "term": "formatted",
+          "context": "a.download = \"formatted.json\";",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 85,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting safe?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 88,
+          "term": "formatting",
+          "context": "\"text\": \"Generally yes. formatting removes whitespace and comments while keeping structure intact. A",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 101,
+          "term": "format",
+          "context": "\"name\": \"Can I format JSON with comments?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 125,
+          "term": "formatting",
+          "context": "\"name\": \"Does JSON formatting improve SEO?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "Formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 133,
+          "term": "format",
+          "context": "\"name\": \"How do I format JSON in VS Code?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 141,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting the same as validation?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "Formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 157,
+          "term": "formatter",
+          "context": "\"description\": \"Free online JSON formatter tool to beautify JSON code with customizable indentation ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 185,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to format JSON code online for free using FixTools Base64 to JSON",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>Base64 to JSON Converter - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"Base64 to JSON Converter - Free Online Tool to Format & Beautify JSON | ",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"Base64 to JSON Converter - Free Online Tool to Format & Beautify ",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 257,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 265,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 499,
+          "term": "formatter",
+          "context": "Our <strong>JSON formatter</strong> helps you beautify JSON code by removing unnecessary whitespace ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 524,
+          "term": "formatted",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">formatted JSON</dd>",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 680,
+          "term": "Formatted",
+          "context": "<label className=\"text-sm font-semibold text-slate-800\">Formatted output</label>",
+          "severity": "error",
+          "message": "\"Formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 689,
+          "term": "formatted",
+          "context": "placeholder=\"Your formatted JSON will appear here...\"",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 697,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 702,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">What is JSON Formatting?</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 707,
+          "term": "formatting",
+          "context": "<strong>JSON formatting</strong> is the process of removing unnecessary characters from JSON data wi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatter",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 718,
+          "term": "formatting",
+          "context": "Before formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "formatting",
+          "context": "After formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 750,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "csv-to-json.jsx",
+      "toolType": "converter",
+      "issueCount": 247,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in converter tool"
+        },
+        {
+          "line": 37,
+          "term": "formatted",
+          "context": "const formatted = JSON.stringify(parsed, null, indentSize);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 38,
+          "term": "formatted",
+          "context": "setOutput(formatted);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 41,
+          "term": "formatted",
+          "context": "const afterSize = new Blob([formatted]).size;",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 48,
+          "term": "formatted",
+          "context": "setStats(`Valid JSON! Lines: ${formatted.split('\\n').length}, Size: ${afterSize.toLocaleString()} by",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 71,
+          "term": "formatted",
+          "context": "a.download = \"formatted.json\";",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 85,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting safe?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 88,
+          "term": "formatting",
+          "context": "\"text\": \"Generally yes. formatting removes whitespace and comments while keeping structure intact. A",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 101,
+          "term": "format",
+          "context": "\"name\": \"Can I format JSON with comments?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 125,
+          "term": "formatting",
+          "context": "\"name\": \"Does JSON formatting improve SEO?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "Formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 133,
+          "term": "format",
+          "context": "\"name\": \"How do I format JSON in VS Code?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 141,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting the same as validation?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "Formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 157,
+          "term": "formatter",
+          "context": "\"description\": \"Free online JSON formatter tool to beautify JSON code with customizable indentation ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 185,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to format JSON code online for free using FixTools CSV to JSON Co",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>CSV to JSON Converter - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"CSV to JSON Converter - Free Online Tool to Format & Beautify JSON | Fix",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"CSV to JSON Converter - Free Online Tool to Format & Beautify JSO",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 257,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 265,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 499,
+          "term": "formatter",
+          "context": "Our <strong>JSON formatter</strong> helps you beautify JSON code by removing unnecessary whitespace ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 524,
+          "term": "formatted",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">formatted JSON</dd>",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 680,
+          "term": "Formatted",
+          "context": "<label className=\"text-sm font-semibold text-slate-800\">Formatted output</label>",
+          "severity": "error",
+          "message": "\"Formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 689,
+          "term": "formatted",
+          "context": "placeholder=\"Your formatted JSON will appear here...\"",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 697,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 702,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">What is JSON Formatting?</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 707,
+          "term": "formatting",
+          "context": "<strong>JSON formatting</strong> is the process of removing unnecessary characters from JSON data wi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatter",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 718,
+          "term": "formatting",
+          "context": "Before formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "formatting",
+          "context": "After formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 750,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-formatter.jsx",
+      "toolType": "formatter",
+      "issueCount": 30,
+      "issues": [
+        {
+          "line": 201,
+          "term": "Minify",
+          "context": "\"name\": \"Minify and export\",",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1080,
+          "term": "minify",
+          "context": "{' '}for editing, then minify right before shipping.",
+          "severity": "error",
+          "message": "\"minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1337,
+          "term": "Minify",
+          "context": "<h3 className=\"text-lg font-bold text-slate-900 mb-2\">Format for Development, Minify for Production<",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1339,
+          "term": "Minify",
+          "context": "Use <strong>formatted JSON</strong> during development for readability and debugging. Minify JSON on",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1343,
+          "term": "Minify",
+          "context": "✅ <strong>DO:</strong> Format JSON for development → Minify for production deployment<br />",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1420,
+          "term": "minify",
+          "context": "<strong>JSON formatting</strong> is most effective when combined with other performance optimization",
+          "severity": "error",
+          "message": "\"minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1709,
+          "term": "minify",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">When should I format JSON v",
+          "severity": "error",
+          "message": "\"minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1710,
+          "term": "Minify",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\"><strong>Format (beautify) for development:</strong> When ",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1742,
+          "term": "minify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 1770,
+          "term": "Minify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Minify JSON data files to reduce API payload s",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in formatter tool"
+        },
+        {
+          "line": 710,
+          "term": "minification",
+          "context": "Unlike JSON minification (which removes whitespace for production), formatting is essential for deve",
+          "severity": "error",
+          "message": "\"minification\" should not appear in formatter tool"
+        },
+        {
+          "line": 1706,
+          "term": "minification",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">Yes, formatting (beautifying) adds whitespace, indentatio",
+          "severity": "error",
+          "message": "\"minification\" should not appear in formatter tool"
+        },
+        {
+          "line": 1710,
+          "term": "minification",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\"><strong>Format (beautify) for development:</strong> When ",
+          "severity": "error",
+          "message": "\"minification\" should not appear in formatter tool"
+        },
+        {
+          "line": 144,
+          "term": "Compression",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Compression\" should not appear in formatter tool"
+        },
+        {
+          "line": 707,
+          "term": "compressed",
+          "context": "<strong>JSON formatting</strong> (also called \"beautifying\" or \"pretty printing\") is the process of ",
+          "severity": "error",
+          "message": "\"compressed\" should not appear in formatter tool"
+        },
+        {
+          "line": 707,
+          "term": "compressed",
+          "context": "<strong>JSON formatting</strong> (also called \"beautifying\" or \"pretty printing\") is the process of ",
+          "severity": "error",
+          "message": "\"compressed\" should not appear in formatter tool"
+        },
+        {
+          "line": 961,
+          "term": "compressed",
+          "context": "Our JSON formatter takes your compressed or messy JSON data and transforms it into a beautifully str",
+          "severity": "error",
+          "message": "\"compressed\" should not appear in formatter tool"
+        },
+        {
+          "line": 1420,
+          "term": "compression",
+          "context": "<strong>JSON formatting</strong> is most effective when combined with other performance optimization",
+          "severity": "error",
+          "message": "\"compression\" should not appear in formatter tool"
+        },
+        {
+          "line": 1424,
+          "term": "Compression",
+          "context": "<strong>Optimization stack:</strong> JSON formatting → CSS/JS formatting → Server Compression → CDN ",
+          "severity": "error",
+          "message": "\"Compression\" should not appear in formatter tool"
+        },
+        {
+          "line": 1717,
+          "term": "compression",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">What&apos;s the difference ",
+          "severity": "error",
+          "message": "\"compression\" should not appear in formatter tool"
+        },
+        {
+          "line": 1718,
+          "term": "Compression",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">formatting removes unnecessary characters (whitespace, co",
+          "severity": "error",
+          "message": "\"Compression\" should not appear in formatter tool"
+        },
+        {
+          "line": 1753,
+          "term": "Compress",
+          "context": "<p className=\"text-xs text-slate-500\">Compress Styles</p>",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in formatter tool"
+        },
+        {
+          "line": 1756,
+          "term": "Compress",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in formatter tool"
+        },
+        {
+          "line": 1767,
+          "term": "Compress",
+          "context": "<p className=\"text-xs text-slate-500\">Compress Data</p>",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in formatter tool"
+        },
+        {
+          "line": 910,
+          "term": "convert",
+          "context": "Fast-loading pages keep users engaged. Research by Amazon found that every 100ms of latency cost the",
+          "severity": "error",
+          "message": "\"convert\" should not appear in formatter tool"
+        },
+        {
+          "line": 791,
+          "term": "file size reduction",
+          "context": "<div className=\"text-sm font-semibold text-slate-900 mb-1\">Average File Size Reduction</div>",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of formatter tools"
+        },
+        {
+          "line": 1444,
+          "term": "file size reduction",
+          "context": "<strong>Key metrics:</strong> FCP • LCP • TBT • CLS • TTI • File size reduction",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of formatter tools"
+        },
+        {
+          "line": 1503,
+          "term": "file size reduction",
+          "context": "<th className=\"text-center p-4 font-semibold\">File Size Reduction</th>",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of formatter tools"
+        },
+        {
+          "line": 865,
+          "term": "page speed",
+          "context": "Google considers page speed as a ranking factor. formatted JSON improves Core Web Vitals metrics lik",
+          "severity": "warning",
+          "message": "\"page speed\" is not a benefit of formatter tools"
+        },
+        {
+          "line": 809,
+          "term": "bandwidth savings",
+          "context": "<div className=\"text-sm font-semibold text-slate-900 mb-1\">Bandwidth Savings</div>",
+          "severity": "warning",
+          "message": "\"bandwidth savings\" is not a benefit of formatter tools"
+        }
+      ]
+    },
+    {
+      "file": "json-to-base64.jsx",
+      "toolType": "converter",
+      "issueCount": 247,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in converter tool"
+        },
+        {
+          "line": 37,
+          "term": "formatted",
+          "context": "const formatted = JSON.stringify(parsed, null, indentSize);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 38,
+          "term": "formatted",
+          "context": "setOutput(formatted);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 41,
+          "term": "formatted",
+          "context": "const afterSize = new Blob([formatted]).size;",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 48,
+          "term": "formatted",
+          "context": "setStats(`Valid JSON! Lines: ${formatted.split('\\n').length}, Size: ${afterSize.toLocaleString()} by",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 71,
+          "term": "formatted",
+          "context": "a.download = \"formatted.json\";",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 85,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting safe?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 88,
+          "term": "formatting",
+          "context": "\"text\": \"Generally yes. formatting removes whitespace and comments while keeping structure intact. A",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 101,
+          "term": "format",
+          "context": "\"name\": \"Can I format JSON with comments?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 125,
+          "term": "formatting",
+          "context": "\"name\": \"Does JSON formatting improve SEO?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "Formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 133,
+          "term": "format",
+          "context": "\"name\": \"How do I format JSON in VS Code?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 141,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting the same as validation?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "Formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 157,
+          "term": "formatter",
+          "context": "\"description\": \"Free online JSON formatter tool to beautify JSON code with customizable indentation ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 185,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to format JSON code online for free using FixTools JSON to Base64",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>JSON to Base64 Converter - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"JSON to Base64 Converter - Free Online Tool to Format & Beautify JSON | ",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"JSON to Base64 Converter - Free Online Tool to Format & Beautify ",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 257,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 265,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 499,
+          "term": "formatter",
+          "context": "Our <strong>JSON formatter</strong> helps you beautify JSON code by removing unnecessary whitespace ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 524,
+          "term": "formatted",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">formatted JSON</dd>",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 680,
+          "term": "Formatted",
+          "context": "<label className=\"text-sm font-semibold text-slate-800\">Formatted output</label>",
+          "severity": "error",
+          "message": "\"Formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 689,
+          "term": "formatted",
+          "context": "placeholder=\"Your formatted JSON will appear here...\"",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 697,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 702,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">What is JSON Formatting?</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 707,
+          "term": "formatting",
+          "context": "<strong>JSON formatting</strong> is the process of removing unnecessary characters from JSON data wi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatter",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 718,
+          "term": "formatting",
+          "context": "Before formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "formatting",
+          "context": "After formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 750,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-to-csv-COMPLETE-REWRITE.jsx",
+      "toolType": "converter",
+      "issueCount": 12,
+      "issues": [
+        {
+          "line": 192,
+          "term": "format",
+          "context": "\"name\": \"How do I convert JSON to CSV format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "format",
+          "context": "\"text\": \"Paste your JSON array into the input field, choose your CSV options (delimiter, headers), a",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 243,
+          "term": "format",
+          "context": "\"text\": \"Arrays are converted to JSON string format and placed in a single cell. This preserves the ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 264,
+          "term": "format",
+          "context": "\"description\": \"Free online tool to convert JSON data to CSV format. Transform API responses and str",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 278,
+          "term": "format",
+          "context": "\"Convert JSON arrays to CSV format\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 295,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to convert JSON data to CSV format online for free using FixTools",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 312,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Convert button to transform your JSON to CSV. The tool will flatten nested object",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 353,
+          "term": "format",
+          "context": "<meta name=\"description\" content=\"Convert JSON arrays to CSV format online for free. Transform API r",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 366,
+          "term": "format",
+          "context": "<meta property=\"og:description\" content=\"Convert JSON arrays to CSV format instantly. Excel and Goog",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 374,
+          "term": "format",
+          "context": "<meta property=\"twitter:description\" content=\"Convert JSON arrays to CSV format instantly. Excel and",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 546,
+          "term": "format",
+          "context": "Convert <strong>JSON arrays to CSV format</strong> instantly. Transform API responses and structured",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 571,
+          "term": "Format",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">CSV Format</dd>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-to-csv.jsx",
+      "toolType": "converter",
+      "issueCount": 26,
+      "issues": [
+        {
+          "line": 195,
+          "term": "format",
+          "context": "\"name\": \"How do I convert JSON to CSV format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 198,
+          "term": "format",
+          "context": "\"text\": \"Paste your JSON array into the input field, choose your CSV options (delimiter, headers), a",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 246,
+          "term": "format",
+          "context": "\"text\": \"Arrays are converted to JSON string format and placed in a single cell. This preserves the ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 267,
+          "term": "format",
+          "context": "\"description\": \"Free online tool to convert JSON data to CSV format. Transform API responses and str",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 281,
+          "term": "format",
+          "context": "\"Convert JSON arrays to CSV format\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 298,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to convert JSON data to CSV format online for free using FixTools",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 315,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Convert button to transform your JSON to CSV. The tool will flatten nested object",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 356,
+          "term": "format",
+          "context": "<meta name=\"description\" content=\"Convert JSON arrays to CSV format online for free. Transform API r",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 369,
+          "term": "format",
+          "context": "<meta property=\"og:description\" content=\"Convert JSON arrays to CSV format instantly. Excel and Goog",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 377,
+          "term": "format",
+          "context": "<meta property=\"twitter:description\" content=\"Convert JSON arrays to CSV format instantly. Excel and",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 549,
+          "term": "format",
+          "context": "Convert <strong>JSON arrays to CSV format</strong> instantly. Transform API responses and structured",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 574,
+          "term": "Format",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">CSV Format</dd>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 801,
+          "term": "format",
+          "context": "<p className=\"text-sm text-emerald-700 font-semibold mt-3\">Flat table format, ready for Excel and an",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 825,
+          "term": "formatted",
+          "context": "<span className=\"text-slate-700\"><strong>CSV Generation:</strong> Data is formatted with proper deli",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 830,
+          "term": "format",
+          "context": "The conversion process handles edge cases like nested objects, arrays within objects, missing proper",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 862,
+          "term": "formats",
+          "context": "CSV is the lingua franca of data formats. It opens seamlessly in Excel, Google Sheets, LibreOffice C",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 907,
+          "term": "format",
+          "context": "CSV files work everywhere—Windows, Mac, Linux, mobile devices, and web applications. They're lightwe",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 927,
+          "term": "format",
+          "context": "Our converter transforms hierarchical JSON data into flat, spreadsheet-ready CSV format in three sim",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 948,
+          "term": "formatting",
+          "context": "<p className=\"font-bold text-slate-900 text-base\">Choose CSV formatting options</p>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 962,
+          "term": "format",
+          "context": "Click Convert to transform your JSON into CSV format. The output appears instantly with proper escap",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 962,
+          "term": "formatting",
+          "context": "Click Convert to transform your JSON into CSV format. The output appears instantly with proper escap",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1034,
+          "term": "format",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">How do I convert JSON to CS",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1036,
+          "term": "format",
+          "context": "Paste your JSON array into the input field, choose your CSV options (delimiter, headers), and click ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1093,
+          "term": "format",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Convert JSON data to XML format for legacy sys",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 948,
+          "term": "formatting",
+          "context": "<p className=\"font-bold text-slate-900 text-base\">Choose CSV formatting options</p>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 962,
+          "term": "formatting",
+          "context": "Click Convert to transform your JSON into CSV format. The output appears instantly with proper escap",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-to-text.jsx",
+      "toolType": "converter",
+      "issueCount": 247,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in converter tool"
+        },
+        {
+          "line": 37,
+          "term": "formatted",
+          "context": "const formatted = JSON.stringify(parsed, null, indentSize);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 38,
+          "term": "formatted",
+          "context": "setOutput(formatted);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 41,
+          "term": "formatted",
+          "context": "const afterSize = new Blob([formatted]).size;",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 48,
+          "term": "formatted",
+          "context": "setStats(`Valid JSON! Lines: ${formatted.split('\\n').length}, Size: ${afterSize.toLocaleString()} by",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 71,
+          "term": "formatted",
+          "context": "a.download = \"formatted.json\";",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 85,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting safe?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 88,
+          "term": "formatting",
+          "context": "\"text\": \"Generally yes. formatting removes whitespace and comments while keeping structure intact. A",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 101,
+          "term": "format",
+          "context": "\"name\": \"Can I format JSON with comments?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 125,
+          "term": "formatting",
+          "context": "\"name\": \"Does JSON formatting improve SEO?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "Formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 133,
+          "term": "format",
+          "context": "\"name\": \"How do I format JSON in VS Code?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 141,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting the same as validation?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "Formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 157,
+          "term": "formatter",
+          "context": "\"description\": \"Free online JSON formatter tool to beautify JSON code with customizable indentation ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 185,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to format JSON code online for free using FixTools JSON to Text C",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>JSON to Text Converter - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"JSON to Text Converter - Free Online Tool to Format & Beautify JSON | Fi",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"JSON to Text Converter - Free Online Tool to Format & Beautify JS",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 257,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 265,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 499,
+          "term": "formatter",
+          "context": "Our <strong>JSON formatter</strong> helps you beautify JSON code by removing unnecessary whitespace ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 524,
+          "term": "formatted",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">formatted JSON</dd>",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 680,
+          "term": "Formatted",
+          "context": "<label className=\"text-sm font-semibold text-slate-800\">Formatted output</label>",
+          "severity": "error",
+          "message": "\"Formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 689,
+          "term": "formatted",
+          "context": "placeholder=\"Your formatted JSON will appear here...\"",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 697,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 702,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">What is JSON Formatting?</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 707,
+          "term": "formatting",
+          "context": "<strong>JSON formatting</strong> is the process of removing unnecessary characters from JSON data wi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatter",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 718,
+          "term": "formatting",
+          "context": "Before formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "formatting",
+          "context": "After formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 750,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-to-tsv.jsx",
+      "toolType": "converter",
+      "issueCount": 247,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in converter tool"
+        },
+        {
+          "line": 37,
+          "term": "formatted",
+          "context": "const formatted = JSON.stringify(parsed, null, indentSize);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 38,
+          "term": "formatted",
+          "context": "setOutput(formatted);",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 41,
+          "term": "formatted",
+          "context": "const afterSize = new Blob([formatted]).size;",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 48,
+          "term": "formatted",
+          "context": "setStats(`Valid JSON! Lines: ${formatted.split('\\n').length}, Size: ${afterSize.toLocaleString()} by",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 71,
+          "term": "formatted",
+          "context": "a.download = \"formatted.json\";",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 85,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting safe?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 88,
+          "term": "formatting",
+          "context": "\"text\": \"Generally yes. formatting removes whitespace and comments while keeping structure intact. A",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 101,
+          "term": "format",
+          "context": "\"name\": \"Can I format JSON with comments?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 117,
+          "term": "formatting",
+          "context": "\"name\": \"What's the difference between JSON formatting and formatting?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 120,
+          "term": "formatting",
+          "context": "\"text\": \"On average, JSON formatting can reduce file size by 80%, depending on your code's formattin",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 125,
+          "term": "formatting",
+          "context": "\"name\": \"Does JSON formatting improve SEO?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "Formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 128,
+          "term": "formatting",
+          "context": "\"text\": \"Yes, indirectly. Formatting adds whitespace and indentation for readability. formatting rem",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 133,
+          "term": "format",
+          "context": "\"name\": \"How do I format JSON in VS Code?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 136,
+          "term": "formatting",
+          "context": "\"text\": \"Yes. Most modern build tools (Webpack, Vite, Next.js) have JSON formatting plugins. You can",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 141,
+          "term": "formatting",
+          "context": "\"name\": \"Is JSON formatting the same as validation?\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "Formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 144,
+          "term": "formatting",
+          "context": "\"text\": \"formatting removes unnecessary characters (whitespace, comments) from code itself. Compress",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 157,
+          "term": "formatter",
+          "context": "\"description\": \"Free online JSON formatter tool to beautify JSON code with customizable indentation ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 185,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to format JSON code online for free using FixTools JSON to TSV Co",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 195,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 202,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>JSON to TSV Converter - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"JSON to TSV Converter - Free Online Tool to Format & Beautify JSON | Fix",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 244,
+          "term": "formatter",
+          "context": "<meta name=\"keywords\" content=\"json formatter, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"JSON to TSV Converter - Free Online Tool to Format & Beautify JSO",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 257,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 265,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 499,
+          "term": "formatter",
+          "context": "Our <strong>JSON formatter</strong> helps you beautify JSON code by removing unnecessary whitespace ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 524,
+          "term": "formatted",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">formatted JSON</dd>",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 680,
+          "term": "Formatted",
+          "context": "<label className=\"text-sm font-semibold text-slate-800\">Formatted output</label>",
+          "severity": "error",
+          "message": "\"Formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 689,
+          "term": "formatted",
+          "context": "placeholder=\"Your formatted JSON will appear here...\"",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 697,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 702,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">What is JSON Formatting?</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 707,
+          "term": "formatting",
+          "context": "<strong>JSON formatting</strong> is the process of removing unnecessary characters from JSON data wi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 711,
+          "term": "formatter",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 718,
+          "term": "formatting",
+          "context": "Before formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "formatting",
+          "context": "After formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 750,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-to-xml.jsx",
+      "toolType": "converter",
+      "issueCount": 46,
+      "issues": [
+        {
+          "line": 189,
+          "term": "format",
+          "context": "\"name\": \"Does this support SOAP format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 213,
+          "term": "format",
+          "context": "\"description\": \"Free online JSON to XML converter tool to transform JSON data into XML format for le",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 320,
+          "term": "format",
+          "context": "<meta property=\"twitter:description\" content=\"Convert JSON to XML format online. Free converter for ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 321,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 555,
+          "term": "format",
+          "context": "Transform <strong>JSON data</strong> into XML format instantly with our free online converter. Perfe",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 753,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 763,
+          "term": "format",
+          "context": "<strong>JSON to XML conversion</strong> is the process of transforming JSON (JavaScript Object Notat",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 763,
+          "term": "format",
+          "context": "<strong>JSON to XML conversion</strong> is the process of transforming JSON (JavaScript Object Notat",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 766,
+          "term": "formatting",
+          "context": "The conversion process maps JSON properties to XML elements, handles nested objects as child element",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 783,
+          "term": "format",
+          "context": "<p className=\"text-sm text-slate-600 mt-3\">JSON format (JavaScript Object Notation)</p>",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 800,
+          "term": "format",
+          "context": "<p className=\"text-sm text-emerald-700 font-semibold mt-3\">✨ XML format (eXtensible Markup Language)",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 825,
+          "term": "format",
+          "context": "The result is a properly structured XML document that maintains 100% data integrity while being comp",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 829,
+          "term": "format",
+          "context": "Modern enterprise workflows often require data format conversion for system integration. However, on",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 864,
+          "term": "format",
+          "context": "SOAP web services require XML payloads. Convert JSON data to XML format for SOAP envelope bodies and",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 888,
+          "term": "format",
+          "context": "XML Schema (XSD) validation requires XML format. Convert JSON to XML to validate against predefined ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 968,
+          "term": "formatted",
+          "context": "SOAP APIs require XML-formatted payloads. Converting JSON to XML allows modern JSON-based applicatio",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 1041,
+          "term": "format",
+          "context": "While JSON has become the dominant format for modern APIs, XML remains deeply embedded in enterprise",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1041,
+          "term": "format",
+          "context": "While JSON has become the dominant format for modern APIs, XML remains deeply embedded in enterprise",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1061,
+          "term": "format",
+          "context": "Our JSON to XML converter transforms your JSON data into well-formed XML format for legacy systems, ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1085,
+          "term": "format",
+          "context": "Select XML indentation size (2 or 4 spaces) for the output format.",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1166,
+          "term": "formatting",
+          "context": "Instant validation and formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1276,
+          "term": "format",
+          "context": "Store both your source JSON and converted XML in version control when working on data migration proj",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1578,
+          "term": "format",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">Does this support SOAP form",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1616,
+          "term": "Format",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 1633,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1677,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate JSON syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 753,
+          "term": "Formatting",
+          "context": "{/* What is JSON Formatting? - Educational Content */}",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 766,
+          "term": "formatting",
+          "context": "The conversion process maps JSON properties to XML elements, handles nested objects as child element",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1166,
+          "term": "formatting",
+          "context": "Instant validation and formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1633,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1677,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate JSON syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1619,
+          "term": "minify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"minify\" should not appear in converter tool"
+        },
+        {
+          "line": 1647,
+          "term": "Minify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Minify JSON data files to reduce API payload s",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in converter tool"
+        },
+        {
+          "line": 1616,
+          "term": "Beautify",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in converter tool"
+        },
+        {
+          "line": 1619,
+          "term": "beautify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in converter tool"
+        },
+        {
+          "line": 1630,
+          "term": "Compress",
+          "context": "<p className=\"text-xs text-slate-500\">Compress Styles</p>",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in converter tool"
+        },
+        {
+          "line": 1633,
+          "term": "Compress",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in converter tool"
+        },
+        {
+          "line": 1644,
+          "term": "Compress",
+          "context": "<p className=\"text-xs text-slate-500\">Compress Data</p>",
+          "severity": "error",
+          "message": "\"Compress\" should not appear in converter tool"
+        },
+        {
+          "line": 1605,
+          "term": "optimize",
+          "context": "<p className=\"text-slate-600\">Explore our complete suite of developer tools to optimize your web pro",
+          "severity": "error",
+          "message": "\"optimize\" should not appear in converter tool"
+        },
+        {
+          "line": 1619,
+          "term": "optimized",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"optimized\" should not appear in converter tool"
+        },
+        {
+          "line": 912,
+          "term": "SEO",
+          "context": "RSS feeds and XML sitemaps require XML structure. Convert JSON content or API responses to XML for f",
+          "severity": "warning",
+          "message": "\"SEO\" is not a benefit of converter tools"
+        },
+        {
+          "line": 1560,
+          "term": "SEO",
+          "context": "{/* FAQs - Expanded for SEO */}",
+          "severity": "warning",
+          "message": "\"SEO\" is not a benefit of converter tools"
+        },
+        {
+          "line": 1660,
+          "term": "SEO",
+          "context": "<p className=\"text-xs text-slate-500\">SEO Tool</p>",
+          "severity": "warning",
+          "message": "\"SEO\" is not a benefit of converter tools"
+        },
+        {
+          "line": 1663,
+          "term": "SEO",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Generate XML sitemaps to improve crawlability ",
+          "severity": "warning",
+          "message": "\"SEO\" is not a benefit of converter tools"
+        },
+        {
+          "line": 1633,
+          "term": "performance",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of converter tools"
+        },
+        {
+          "line": 1663,
+          "term": "performance",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Generate XML sitemaps to improve crawlability ",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of converter tools"
+        }
+      ]
+    },
+    {
+      "file": "json-to-yaml.jsx",
+      "toolType": "converter",
+      "issueCount": 28,
+      "issues": [
+        {
+          "line": 205,
+          "term": "format",
+          "context": "\"name\": \"How do I convert JSON to YAML format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 208,
+          "term": "formatted",
+          "context": "\"text\": \"Paste your JSON data into the input field, choose your YAML options (indentation, comments)",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 216,
+          "term": "format",
+          "context": "\"text\": \"Yes! The converter automatically preserves the hierarchical structure of your JSON, convert",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 248,
+          "term": "format",
+          "context": "\"text\": \"Yes. JSON arrays are converted to YAML list format using dashes (-). The tool handles array",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 276,
+          "term": "format",
+          "context": "\"description\": \"Free online tool to convert JSON to YAML format. Transform API responses and JSON co",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 290,
+          "term": "format",
+          "context": "\"Convert JSON to YAML format\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 306,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to convert JSON data to YAML format online for free using FixTool",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 311,
+          "term": "formats",
+          "context": "\"text\": \"Copy your JSON content (from APIs, config files, or any JSON source) and paste it into the ",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 323,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Convert button to transform your JSON to YAML. The tool will parse the JSON struc",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 362,
+          "term": "format",
+          "context": "<meta name=\"description\" content=\"Convert JSON to YAML format online for free. Transform API respons",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 373,
+          "term": "format",
+          "context": "<meta property=\"og:description\" content=\"Convert JSON to YAML format instantly. Perfect for Kubernet",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 380,
+          "term": "format",
+          "context": "<meta property=\"twitter:description\" content=\"Convert JSON to YAML format instantly. Kubernetes and ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 543,
+          "term": "format",
+          "context": "Convert <strong>JSON to YAML format</strong> instantly. Transform API responses and JSON configs int",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 566,
+          "term": "Format",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">YAML Format</dd>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 733,
+          "term": "format",
+          "context": "<strong>JSON to YAML conversion</strong> is the process of transforming JavaScript Object Notation (",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 744,
+          "term": "Format",
+          "context": "JSON (API Format)",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 759,
+          "term": "Format",
+          "context": "YAML (Config Format)",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 783,
+          "term": "Formatting",
+          "context": "<span className=\"text-slate-700\"><strong>List Formatting:</strong> Arrays are converted to dash (-) ",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 800,
+          "term": "format",
+          "context": "<strong>JSON to YAML conversion</strong> is essential for DevOps workflows, infrastructure as code, ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 899,
+          "term": "formats",
+          "context": "Copy your JSON content from API responses, package.json, or any JSON source and paste it into the in",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 911,
+          "term": "format",
+          "context": "Select your indentation preference (2 or 4 spaces) and decide whether to include YAML document marke",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 923,
+          "term": "formats",
+          "context": "Click Convert to transform JSON to YAML. The tool removes brackets, formats lists with dashes, and c",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 994,
+          "term": "format",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">How do I convert JSON to YA",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 996,
+          "term": "formatted",
+          "context": "Paste your JSON data into the input field, choose your YAML options (indentation, markers), and clic",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 1029,
+          "term": "formatting",
+          "context": "description=\"Master JSON syntax, YAML formatting, and conversion best practices with our comprehensi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1053,
+          "term": "format",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Convert YAML config files back to JSON format ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 783,
+          "term": "Formatting",
+          "context": "<span className=\"text-slate-700\"><strong>List Formatting:</strong> Arrays are converted to dash (-) ",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1029,
+          "term": "formatting",
+          "context": "description=\"Master JSON syntax, YAML formatting, and conversion best practices with our comprehensi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "json-validator.jsx",
+      "toolType": "validator",
+      "issueCount": 53,
+      "issues": [
+        {
+          "line": 128,
+          "term": "format",
+          "context": "\"text\": \"No. A JSON validator only checks for syntax errors—it does not modify, format, or change yo",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>JSON Validator - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"JSON Validator - Free Online Tool to Format & Beautify JSON | FixTools\" ",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json validator, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"JSON Validator - Free Online Tool to Format & Beautify JSON\" />",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 710,
+          "term": "formatters",
+          "context": "Unlike JSON formatters (which beautify code) or minifiers (which compress code), a validator's sole ",
+          "severity": "error",
+          "message": "\"formatters\" should not appear in validator tool"
+        },
+        {
+          "line": 961,
+          "term": "format",
+          "context": "Our JSON validator takes your compressed or messy JSON data and transforms it into a beautifully str",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 1078,
+          "term": "Formatter",
+          "context": "JSON Formatter",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in validator tool"
+        },
+        {
+          "line": 1304,
+          "term": "format",
+          "context": "Ready to format your JSON? Try our tool above! 👆",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 1311,
+          "term": "Format",
+          "context": "Format Your JSON Now",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 1404,
+          "term": "format",
+          "context": "<strong>Popular tools:</strong> Prettier • jq (command-line) • ESLint with JSON plugin • VS Code for",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 1514,
+          "term": "Formatter",
+          "context": "Online Formatter (This Page)",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in validator tool"
+        },
+        {
+          "line": 1710,
+          "term": "format",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">No. A JSON validator only checks for syntax errors—it doe",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 1710,
+          "term": "format",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">No. A JSON validator only checks for syntax errors—it doe",
+          "severity": "error",
+          "message": "\"format\" should not appear in validator tool"
+        },
+        {
+          "line": 1710,
+          "term": "formatter",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">No. A JSON validator only checks for syntax errors—it doe",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in validator tool"
+        },
+        {
+          "line": 1738,
+          "term": "Formatter",
+          "context": "<p className=\"text-base font-bold text-slate-900\">JSON Formatter</p>",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in validator tool"
+        },
+        {
+          "line": 1739,
+          "term": "Format",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 1742,
+          "term": "Format",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Format, validate, and beautify JSON for better",
+          "severity": "error",
+          "message": "\"Format\" should not appear in validator tool"
+        },
+        {
+          "line": 1766,
+          "term": "Formatter",
+          "context": "<p className=\"text-base font-bold text-slate-900\">JSON Formatter</p>",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in validator tool"
+        },
+        {
+          "line": 201,
+          "term": "Minify",
+          "context": "\"name\": \"Minify and export\",",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in validator tool"
+        },
+        {
+          "line": 1080,
+          "term": "minify",
+          "context": "{' '}for editing, then minify right before shipping.",
+          "severity": "error",
+          "message": "\"minify\" should not appear in validator tool"
+        },
+        {
+          "line": 1337,
+          "term": "Minify",
+          "context": "<h3 className=\"text-lg font-bold text-slate-900 mb-2\">Only Minify for Production</h3>",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in validator tool"
+        },
+        {
+          "line": 1343,
+          "term": "Minify",
+          "context": "✅ <strong>DO:</strong> Keep source.json validated → Minify for production APIs/configs<br />",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in validator tool"
+        },
+        {
+          "line": 1420,
+          "term": "minify",
+          "context": "<strong>JSON validating</strong> is most effective when combined with other performance optimization",
+          "severity": "error",
+          "message": "\"minify\" should not appear in validator tool"
+        },
+        {
+          "line": 1472,
+          "term": "Minifying",
+          "context": "<span>Minifying during development (slows debugging)</span>",
+          "severity": "error",
+          "message": "\"Minifying\" should not appear in validator tool"
+        },
+        {
+          "line": 1770,
+          "term": "Minify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Minify JSON data files to reduce API payload s",
+          "severity": "error",
+          "message": "\"Minify\" should not appear in validator tool"
+        },
+        {
+          "line": 910,
+          "term": "convert",
+          "context": "Fast-loading pages keep users engaged. Research by Amazon found that every 100ms of latency cost the",
+          "severity": "error",
+          "message": "\"convert\" should not appear in validator tool"
+        },
+        {
+          "line": 241,
+          "term": "Beautify",
+          "context": "<title>JSON Validator - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 242,
+          "term": "Beautify",
+          "context": "<meta name=\"title\" content=\"JSON Validator - Free Online Tool to Format & Beautify JSON | FixTools\" ",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 244,
+          "term": "beautify",
+          "context": "<meta name=\"keywords\" content=\"json validator, format json, json beautifier, pretty print json, json",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 255,
+          "term": "Beautify",
+          "context": "<meta property=\"og:title\" content=\"JSON Validator - Free Online Tool to Format & Beautify JSON\" />",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 710,
+          "term": "beautify",
+          "context": "Unlike JSON formatters (which beautify code) or minifiers (which compress code), a validator's sole ",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 774,
+          "term": "beautify",
+          "context": "Modern web development workflows often include JSON validating as an automated step in the build pro",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 880,
+          "term": "beautify",
+          "context": "For high-traffic websites, bandwidth costs can be substantial. When you <strong>beautify JSON</stron",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 1710,
+          "term": "beautify",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">No. A JSON validator only checks for syntax errors—it doe",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 1739,
+          "term": "Beautify",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 1742,
+          "term": "beautify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Format, validate, and beautify JSON for better",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in validator tool"
+        },
+        {
+          "line": 791,
+          "term": "file size reduction",
+          "context": "<div className=\"text-sm font-semibold text-slate-900 mb-1\">Average File Size Reduction</div>",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1444,
+          "term": "file size reduction",
+          "context": "<strong>Key metrics:</strong> FCP • LCP • TBT • CLS • TTI • File size reduction",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1503,
+          "term": "file size reduction",
+          "context": "<th className=\"text-center p-4 font-semibold\">File Size Reduction</th>",
+          "severity": "warning",
+          "message": "\"file size reduction\" is not a benefit of validator tools"
+        },
+        {
+          "line": 818,
+          "term": "performance",
+          "context": "<h4 className=\"font-bold text-slate-900 mb-2\">Performance Benchmark</h4>",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 837,
+          "term": "performance",
+          "context": "validating JSON offers significant advantages for website performance, user experience, and search e",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 865,
+          "term": "performance",
+          "context": "Google considers page speed as a ranking factor. validated JSON improves Core Web Vitals metrics lik",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 895,
+          "term": "performance",
+          "context": "Mobile devices often have limited processing power and network connectivity. Validating adds whitesp",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 941,
+          "term": "performance",
+          "context": "Whether you&apos;re building a landing page, blog, e-commerce site, or web application, using an <st",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1420,
+          "term": "performance",
+          "context": "<strong>JSON validating</strong> is most effective when combined with other performance optimization",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1438,
+          "term": "performance",
+          "context": "<h3 className=\"text-lg font-bold text-slate-900 mb-2\">Monitor Performance Metrics</h3>",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1756,
+          "term": "performance",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Compress CSS to improve performance and reduce",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 1786,
+          "term": "performance",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Generate XML sitemaps to improve crawlability ",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of validator tools"
+        },
+        {
+          "line": 863,
+          "term": "SEO",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-2\">Improved SEO Rankings</h3>",
+          "severity": "warning",
+          "message": "\"SEO\" is not a benefit of validator tools"
+        }
+      ]
+    },
+    {
+      "file": "minify-json.jsx",
+      "toolType": "minifier",
+      "issueCount": 45,
+      "issues": [
+        {
+          "line": 6,
+          "term": "FormatJSON",
+          "context": "export default function FormatJSON() {",
+          "severity": "error",
+          "message": "\"FormatJSON\" should not appear in minifier tool"
+        },
+        {
+          "line": 202,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 241,
+          "term": "Format",
+          "context": "<title>JSON Minifier - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 242,
+          "term": "Format",
+          "context": "<meta name=\"title\" content=\"JSON Minifier - Free Online Tool to Format & Beautify JSON | FixTools\" /",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 244,
+          "term": "format",
+          "context": "<meta name=\"keywords\" content=\"json minifier, format json, json beautifier, pretty print json, json ",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 255,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"JSON Minifier - Free Online Tool to Format & Beautify JSON\" />",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 962,
+          "term": "format",
+          "context": "Our JSON minifier takes your compressed or messy JSON data and transforms it into a beautifully stru",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 996,
+          "term": "Format",
+          "context": "<p className=\"font-bold text-slate-900 text-base\">Format and export</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 1305,
+          "term": "format",
+          "context": "Ready to format your JSON? Try our tool above! 👆",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 1312,
+          "term": "Format",
+          "context": "Format Your JSON Now",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 1405,
+          "term": "format",
+          "context": "<strong>Popular tools:</strong> Prettier • jq (command-line) • ESLint with JSON plugin • VS Code for",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 1515,
+          "term": "Formatter",
+          "context": "Online Formatter (This Page)",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in minifier tool"
+        },
+        {
+          "line": 1740,
+          "term": "Format",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 157,
+          "term": "beautify",
+          "context": "\"description\": \"Free online JSON minifier tool to beautify JSON code with customizable indentation a",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 202,
+          "term": "beautify",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 241,
+          "term": "Beautify",
+          "context": "<title>JSON Minifier - Free Online Tool to Format & Beautify JSON | FixTools</title>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 242,
+          "term": "Beautify",
+          "context": "<meta name=\"title\" content=\"JSON Minifier - Free Online Tool to Format & Beautify JSON | FixTools\" /",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 244,
+          "term": "beautify",
+          "context": "<meta name=\"keywords\" content=\"json minifier, format json, json beautifier, pretty print json, json ",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 255,
+          "term": "Beautify",
+          "context": "<meta property=\"og:title\" content=\"JSON Minifier - Free Online Tool to Format & Beautify JSON\" />",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 499,
+          "term": "beautify",
+          "context": "Our <strong>JSON minifier</strong> helps you beautify JSON code by removing unnecessary whitespace a",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 775,
+          "term": "beautify",
+          "context": "Modern web development workflows often include JSON minifying as an automated step in the build proc",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 881,
+          "term": "beautify",
+          "context": "For high-traffic websites, bandwidth costs can be substantial. When you <strong>beautify JSON</stron",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 1740,
+          "term": "Beautify",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 1743,
+          "term": "beautify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 911,
+          "term": "convert",
+          "context": "Fast-loading pages keep users engaged. Research by Amazon found that every 100ms of latency cost the",
+          "severity": "error",
+          "message": "\"convert\" should not appear in minifier tool"
+        },
+        {
+          "line": 144,
+          "term": "validates",
+          "context": "\"text\": \"minifying removes unnecessary characters (whitespace, comments) from code itself. Compressi",
+          "severity": "error",
+          "message": "\"validates\" should not appear in minifier tool"
+        },
+        {
+          "line": 202,
+          "term": "validate",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"validate\" should not appear in minifier tool"
+        },
+        {
+          "line": 1361,
+          "term": "validate",
+          "context": "After minifying, validate your JSON thoroughly. Common edge cases include: trailing commas (not vali",
+          "severity": "error",
+          "message": "\"validate\" should not appear in minifier tool"
+        },
+        {
+          "line": 1719,
+          "term": "validates",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">minifying removes unnecessary characters (whitespace, com",
+          "severity": "error",
+          "message": "\"validates\" should not appear in minifier tool"
+        },
+        {
+          "line": 1743,
+          "term": "Validate",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "error",
+          "message": "\"Validate\" should not appear in minifier tool"
+        },
+        {
+          "line": 1801,
+          "term": "Validate",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate JSON syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"Validate\" should not appear in minifier tool"
+        },
+        {
+          "line": 46,
+          "term": "readability",
+          "context": "setStats(`Size: ${beforeSize.toLocaleString()} bytes → ${afterSize.toLocaleString()} bytes (+${diffP",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 128,
+          "term": "readability",
+          "context": "\"text\": \"Yes, indirectly. Minifying adds whitespace and indentation for readability. minifying remov",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 144,
+          "term": "readability",
+          "context": "\"text\": \"minifying removes unnecessary characters (whitespace, comments) from code itself. Compressi",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 771,
+          "term": "readability",
+          "context": "The result is a beautifully minified, human-readable JSON structure that maintains 100% data integri",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 896,
+          "term": "readability",
+          "context": "Mobile devices often have limited processing power and network connectivity. Minifying adds whitespa",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1027,
+          "term": "readability",
+          "context": "Improved code readability",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1340,
+          "term": "readability",
+          "context": "Keep your development and source files minified and readable with proper indentation and comments. O",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1711,
+          "term": "readability",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">Yes, indirectly. Minifying adds whitespace and indentatio",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1719,
+          "term": "readability",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">minifying removes unnecessary characters (whitespace, com",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1743,
+          "term": "readability",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate, beautify, and minify JSON for better",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 771,
+          "term": "debugging",
+          "context": "The result is a beautifully minified, human-readable JSON structure that maintains 100% data integri",
+          "severity": "warning",
+          "message": "\"debugging\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1037,
+          "term": "debugging",
+          "context": "Faster debugging and error detection",
+          "severity": "warning",
+          "message": "\"debugging\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1473,
+          "term": "debugging",
+          "context": "<span>Minifying during development (slows debugging)</span>",
+          "severity": "warning",
+          "message": "\"debugging\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1381,
+          "term": "code review",
+          "context": "Store your minified JSON in version control systems like <strong>Git</strong>. Always commit minifie",
+          "severity": "warning",
+          "message": "\"code review\" is not a benefit of minifier tools"
+        }
+      ]
+    },
+    {
+      "file": "tsv-to-json.jsx",
+      "toolType": "converter",
+      "issueCount": 87,
+      "issues": [
+        {
+          "line": 102,
+          "term": "format",
+          "context": "\"name\": \"What is TSV format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 105,
+          "term": "format",
+          "context": "\"text\": \"TSV (Tab-Separated Values) is a text format where data is organized in rows and columns, wi",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 212,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 219,
+          "term": "Format",
+          "context": "\"text\": \"Click the Format button to beautify your JSON. The tool will add proper indentation, line b",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 260,
+          "term": "format",
+          "context": "<meta name=\"description\" content=\"Convert TSV (Tab-Separated Values) to JSON format instantly. Free ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 272,
+          "term": "Format",
+          "context": "<meta property=\"og:title\" content=\"TSV to JSON Converter - Free Online Tool to Format & Beautify JSO",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 274,
+          "term": "formatter",
+          "context": "<meta property=\"og:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 282,
+          "term": "formatter",
+          "context": "<meta property=\"twitter:image\" content=\"https://fixtools.io/images/og-json-formatter.png\" />",
+          "severity": "error",
+          "message": "\"formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 727,
+          "term": "format",
+          "context": "<strong>TSV to JSON conversion</strong> is the process of transforming tab-separated data (commonly ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 734,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 782,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 803,
+          "term": "formatting",
+          "context": "The result is a beautifully converted, human-readable JSON structure that maintains 100% data integr",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 817,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900 mb-3\">JSON Formatting Impact</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 870,
+          "term": "formatting",
+          "context": "formatting JSON offers significant advantages for website performance, user experience, and search e",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "Formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 994,
+          "term": "format",
+          "context": "Our TSV to JSON converter takes your compressed or messy JSON data and transforms it into a beautifu",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1028,
+          "term": "Format",
+          "context": "<p className=\"font-bold text-slate-900 text-base\">Format and export</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 1099,
+          "term": "formatting",
+          "context": "Instant validation and formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1296,
+          "term": "formatting",
+          "context": "Before converting large TSV files, test with a small sample (first 5-10 rows). This helps you identi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1316,
+          "term": "formatting",
+          "context": "<span>formatting JSON with <code className=\"bg-slate-800 px-2 py-0.5 rounded\">&lt;pre&gt;</code> or ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1332,
+          "term": "formatting",
+          "context": "<span>Not testing on different browsers after formatting</span>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1346,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">JSON Formatting Methods Comparison</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1370,
+          "term": "Formatter",
+          "context": "Online Formatter (This Page)",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in converter tool"
+        },
+        {
+          "line": 1531,
+          "term": "formatting",
+          "context": "For <strong>quick one-off tasks</strong>, use this online TSV to JSON converter. For <strong>product",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1531,
+          "term": "formatting",
+          "context": "For <strong>quick one-off tasks</strong>, use this online TSV to JSON converter. For <strong>product",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1545,
+          "term": "format",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">What is TSV format?</summar",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1546,
+          "term": "format",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">TSV (Tab-Separated Values) is a text format where data is",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1595,
+          "term": "Format",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 1656,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate JSON syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 212,
+          "term": "formatting",
+          "context": "\"name\": \"Choose formatting options\",",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 734,
+          "term": "formatting",
+          "context": "When you receive JSON data from an API or read it from a file, it's often minified (compressed into ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 782,
+          "term": "formatting",
+          "context": "<h3 className=\"text-xl font-bold text-slate-900 mb-3 mt-6\">What Gets Removed During formatting?</h3>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 803,
+          "term": "formatting",
+          "context": "The result is a beautifully converted, human-readable JSON structure that maintains 100% data integr",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 817,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900 mb-3\">JSON Formatting Impact</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 870,
+          "term": "formatting",
+          "context": "formatting JSON offers significant advantages for website performance, user experience, and search e",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "Formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 928,
+          "term": "formatting",
+          "context": "Mobile devices often have limited processing power and network connectivity. Formatting adds whitesp",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1099,
+          "term": "formatting",
+          "context": "Instant validation and formatting",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1296,
+          "term": "formatting",
+          "context": "Before converting large TSV files, test with a small sample (first 5-10 rows). This helps you identi",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1316,
+          "term": "formatting",
+          "context": "<span>formatting JSON with <code className=\"bg-slate-800 px-2 py-0.5 rounded\">&lt;pre&gt;</code> or ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1332,
+          "term": "formatting",
+          "context": "<span>Not testing on different browsers after formatting</span>",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1346,
+          "term": "Formatting",
+          "context": "<h2 className=\"text-3xl font-bold text-slate-900\">JSON Formatting Methods Comparison</h2>",
+          "severity": "error",
+          "message": "\"Formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1531,
+          "term": "formatting",
+          "context": "For <strong>quick one-off tasks</strong>, use this online TSV to JSON converter. For <strong>product",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1531,
+          "term": "formatting",
+          "context": "For <strong>quick one-off tasks</strong>, use this online TSV to JSON converter. For <strong>product",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        },
+        {
+          "line": 1656,
+          "term": "formatting",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate JSON syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in converter tool"
+        }
+      ]
+    },
+    {
+      "file": "xml-to-json.jsx",
+      "toolType": "converter",
+      "issueCount": 22,
+      "issues": [
+        {
+          "line": 195,
+          "term": "format",
+          "context": "\"name\": \"How do I convert XML to JSON format?\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 238,
+          "term": "format",
+          "context": "\"text\": \"Repeated XML elements (like multiple <item> tags) are automatically converted to JSON array",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 254,
+          "term": "format",
+          "context": "\"text\": \"JSON is more lightweight, easier to work with in JavaScript, and the standard format for mo",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 267,
+          "term": "format",
+          "context": "\"description\": \"Free online tool to convert XML data to JSON format. Transform SOAP responses, RSS f",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 281,
+          "term": "format",
+          "context": "\"Convert XML to JSON format\",",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 298,
+          "term": "format",
+          "context": "\"description\": \"Step-by-step guide to convert XML data to JSON format online for free using FixTools",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 303,
+          "term": "formats",
+          "context": "\"text\": \"Copy your XML content (from SOAP responses, RSS feeds, config files, or any XML source) and",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 315,
+          "term": "format",
+          "context": "\"text\": \"Click the Convert button to transform your XML to JSON. The tool will parse the XML structu",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 315,
+          "term": "formatted",
+          "context": "\"text\": \"Click the Convert button to transform your XML to JSON. The tool will parse the XML structu",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in converter tool"
+        },
+        {
+          "line": 356,
+          "term": "format",
+          "context": "<meta name=\"description\" content=\"Convert XML to JSON format online for free. Transform SOAP respons",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 369,
+          "term": "format",
+          "context": "<meta property=\"og:description\" content=\"Convert XML to JSON format instantly. Handles SOAP, RSS, an",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 377,
+          "term": "format",
+          "context": "<meta property=\"twitter:description\" content=\"Convert XML to JSON format instantly. Handles SOAP, RS",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 541,
+          "term": "format",
+          "context": "Convert <strong>XML to JSON format</strong> instantly. Transform SOAP responses, RSS feeds, and XML ",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 564,
+          "term": "Format",
+          "context": "<dd className=\"mt-1.5 text-sm font-bold text-slate-900\">JSON Format</dd>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in converter tool"
+        },
+        {
+          "line": 728,
+          "term": "format",
+          "context": "<strong>XML to JSON conversion</strong> is the process of transforming Extensible Markup Language (X",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 790,
+          "term": "format",
+          "context": "The conversion process intelligently handles edge cases like self-closing tags, CDATA sections, mixe",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 893,
+          "term": "formats",
+          "context": "Copy your XML content from SOAP responses, RSS feeds, SVG files, or config files and paste it into t",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 973,
+          "term": "formats",
+          "context": "Works with SOAP, RSS, SVG formats",
+          "severity": "error",
+          "message": "\"formats\" should not appear in converter tool"
+        },
+        {
+          "line": 988,
+          "term": "format",
+          "context": "<summary className=\"cursor-pointer text-sm font-semibold text-slate-900\">How do I convert XML to JSO",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 1047,
+          "term": "format",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Convert JSON back to XML format for legacy sys",
+          "severity": "error",
+          "message": "\"format\" should not appear in converter tool"
+        },
+        {
+          "line": 809,
+          "term": "performance",
+          "context": "Converting XML to JSON makes legacy data compatible with modern web applications and provides signif",
+          "severity": "warning",
+          "message": "\"performance\" is not a benefit of converter tools"
+        },
+        {
+          "line": 835,
+          "term": "bandwidth",
+          "context": "JSON is typically 20-30% smaller than equivalent XML due to less verbose syntax. No closing tags req",
+          "severity": "warning",
+          "message": "\"bandwidth\" is not a benefit of converter tools"
+        }
+      ]
+    },
+    {
+      "file": "html-audio-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-bi-directional-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-bold-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-button-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-cite-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-code-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-color_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-date_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-detail-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-email_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-file_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-formatter.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-highlight-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-ifram-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-image-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-image_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-italic-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-link-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-meter-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-minify.jsx",
+      "toolType": "minifier",
+      "issueCount": 21,
+      "issues": [
+        {
+          "line": 155,
+          "term": "formatting",
+          "context": "\"text\": \"On average, HTML minification can reduce file size by 40-60%, depending on your code's form",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 768,
+          "term": "format",
+          "context": "When you write HTML code, you typically format it with indentation, spaces, and line breaks to make ",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 768,
+          "term": "formatting",
+          "context": "When you write HTML code, you typically format it with indentation, spaces, and line breaks to make ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 1132,
+          "term": "Formatter",
+          "context": "HTML Formatter",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in minifier tool"
+        },
+        {
+          "line": 1165,
+          "term": "formatted",
+          "context": "Keep your development and source files formatted and readable with proper indentation and comments. ",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in minifier tool"
+        },
+        {
+          "line": 1206,
+          "term": "formatted",
+          "context": "Store your original, formatted HTML in version control systems like <strong>Git</strong>. Never comm",
+          "severity": "error",
+          "message": "\"formatted\" should not appear in minifier tool"
+        },
+        {
+          "line": 1532,
+          "term": "formatting",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">On average, HTML minification can reduce file size by 40-",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 1564,
+          "term": "Formatter",
+          "context": "<p className=\"text-base font-bold text-slate-900\">HTML Formatter</p>",
+          "severity": "error",
+          "message": "\"Formatter\" should not appear in minifier tool"
+        },
+        {
+          "line": 1565,
+          "term": "Format",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Format\" should not appear in minifier tool"
+        },
+        {
+          "line": 1568,
+          "term": "format",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Beautify and format HTML for readability, then",
+          "severity": "error",
+          "message": "\"format\" should not appear in minifier tool"
+        },
+        {
+          "line": 155,
+          "term": "formatting",
+          "context": "\"text\": \"On average, HTML minification can reduce file size by 40-60%, depending on your code's form",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 768,
+          "term": "formatting",
+          "context": "When you write HTML code, you typically format it with indentation, spaces, and line breaks to make ",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 1532,
+          "term": "formatting",
+          "context": "<p className=\"mt-2 text-sm text-slate-600\">On average, HTML minification can reduce file size by 40-",
+          "severity": "error",
+          "message": "\"formatting\" should not appear in minifier tool"
+        },
+        {
+          "line": 1565,
+          "term": "Beautify",
+          "context": "<p className=\"text-xs text-slate-500\">Beautify & Format</p>",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 1568,
+          "term": "Beautify",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Beautify and format HTML for readability, then",
+          "severity": "error",
+          "message": "\"Beautify\" should not appear in minifier tool"
+        },
+        {
+          "line": 964,
+          "term": "convert",
+          "context": "Fast-loading pages keep users engaged. Research by Amazon found that every 100ms of latency cost the",
+          "severity": "error",
+          "message": "\"convert\" should not appear in minifier tool"
+        },
+        {
+          "line": 1626,
+          "term": "Validate",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Validate HTML syntax and structure to ensure y",
+          "severity": "error",
+          "message": "\"Validate\" should not appear in minifier tool"
+        },
+        {
+          "line": 1165,
+          "term": "readability",
+          "context": "Keep your development and source files formatted and readable with proper indentation and comments. ",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1568,
+          "term": "readability",
+          "context": "<p className=\"text-sm text-slate-600 leading-relaxed\">Beautify and format HTML for readability, then",
+          "severity": "warning",
+          "message": "\"readability\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1298,
+          "term": "debugging",
+          "context": "<span>Minifying during development (slows debugging)</span>",
+          "severity": "warning",
+          "message": "\"debugging\" is not a benefit of minifier tools"
+        },
+        {
+          "line": 1206,
+          "term": "code review",
+          "context": "Store your original, formatted HTML in version control systems like <strong>Git</strong>. Never comm",
+          "severity": "warning",
+          "message": "\"code review\" is not a benefit of minifier tools"
+        }
+      ]
+    },
+    {
+      "file": "html-number_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-password_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-progress-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-quote-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-range_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-search_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-strikethrough-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-submit_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-superscript-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-telephone_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-text_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-textarea-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-underline-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-url_input-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    },
+    {
+      "file": "html-video-gen.jsx",
+      "toolType": "formatter",
+      "issueCount": 0,
+      "issues": []
+    }
+  ]
+}

@@ -45,6 +45,7 @@ export default function HeaderNav() {
             className="search-trigger"
             onClick={() => setSearchOpen(true)}
             aria-label="Open search"
+            data-search-trigger
           >
             <svg
               width="20"

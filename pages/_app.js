@@ -152,3 +152,4 @@ const structuredData = [
     logo: './fixtools-logos_black.png',
   },
 ];
+
