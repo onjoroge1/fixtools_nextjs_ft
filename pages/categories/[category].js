@@ -9,7 +9,7 @@ const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
 const categoryMap = {
   'ai-tools': 'AI Tools',
   'conversion-tools': 'Conversion Tools',
-  'json-tools': 'JSON Tools',
+  // 'json-tools' is handled by static page at /categories/json-tools.jsx
   'html-tools': 'HTML Tools',
   'css-tools': 'CSS Tools',
   'seo-tools': 'SEO Tools',
@@ -126,3 +126,4 @@ export function getStaticProps({ params }) {
     },
   };
 }
+
