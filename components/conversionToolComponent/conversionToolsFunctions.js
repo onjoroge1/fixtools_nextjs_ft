@@ -26,109 +26,374 @@ export const massConversion = (from, to, value) => {
   }
 };
 export const volumeConversion = (from, to, value) => {
-  if (from === 'cubic meter' && to === 'liter') {
-    return value * 1000;
-  } else if (from === 'cubic meter' && to === 'milliliter') {
-    return value * 1000000;
-  } else if (from === 'cubic meter' && to === 'cubic foot') {
-    return value * 35.315;
-  } else if (from === 'cubic meter' && to === 'gallon') {
-    return value * 264.3;
-  } else if (from === 'liter' && to === 'milliliter') {
-    return value * 1000;
-  } else if (from === 'liter' && to === 'cubic meter') {
-    return value / 1000;
-  } else if (from === 'liter' && to === 'cubic foot') {
-    return value / 28.317;
-  } else if (from === 'liter' && to === 'gallon') {
-    return value / 3.785;
-  } else if (from === 'milliliter' && to === 'liter') {
-    return value / 1000;
-  } else if (from === 'milliliter' && to === 'cubic meter') {
-    return value / 1000000;
-  } else if (from === 'milliliter' && to === 'cubic foot') {
-    return value * 0.000035315;
-  } else if (from === 'milliliter' && to === 'gallon') {
-    return value / 3785;
-  } else if (from === 'gallon' && to === 'cubic meter') {
-    return value / 264.2;
-  } else if (from === 'gallon' && to === 'liter') {
-    return value * 3.785;
-  } else if (from === 'gallon' && to === 'milliliter') {
-    return value * 3785;
-  } else if (from === 'gallon' && to === 'cubic foot') {
-    return value / 7.48;
-  } else if (from === 'cubic foot' && to === 'cubic meter') {
-    return value / 35.315;
-  } else if (from === 'cubic foot' && to === 'liter') {
-    return value * 28.317;
-  } else if (from === 'cubic foot' && to === 'milliliter') {
-    return value * 28320;
-  } else if (from === 'cubic foot' && to === 'gallon') {
-    return value * 7.48;
+  // Convert everything to liters first, then to target unit
+  let liters;
+  
+  // Convert from source unit to liters
+  switch (from) {
+    // Metric SI units
+    case 'cubicMeter':
+    case 'cubic meter':
+      liters = value * 1000;
+      break;
+    case 'liter':
+    case 'litre':
+      liters = value;
+      break;
+    case 'milliliter':
+    case 'millilitre':
+    case 'ml':
+      liters = value / 1000;
+      break;
+    case 'cubicCentimeter':
+    case 'cubic centimeter':
+    case 'cc':
+    case 'cm3':
+      liters = value / 1000; // 1 cc = 1 ml = 0.001 L
+      break;
+    case 'cubicDecimeter':
+    case 'cubic decimeter':
+    case 'dm3':
+      liters = value; // 1 dm³ = 1 L
+      break;
+    case 'cubicKilometer':
+    case 'cubic kilometer':
+    case 'km3':
+      liters = value * 1000000000000; // 1 km³ = 10¹² L
+      break;
+    
+    // Imperial/US Cubic units
+    case 'cubicInch':
+    case 'cubic inch':
+    case 'in3':
+      liters = value * 0.0163871;
+      break;
+    case 'cubicFoot':
+    case 'cubic foot':
+    case 'ft3':
+      liters = value * 28.3168;
+      break;
+    case 'cubicYard':
+    case 'cubic yard':
+    case 'yd3':
+      liters = value * 764.555;
+      break;
+    
+    // US Customary units
+    case 'usFluidOunce':
+    case 'US fluid ounce':
+    case 'fl oz US':
+      liters = value * 0.0295735;
+      break;
+    case 'usCup':
+    case 'US cup':
+    case 'cup US':
+      liters = value * 0.236588;
+      break;
+    case 'usPint':
+    case 'US pint':
+    case 'pt US':
+      liters = value * 0.473176;
+      break;
+    case 'usQuart':
+    case 'US quart':
+    case 'qt US':
+      liters = value * 0.946353;
+      break;
+    case 'usGallon':
+    case 'US gallon':
+    case 'gallon':
+    case 'gal US':
+      liters = value * 3.78541;
+      break;
+    case 'usBarrel':
+    case 'US barrel':
+    case 'bbl':
+      liters = value * 119.24; // US fluid barrel
+      break;
+    
+    // US Cooking units
+    case 'teaspoon':
+    case 'tsp':
+      liters = value * 0.00492892;
+      break;
+    case 'tablespoon':
+    case 'tbsp':
+      liters = value * 0.0147868;
+      break;
+    
+    // Imperial units (UK)
+    case 'imperialFluidOunce':
+    case 'Imperial fluid ounce':
+    case 'fl oz UK':
+      liters = value * 0.0284131;
+      break;
+    case 'imperialCup':
+    case 'Imperial cup':
+    case 'cup UK':
+      liters = value * 0.284131;
+      break;
+    case 'imperialPint':
+    case 'Imperial pint':
+    case 'pt UK':
+      liters = value * 0.568261;
+      break;
+    case 'imperialQuart':
+    case 'Imperial quart':
+    case 'qt UK':
+      liters = value * 1.13652;
+      break;
+    case 'imperialGallon':
+    case 'Imperial gallon':
+    case 'gal UK':
+      liters = value * 4.54609;
+      break;
+    
+    default:
+      return undefined;
+  }
+  
+  // Convert from liters to target unit
+  switch (to) {
+    // Metric SI units
+    case 'cubicMeter':
+    case 'cubic meter':
+      return liters / 1000;
+    case 'liter':
+    case 'litre':
+      return liters;
+    case 'milliliter':
+    case 'millilitre':
+    case 'ml':
+      return liters * 1000;
+    case 'cubicCentimeter':
+    case 'cubic centimeter':
+    case 'cc':
+    case 'cm3':
+      return liters * 1000;
+    case 'cubicDecimeter':
+    case 'cubic decimeter':
+    case 'dm3':
+      return liters;
+    case 'cubicKilometer':
+    case 'cubic kilometer':
+    case 'km3':
+      return liters / 1000000000000;
+    
+    // Imperial/US Cubic units
+    case 'cubicInch':
+    case 'cubic inch':
+    case 'in3':
+      return liters / 0.0163871;
+    case 'cubicFoot':
+    case 'cubic foot':
+    case 'ft3':
+      return liters / 28.3168;
+    case 'cubicYard':
+    case 'cubic yard':
+    case 'yd3':
+      return liters / 764.555;
+    
+    // US Customary units
+    case 'usFluidOunce':
+    case 'US fluid ounce':
+    case 'fl oz US':
+      return liters / 0.0295735;
+    case 'usCup':
+    case 'US cup':
+    case 'cup US':
+      return liters / 0.236588;
+    case 'usPint':
+    case 'US pint':
+    case 'pt US':
+      return liters / 0.473176;
+    case 'usQuart':
+    case 'US quart':
+    case 'qt US':
+      return liters / 0.946353;
+    case 'usGallon':
+    case 'US gallon':
+    case 'gallon':
+    case 'gal US':
+      return liters / 3.78541;
+    case 'usBarrel':
+    case 'US barrel':
+    case 'bbl':
+      return liters / 119.24;
+    
+    // US Cooking units
+    case 'teaspoon':
+    case 'tsp':
+      return liters / 0.00492892;
+    case 'tablespoon':
+    case 'tbsp':
+      return liters / 0.0147868;
+    
+    // Imperial units (UK)
+    case 'imperialFluidOunce':
+    case 'Imperial fluid ounce':
+    case 'fl oz UK':
+      return liters / 0.0284131;
+    case 'imperialCup':
+    case 'Imperial cup':
+    case 'cup UK':
+      return liters / 0.284131;
+    case 'imperialPint':
+    case 'Imperial pint':
+    case 'pt UK':
+      return liters / 0.568261;
+    case 'imperialQuart':
+    case 'Imperial quart':
+    case 'qt UK':
+      return liters / 1.13652;
+    case 'imperialGallon':
+    case 'Imperial gallon':
+    case 'gal UK':
+      return liters / 4.54609;
+    
+    default:
+      return undefined;
   }
 };
 export const areaConversion = (from, to, value) => {
-  if (from === 'acre' && to === 'kilometer') {
-    return value / 247.1;
-  } else if (from === 'acre' && to === 'meter') {
-    return value * 4047;
-  } else if (from === 'acre' && to === 'foot') {
-    return value * 43560;
-  } else if (from === 'acre' && to === 'mile') {
-    return value / 640;
-  } else if (from === 'acre' && to === 'yard') {
-    return value * 4840;
-  } else if (from === 'kilometer' && to === 'mile') {
-    return value / 2.59;
-  } else if (from === 'kilometer' && to === 'meter') {
-    return value * 1000;
-  } else if (from === 'kilometer' && to === 'foot') {
-    return value * 3281;
-  } else if (from === 'kilometer' && to === 'yard') {
-    return value * 1094;
-  } else if (from === 'kilometer' && to === 'acre') {
-    return value * 247.1;
-  } else if (from === 'mile' && to === 'kilometer') {
-    return value * 2.59;
-  } else if (from === 'mile' && to === 'meter') {
-    return value * 1609.34;
-  } else if (from === 'mile' && to === 'foot') {
-    return value * 5280;
-  } else if (from === 'mile' && to === 'yard') {
-    return value * 1760;
-  } else if (from === 'mile' && to === 'acre') {
-    return value * 640;
-  } else if (from === 'meter' && to === 'kilometer') {
-    return value / 1000;
-  } else if (from === 'meter' && to === 'mile') {
-    return value / 1609;
-  } else if (from === 'meter' && to === 'foot') {
-    return value * 3.281;
-  } else if (from === 'meter' && to === 'acre') {
-    return value / 4047;
-  } else if (from === 'meter' && to === 'yard') {
-    return value * 1.196;
-  } else if (from === 'foot' && to === 'kilometer') {
-    return value / 3281;
-  } else if (from === 'foot' && to === 'meter') {
-    return value / 3.281;
-  } else if (from === 'foot' && to === 'mile') {
-    return value / 5280;
-  } else if (from === 'foot' && to === 'yard') {
-    return value / 3;
-  } else if (from === 'foot' && to === 'acre') {
-    return value / 43560;
-  } else if (from === 'yard' && to === 'acre') {
-    return value / 4840;
-  } else if (from === 'yard' && to === 'kilometer') {
-    return value / 1094;
-  } else if (from === 'yard' && to === 'meter') {
-    return value / 1.094;
-  } else if (from === 'yard' && to === 'mile') {
-    return value / 1760;
-  } else if (from === 'yard' && to === 'foot') {
-    return value * 1760;
+  // Convert everything to square meters first, then to target unit
+  let squareMeters;
+  
+  // Convert from source unit to square meters
+  switch (from) {
+    // Metric SI units
+    case 'squareMillimeter':
+    case 'square millimeter':
+    case 'mm2':
+    case 'mm²':
+      squareMeters = value / 1000000; // 1 mm² = 0.000001 m²
+      break;
+    case 'squareCentimeter':
+    case 'square centimeter':
+    case 'cm2':
+    case 'cm²':
+      squareMeters = value / 10000; // 1 cm² = 0.0001 m²
+      break;
+    case 'squareMeter':
+    case 'square meter':
+    case 'meter':
+    case 'm2':
+    case 'm²':
+      squareMeters = value;
+      break;
+    case 'squareKilometer':
+    case 'square kilometer':
+    case 'kilometer':
+    case 'km2':
+    case 'km²':
+      squareMeters = value * 1000000; // 1 km² = 1,000,000 m²
+      break;
+    case 'hectare':
+    case 'ha':
+      squareMeters = value * 10000; // 1 hectare = 10,000 m²
+      break;
+    case 'are':
+    case 'a':
+      squareMeters = value * 100; // 1 are = 100 m²
+      break;
+    
+    // US/Imperial units
+    case 'squareInch':
+    case 'square inch':
+    case 'in2':
+    case 'in²':
+      squareMeters = value * 0.00064516; // 1 in² = 0.00064516 m²
+      break;
+    case 'squareFoot':
+    case 'square foot':
+    case 'foot':
+    case 'ft2':
+    case 'ft²':
+      squareMeters = value * 0.092903; // 1 ft² = 0.092903 m²
+      break;
+    case 'squareYard':
+    case 'square yard':
+    case 'yard':
+    case 'yd2':
+    case 'yd²':
+      squareMeters = value * 0.836127; // 1 yd² = 0.836127 m²
+      break;
+    case 'acre':
+      squareMeters = value * 4046.86; // 1 acre = 4,046.86 m²
+      break;
+    case 'squareMile':
+    case 'square mile':
+    case 'mile':
+    case 'mi2':
+    case 'mi²':
+      squareMeters = value * 2589988.11; // 1 mi² = 2,589,988.11 m²
+      break;
+    
+    default:
+      return undefined;
+  }
+  
+  // Convert from square meters to target unit
+  switch (to) {
+    // Metric SI units
+    case 'squareMillimeter':
+    case 'square millimeter':
+    case 'mm2':
+    case 'mm²':
+      return squareMeters * 1000000;
+    case 'squareCentimeter':
+    case 'square centimeter':
+    case 'cm2':
+    case 'cm²':
+      return squareMeters * 10000;
+    case 'squareMeter':
+    case 'square meter':
+    case 'meter':
+    case 'm2':
+    case 'm²':
+      return squareMeters;
+    case 'squareKilometer':
+    case 'square kilometer':
+    case 'kilometer':
+    case 'km2':
+    case 'km²':
+      return squareMeters / 1000000;
+    case 'hectare':
+    case 'ha':
+      return squareMeters / 10000;
+    case 'are':
+    case 'a':
+      return squareMeters / 100;
+    
+    // US/Imperial units
+    case 'squareInch':
+    case 'square inch':
+    case 'in2':
+    case 'in²':
+      return squareMeters / 0.00064516;
+    case 'squareFoot':
+    case 'square foot':
+    case 'foot':
+    case 'ft2':
+    case 'ft²':
+      return squareMeters / 0.092903;
+    case 'squareYard':
+    case 'square yard':
+    case 'yard':
+    case 'yd2':
+    case 'yd²':
+      return squareMeters / 0.836127;
+    case 'acre':
+      return squareMeters / 4046.86;
+    case 'squareMile':
+    case 'square mile':
+    case 'mile':
+    case 'mi2':
+    case 'mi²':
+      return squareMeters / 2589988.11;
+    
+    default:
+      return undefined;
   }
 };
 
@@ -140,18 +405,69 @@ export const bitByteConversion = (from, to, value) => {
   }
 };
 export const powerConversion = (from, to, value) => {
-  if (from === 'watt' && to === 'kilowatt') {
-    return value / 1000;
-  } else if (from === 'watt' && to === 'megawatt') {
-    return value / 1000000;
-  } else if (from === 'kilowatt' && to === 'watt') {
-    return value * 1000;
-  } else if (from === 'kilowatt' && to === 'megawatt') {
-    return value / 1000;
-  } else if (from === 'megawatt' && to === 'watt') {
-    return value * 1000000;
-  } else if (from === 'megawatt' && to === 'kilowatt') {
-    return value * 1000;
+  // Convert everything to watts first, then to target unit
+  let watts;
+  
+  // Convert from source unit to watts
+  switch (from) {
+    case 'milliwatt':
+      watts = value / 1000;
+      break;
+    case 'watt':
+      watts = value;
+      break;
+    case 'kilowatt':
+      watts = value * 1000;
+      break;
+    case 'megawatt':
+      watts = value * 1000000;
+      break;
+    case 'gigawatt':
+      watts = value * 1000000000;
+      break;
+    case 'horsepower': // Mechanical/Imperial horsepower
+      watts = value * 745.699872;
+      break;
+    case 'metricHorsepower': // PS (Pferdestärke)
+      watts = value * 735.49875;
+      break;
+    case 'btuPerHour':
+      watts = value * 0.29307107;
+      break;
+    case 'footPoundPerSecond':
+      watts = value * 1.355817948;
+      break;
+    case 'caloriePerSecond':
+      watts = value * 4.184;
+      break;
+    default:
+      return undefined;
+  }
+  
+  // Convert from watts to target unit
+  switch (to) {
+    case 'milliwatt':
+      return watts * 1000;
+    case 'watt':
+      return watts;
+    case 'kilowatt':
+      return watts / 1000;
+    case 'megawatt':
+      return watts / 1000000;
+    case 'gigawatt':
+      return watts / 1000000000;
+    case 'horsepower':
+      return watts / 745.699872;
+    case 'metricHorsepower':
+      return watts / 735.49875;
+    case 'btuPerHour':
+      return watts / 0.29307107;
+    case 'footPoundPerSecond':
+      return watts / 1.355817948;
+    case 'caloriePerSecond':
+      return watts / 4.184;
+    default:
+      return undefined;
   }
 };
 export const timeConversion = (from, to, value) => {
@@ -197,46 +513,101 @@ export const temperatureConversion = (from, to, value) => {
   }
 };
 export const presurreConversion = (from, to, value) => {
-  if (from === 'atm' && to === 'bar') {
-    return value * 1.013;
-  } else if (from === 'atm' && to === 'pascal') {
-    return value * 101325;
-  } else if (from === 'atm' && to === 'torr') {
-    return value * 760;
-  } else if (from === 'atm' && to === 'ppsi') {
-    return value * 14.696;
-  } else if (from === 'bar' && to === 'ppsi') {
-    return value * 14.504;
-  } else if (from === 'bar' && to === 'pascal') {
-    return value * 100000;
-  } else if (from === 'bar' && to === 'atm') {
-    return value / 1.013;
-  } else if (from === 'bar' && to === 'torr') {
-    return value * 750.1;
-  } else if (from === 'pascal' && to === 'bar') {
-    return value / 100000;
-  } else if (from === 'pascal' && to === 'ppsi') {
-    return value / 6895;
-  } else if (from === 'pascal' && to === 'atm') {
-    return value / 101300;
-  } else if (from === 'pascal' && to === 'torr') {
-    return value / 133.3;
-  } else if (from === 'ppsi' && to === 'torr') {
-    return value * 51.715;
-  } else if (from === 'ppsi' && to === 'bar') {
-    return value / 14.504;
-  } else if (from === 'ppsi' && to === 'pascal') {
-    return value * 6895;
-  } else if (from === 'ppsi' && to === 'atm') {
-    return value / 14.696;
-  } else if (from === 'torr' && to === 'atm') {
-    return value / 760;
-  } else if (from === 'torr' && to === 'pascal') {
-    return value * 133.3;
-  } else if (from === 'torr' && to === 'ppsi') {
-    return value / 51.715;
-  } else if (from === 'torr' && to === 'bar') {
-    return value / 750.1;
+  // Convert everything to pascals first, then to target unit
+  let pascals;
+  
+  // Convert from source unit to pascals
+  switch (from) {
+    case 'pascal':
+      pascals = value;
+      break;
+    case 'kilopascal':
+      pascals = value * 1000;
+      break;
+    case 'megapascal':
+      pascals = value * 1000000;
+      break;
+    case 'bar':
+      pascals = value * 100000;
+      break;
+    case 'millibar':
+      pascals = value * 100;
+      break;
+    case 'hectopascal':
+      pascals = value * 100;
+      break;
+    case 'atm':
+    case 'atmosphere':
+      pascals = value * 101325;
+      break;
+    case 'torr':
+    case 'millimeterOfMercury':
+      pascals = value * 133.322;
+      break;
+    case 'psi':
+    case 'poundPerSquareInch':
+      pascals = value * 6894.76;
+      break;
+    case 'psf':
+    case 'poundPerSquareFoot':
+      pascals = value * 47.8803;
+      break;
+    case 'inchOfMercury':
+      pascals = value * 3386.39;
+      break;
+    case 'inchOfWater':
+      pascals = value * 249.089;
+      break;
+    case 'millimeterOfWater':
+    case 'mmH2O':
+      pascals = value * 9.80665;
+      break;
+    case 'technicalAtmosphere':
+    case 'at':
+      pascals = value * 98066.5;
+      break;
+    default:
+      return undefined;
+  }
+  
+  // Convert from pascals to target unit
+  switch (to) {
+    case 'pascal':
+      return pascals;
+    case 'kilopascal':
+      return pascals / 1000;
+    case 'megapascal':
+      return pascals / 1000000;
+    case 'bar':
+      return pascals / 100000;
+    case 'millibar':
+      return pascals / 100;
+    case 'hectopascal':
+      return pascals / 100;
+    case 'atm':
+    case 'atmosphere':
+      return pascals / 101325;
+    case 'torr':
+    case 'millimeterOfMercury':
+      return pascals / 133.322;
+    case 'psi':
+    case 'poundPerSquareInch':
+      return pascals / 6894.76;
+    case 'psf':
+    case 'poundPerSquareFoot':
+      return pascals / 47.8803;
+    case 'inchOfMercury':
+      return pascals / 3386.39;
+    case 'inchOfWater':
+      return pascals / 249.089;
+    case 'millimeterOfWater':
+    case 'mmH2O':
+      return pascals / 9.80665;
+    case 'technicalAtmosphere':
+    case 'at':
+      return pascals / 98066.5;
+    default:
+      return undefined;
   }
 };
 export const lengthConversion = (from, to, value) => {
@@ -410,67 +781,93 @@ export const fuelEconomyConversion = (from, to, value) => {
   }
 };
 export const planeAngleConversion = (from, to, value) => {
-  if (from === 'degree' && to === 'radian') {
-    return (value * 3.14159) / 180;
-  } else if (from === 'degree' && to === 'minute of arc') {
-    return value * 60;
-  } else if (from === 'degree' && to === 'milliradian') {
-    return value * (1000 * (3.14159 / 180));
-  } else if (from === 'degree' && to === 'gradian') {
-    return (value * 200) / 180;
-  } else if (from === 'degree' && to === 'second of arc') {
-    return value * 3600;
-  } else if (from === 'radian' && to === 'second of arc') {
-    return (value * (3600 * 180)) / 3.14159;
-  } else if (from === 'radian' && to === 'degree') {
-    return value * (180 / 3.14159);
-  } else if (from === 'radian' && to === 'milliradian') {
-    return value * 1000;
-  } else if (from === 'radian' && to === 'gradian') {
-    return (value * 200) / 3.14159;
-  } else if (from === 'radian' && to === 'minute of arc') {
-    return (value * (60 * 180)) / 3.14159;
-  } else if (from === 'gradian' && to === 'radian') {
-    return (value * 3.14159) / 200;
-  } else if (from === 'gradian' && to === 'second of arc') {
-    return value * 3240;
-  } else if (from === 'gradian' && to === 'degree') {
-    return (value * 180) / 200;
-  } else if (from === 'gradian' && to === 'milliradian') {
-    return value * 1000(3.14159 / 200);
-  } else if (from === 'gradian' && to === 'minute of arc') {
-    return value * 54;
-  } else if (from === 'milliradian' && to === 'radian') {
-    return value / 1000;
-  } else if (from === 'milliradian' && to === 'gradian') {
-    return value * (200 / (100 * 3.14159));
-  } else if (from === 'milliradian' && to === 'degree') {
-    return value * (180 / (100 * 3.14159));
-  } else if (from === 'milliradian' && to === 'minute of arc') {
-    return (value * (60 * 180)) / (1000 * 3.14159);
-  } else if (from === 'milliradian' && to === 'second of arc') {
-    return ((value * (3600 * 180)) / 1000) * 3.14159;
-  } else if (from === 'second of arc' && to === 'degree') {
-    return value / 3600;
-  } else if (from === 'second of arc' && to === 'gradian') {
-    return value / 3240;
-  } else if (from === 'second of arc' && to === 'milliradian') {
-    return (value * (1000 * 3.14159)) / (180 * 3600);
-  } else if (from === 'second of arc' && to === 'minute of arc') {
-    return value / 60;
-  } else if (from === 'second of arc' && to === 'radian') {
-    return (value * 3.14159) / (180 * 3600);
-  } else if (from === 'second of arc' && to === 'minute of arc') {
-    return value / 60;
-  } else if (from === 'minute of arc' && to === 'second of arc') {
-    return value * 60;
-  } else if (from === 'minute of arc' && to === 'radian') {
-    return (value * 3.14159) / (60 * 180);
-  } else if (from === 'minute of arc' && to === 'milliradian') {
-    return (value * 1000 * 3.14159) / (60 * 180);
-  } else if (from === 'minute of arc' && to === 'gradian') {
-    return value / 54;
-  } else if (from === 'minute of arc' && to === 'degree') {
-    return value / 60;
+  // Convert everything to radians first, then to target unit
+  const PI = Math.PI;
+  let radians;
+  
+  // Convert from source unit to radians
+  switch (from) {
+    case 'radian':
+    case 'rad':
+      radians = value;
+      break;
+    case 'degree':
+    case 'deg':
+      radians = value * (PI / 180);
+      break;
+    case 'gradian':
+    case 'grad':
+      radians = value * (PI / 200);
+      break;
+    case 'milliradian':
+    case 'mrad':
+      radians = value / 1000;
+      break;
+    case 'minuteOfArc':
+    case 'minute of arc':
+    case 'arcmin':
+    case "'":
+      radians = value * (PI / (180 * 60));
+      break;
+    case 'secondOfArc':
+    case 'second of arc':
+    case 'arcsec':
+    case '"':
+      radians = value * (PI / (180 * 3600));
+      break;
+    case 'turn':
+    case 'revolution':
+    case 'rev':
+      radians = value * (2 * PI);
+      break;
+    case 'quadrant':
+      radians = value * (PI / 2);
+      break;
+    case 'sextant':
+      radians = value * (PI / 3);
+      break;
+    case 'octant':
+      radians = value * (PI / 4);
+      break;
+    default:
+      return undefined;
+  }
+  
+  // Convert from radians to target unit
+  switch (to) {
+    case 'radian':
+    case 'rad':
+      return radians;
+    case 'degree':
+    case 'deg':
+      return radians * (180 / PI);
+    case 'gradian':
+    case 'grad':
+      return radians * (200 / PI);
+    case 'milliradian':
+    case 'mrad':
+      return radians * 1000;
+    case 'minuteOfArc':
+    case 'minute of arc':
+    case 'arcmin':
+    case "'":
+      return radians * (180 * 60 / PI);
+    case 'secondOfArc':
+    case 'second of arc':
+    case 'arcsec':
+    case '"':
+      return radians * (180 * 3600 / PI);
+    case 'turn':
+    case 'revolution':
+    case 'rev':
+      return radians / (2 * PI);
+    case 'quadrant':
+      return radians / (PI / 2);
+    case 'sextant':
+      return radians / (PI / 3);
+    case 'octant':
+      return radians / (PI / 4);
+    default:
+      return undefined;
   }
 };

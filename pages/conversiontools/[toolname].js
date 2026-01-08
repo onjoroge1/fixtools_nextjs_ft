@@ -18,11 +18,29 @@ export default function ConversionToolComp({ currentPage }) {
 }
 
 export function getStaticPaths() {
-  const path = conversionToolsDb.map((tool) => {
-    return {
-      params: { toolname: tool.type },
-    };
-  });
+  // List of tools that have standalone pages and should be excluded from dynamic route
+  const toolsWithStandalonePages = [
+    'currencyConversion',
+    'temperatureConversion',
+    'pressureConversion',
+    'volumeConversion',
+    'areaConversion',
+    'timeConversion',
+    'powerConversion',
+    'lengthConversion',
+    'speedConversion',
+    'planeAngleConversion',
+    'bitByteConversion',
+  ];
+
+  // Filter out tools that have standalone pages
+  const path = conversionToolsDb
+    .filter((tool) => !toolsWithStandalonePages.includes(tool.type))
+    .map((tool) => {
+      return {
+        params: { toolname: tool.type },
+      };
+    });
 
   return {
     paths: path,

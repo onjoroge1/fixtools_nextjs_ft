@@ -66,37 +66,47 @@ const learnPages = [
   // Add more as they're created: '/learn/html', '/learn/css', etc.
 ];
 
-// Additional tool paths that may not be in Data
-const additionalToolPaths = [
-  // Utilities
-  '/utilities/qr-code-generator',
-  '/utilities/barcode-generator',
-  '/utilities/password-generator',
-  '/utilities/url-encoder',
-  '/utilities/url-decoder',
-  // Text Tools
-  '/text/word-counter',
-  '/text/text-case-converter',
-  '/text-tools/remove-spaces',
-  '/text-tools/extract-links',
-  '/text-tools/extract-email',
-  // Image Tools
-  '/image-tools/image-resizer',
-  '/image-tools/image-compressor',
-  '/image-tools/image-to-base64',
-  '/image-tools/base64-to-image',
-  '/image-tools/image-format-converter',
-  '/image-tools/image-cropper',
-  '/image-tools/image-rotator',
-  '/image-tools/image-watermark',
-  '/image-tools/image-background-remover',
-  '/image-tools/image-flipper',
-  '/image-tools/image-blur-tool',
-  '/image-tools/image-brightness-adjuster',
-  '/image-tools/image-contrast-adjuster',
-  '/image-tools/image-grayscale-converter',
-  '/image-tools/image-metadata-viewer',
-];
+  // Additional tool paths that may not be in Data
+  const additionalToolPaths = [
+    // Utilities
+    '/utilities/qr-code-generator',
+    '/utilities/barcode-generator',
+    '/utilities/password-generator',
+    '/utilities/url-encoder',
+    '/utilities/url-decoder',
+    // Text Tools
+    '/text/word-counter',
+    '/text/text-case-converter',
+    '/text-tools/remove-spaces',
+    '/text-tools/extract-links',
+    '/text-tools/extract-email',
+    // Image Tools
+    '/image-tools/image-resizer',
+    '/image-tools/image-compressor',
+    '/image-tools/image-to-base64',
+    '/image-tools/base64-to-image',
+    '/image-tools/image-format-converter',
+    '/image-tools/image-cropper',
+    '/image-tools/image-rotator',
+    '/image-tools/image-watermark',
+    '/image-tools/image-background-remover',
+    '/image-tools/image-flipper',
+    '/image-tools/image-blur-tool',
+    '/image-tools/image-brightness-adjuster',
+    '/image-tools/image-contrast-adjuster',
+    '/image-tools/image-grayscale-converter',
+    '/image-tools/image-metadata-viewer',
+    // PDF Tools
+    '/pdf/pdf-compressor',
+    '/pdf/pdf-merger',
+    '/pdf/pdf-rotator',
+    '/pdf/pdf-splitter',
+    '/pdf/pdf-to-excel',
+    '/pdf/pdf-to-jpg',
+    '/pdf/pdf-to-png',
+    '/pdf/pdf-to-word',
+    '/pdf/word-to-pdf',
+  ];
 
 const uniquePaths = () => {
   const toolPaths = (Data || []).map((tool) => tool?.link).filter(Boolean);

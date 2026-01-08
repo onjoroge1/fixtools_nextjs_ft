@@ -319,27 +319,59 @@ export default function PDFToolsCategory({ tools }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {tools.map((tool) => (
-                <Link
-                  key={tool.link}
-                  href={tool.link}
-                  className="group block p-6 rounded-2xl border-2 border-slate-200 bg-white hover:border-red-300 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-orange-600 shadow-lg shadow-red-500/30 transition-transform duration-300 group-hover:scale-110">
-                      <span className="text-2xl">📄</span>
+              {tools.map((tool) => {
+                const getToolIcon = (title, link) => {
+                  const lowerTitle = title.toLowerCase();
+                  const lowerLink = link.toLowerCase();
+                  
+                  if (lowerTitle.includes('to jpg') || lowerLink.includes('to-jpg')) {
+                    return { icon: '🖼️', color: 'from-red-500 to-orange-600', shadow: 'shadow-red-500/30' };
+                  }
+                  if (lowerTitle.includes('compressor') || lowerLink.includes('compressor')) {
+                    return { icon: '🗜️', color: 'from-blue-500 to-indigo-600', shadow: 'shadow-blue-500/30' };
+                  }
+                  if (lowerTitle.includes('merger') || lowerLink.includes('merger')) {
+                    return { icon: '📚', color: 'from-green-500 to-emerald-600', shadow: 'shadow-green-500/30' };
+                  }
+                  if (lowerTitle.includes('splitter') || lowerLink.includes('splitter')) {
+                    return { icon: '✂️', color: 'from-purple-500 to-pink-600', shadow: 'shadow-purple-500/30' };
+                  }
+                  if (lowerTitle.includes('to word') || lowerLink.includes('to-word')) {
+                    return { icon: '📝', color: 'from-indigo-500 to-blue-600', shadow: 'shadow-indigo-500/30' };
+                  }
+                  if (lowerTitle.includes('to png') || lowerLink.includes('to-png')) {
+                    return { icon: '🖼️', color: 'from-cyan-500 to-blue-600', shadow: 'shadow-cyan-500/30' };
+                  }
+                  if (lowerTitle.includes('rotate') || lowerLink.includes('rotate')) {
+                    return { icon: '🔄', color: 'from-orange-500 to-red-600', shadow: 'shadow-orange-500/30' };
+                  }
+                  return { icon: '📄', color: 'from-red-500 to-orange-600', shadow: 'shadow-red-500/30' };
+                };
+                
+                const toolIcon = getToolIcon(tool.title, tool.link);
+                
+                return (
+                  <Link
+                    key={tool.link}
+                    href={tool.link}
+                    className="group block p-6 rounded-2xl border-2 border-slate-200 bg-white hover:border-red-300 hover:shadow-lg cursor-pointer transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${toolIcon.color} shadow-lg ${toolIcon.shadow} transition-transform duration-300 group-hover:scale-110`}>
+                        <span className="text-2xl">{toolIcon.icon}</span>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-1">
+                          {tool.title}
+                        </h3>
+                        <p className="text-sm text-slate-600 leading-relaxed">
+                          {tool.desc}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">
-                        {tool.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 leading-relaxed">
-                        {tool.desc}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </section>
         ) : (
@@ -519,8 +551,313 @@ export default function PDFToolsCategory({ tools }) {
 }
 
 export async function getStaticProps() {
-  // Filter tools for PDF category (if exists)
-  const tools = (Data || []).filter((tool) => tool.category === 'PDF Tools' || tool.category === 'pdf-tools');
+  // All PDF Tools we'll be creating
+  const tools = [
+    // ✅ Available Tools
+    {
+      id: 'pdf-to-jpg',
+      title: 'PDF to JPG',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-jpg',
+      desc: 'Convert PDF pages to JPG images. Extract individual pages or all pages as high-quality JPG images. Perfect for sharing PDF content as images or embedding in documents. Supports batch conversion of all pages.',
+      searchVolume: 301000,
+      status: 'available'
+    },
+    {
+      id: 'pdf-compressor',
+      title: 'PDF Compressor',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-compressor',
+      desc: 'Compress PDF files to reduce file size while maintaining quality. Optimize PDFs for email attachments, web uploads, and storage. Achieve 30-70% size reduction with adjustable compression settings.',
+      status: 'available'
+    },
+    {
+      id: 'pdf-merger',
+      title: 'PDF Merger',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-merger',
+      desc: 'Merge multiple PDF files into a single document. Combine PDFs in any order you want. Perfect for combining reports, documents, or presentations. Drag and drop to reorder pages.',
+      status: 'available'
+    },
+    {
+      id: 'pdf-splitter',
+      title: 'PDF Splitter',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-splitter',
+      desc: 'Split PDF files into separate documents. Extract specific pages or split by page ranges. Create individual PDFs from each page or custom page ranges. Perfect for organizing large documents.',
+      status: 'available'
+    },
+    {
+      id: 'pdf-to-png',
+      title: 'PDF to PNG',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-png',
+      desc: 'Convert PDF pages to PNG images with transparent backgrounds. Extract pages as high-quality PNG images. Perfect for web use, presentations, or image editing. Supports batch conversion.',
+      searchVolume: 90000,
+      status: 'available'
+    },
+    {
+      id: 'pdf-rotator',
+      title: 'Rotate PDF',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-rotator',
+      desc: 'Rotate PDF pages 90°, 180°, or 270°. Fix orientation issues or rotate pages for better viewing. Rotate individual pages or all pages at once. Maintains PDF quality and formatting.',
+      status: 'available'
+    },
+    
+    // ⏳ Coming Soon - High Priority Conversion Tools
+    {
+      id: 'pdf-to-word',
+      title: 'PDF to Word',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-word',
+      desc: 'Convert PDF documents to editable Word (.docx) format. Extract text and formatting from PDFs for editing in Microsoft Word or Google Docs. Preserves text, images, and basic formatting. Free for files up to 100MB.',
+      searchVolume: 450000,
+      status: 'available'
+    },
+    {
+      id: 'word-to-pdf',
+      title: 'Word to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/word-to-pdf',
+      desc: 'Convert Word documents (.docx) to PDF format. Preserve formatting, fonts, images, and layout. Perfect for creating professional PDFs from Word documents. Works entirely in your browser.',
+      searchVolume: 350000,
+      status: 'available'
+    },
+    {
+      id: 'pdf-to-excel',
+      title: 'PDF to Excel',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-excel',
+      desc: 'Extract tables and data from PDF files into Excel spreadsheets (.xlsx). Convert PDF tables to editable Excel format. Perfect for data extraction and analysis. Preserves table structure.',
+      searchVolume: 300000,
+      status: 'available'
+    },
+    {
+      id: 'excel-to-pdf',
+      title: 'Excel to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/excel-to-pdf',
+      desc: 'Convert Excel spreadsheets (.xlsx) to PDF format. Preserve charts, tables, and formatting. Perfect for sharing spreadsheets as PDFs. Maintains print-ready quality.',
+      searchVolume: 250000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'powerpoint-to-pdf',
+      title: 'PowerPoint to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/powerpoint-to-pdf',
+      desc: 'Convert PowerPoint presentations (.pptx) to PDF format. Preserve slides, animations, and formatting. Perfect for sharing presentations as PDFs. Maintains slide quality.',
+      searchVolume: 200000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'pdf-to-powerpoint',
+      title: 'PDF to PowerPoint',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-powerpoint',
+      desc: 'Convert PDF documents to editable PowerPoint presentations (.pptx). Extract pages as slides. Perfect for creating presentations from PDF documents. Preserves layout and images.',
+      searchVolume: 150000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'image-to-pdf',
+      title: 'Image to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/image-to-pdf',
+      desc: 'Convert images (JPG, PNG, GIF, etc.) to PDF format. Combine multiple images into a single PDF. Perfect for creating PDFs from photos or screenshots. Works entirely in your browser.',
+      searchVolume: 180000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'pdf-to-txt',
+      title: 'PDF to TXT',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-txt',
+      desc: 'Extract text from PDF files to plain text format. Convert PDF documents to .txt files. Perfect for text extraction and content reuse. Preserves text content only.',
+      searchVolume: 100000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'txt-to-pdf',
+      title: 'TXT to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/txt-to-pdf',
+      desc: 'Convert text files (.txt) to PDF format. Create PDFs from plain text documents. Perfect for converting notes, documents, or code to PDF. Works entirely in your browser.',
+      searchVolume: 80000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'pdf-to-html',
+      title: 'PDF to HTML',
+      category: 'PDF Tools',
+      link: '/pdf/pdf-to-html',
+      desc: 'Convert PDF documents to HTML format. Extract content and structure for web use. Perfect for converting PDFs to web pages. Preserves text and basic formatting.',
+      searchVolume: 60000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'html-to-pdf',
+      title: 'HTML to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/html-to-pdf',
+      desc: 'Convert HTML files or web pages to PDF format. Create PDFs from HTML content. Perfect for saving web pages as PDFs. Preserves styling and layout.',
+      searchVolume: 90000,
+      status: 'coming-soon'
+    },
+    
+    // 🔒 Security & Protection Tools
+    {
+      id: 'password-protect-pdf',
+      title: 'Password Protect PDF',
+      category: 'PDF Tools',
+      link: '/pdf/password-protect-pdf',
+      desc: 'Add password protection to PDF files. Secure your documents with encryption. Set user and owner passwords. Perfect for protecting sensitive documents. Works entirely in your browser.',
+      searchVolume: 180000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'unlock-pdf',
+      title: 'Unlock PDF',
+      category: 'PDF Tools',
+      link: '/pdf/unlock-pdf',
+      desc: 'Remove password protection from PDF files. Unlock encrypted PDFs with the correct password. Perfect for accessing protected documents. Works entirely in your browser.',
+      searchVolume: 150000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'watermark-pdf',
+      title: 'Watermark PDF',
+      category: 'PDF Tools',
+      link: '/pdf/watermark-pdf',
+      desc: 'Add text or image watermarks to PDF files. Protect your documents with custom watermarks. Perfect for branding or copyright protection. Works entirely in your browser.',
+      searchVolume: 120000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'sign-pdf',
+      title: 'Sign PDF',
+      category: 'PDF Tools',
+      link: '/pdf/sign-pdf',
+      desc: 'Add electronic signatures to PDF documents. Sign PDFs with digital signatures or drawn signatures. Perfect for contracts and agreements. Works entirely in your browser.',
+      searchVolume: 200000,
+      status: 'coming-soon'
+    },
+    
+    // ✏️ Editing & Manipulation Tools
+    {
+      id: 'edit-pdf',
+      title: 'Edit PDF',
+      category: 'PDF Tools',
+      link: '/pdf/edit-pdf',
+      desc: 'Edit text and images in PDF files. Modify PDF content directly. Add, remove, or change text and images. Perfect for making quick edits to PDF documents.',
+      searchVolume: 250000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'add-page-numbers',
+      title: 'Add Page Numbers',
+      category: 'PDF Tools',
+      link: '/pdf/add-page-numbers',
+      desc: 'Add page numbers to PDF documents. Customize page number format, position, and style. Perfect for professional documents. Works entirely in your browser.',
+      searchVolume: 90000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'reorder-pdf-pages',
+      title: 'Reorder PDF Pages',
+      category: 'PDF Tools',
+      link: '/pdf/reorder-pdf-pages',
+      desc: 'Change the order of pages in PDF files. Drag and drop to reorder pages. Perfect for organizing PDF documents. Works entirely in your browser.',
+      searchVolume: 80000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'delete-pdf-pages',
+      title: 'Delete PDF Pages',
+      category: 'PDF Tools',
+      link: '/pdf/delete-pdf-pages',
+      desc: 'Remove pages from PDF files. Delete specific pages or page ranges. Perfect for cleaning up PDF documents. Works entirely in your browser.',
+      searchVolume: 70000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'extract-pdf-pages',
+      title: 'Extract PDF Pages',
+      category: 'PDF Tools',
+      link: '/pdf/extract-pdf-pages',
+      desc: 'Extract specific pages from PDF files. Create new PDFs from selected pages. Perfect for extracting important sections. Works entirely in your browser.',
+      searchVolume: 60000,
+      status: 'coming-soon'
+    },
+    
+    // 📝 Annotation & Collaboration Tools
+    {
+      id: 'annotate-pdf',
+      title: 'Annotate PDF',
+      category: 'PDF Tools',
+      link: '/pdf/annotate-pdf',
+      desc: 'Add annotations, comments, and notes to PDF files. Mark up PDFs with text, shapes, and highlights. Perfect for reviewing and collaborating on documents.',
+      searchVolume: 100000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'highlight-pdf',
+      title: 'Highlight PDF',
+      category: 'PDF Tools',
+      link: '/pdf/highlight-pdf',
+      desc: 'Highlight text in PDF documents. Mark important sections with colored highlights. Perfect for studying and reviewing documents. Works entirely in your browser.',
+      searchVolume: 80000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'add-comments-pdf',
+      title: 'Add Comments to PDF',
+      category: 'PDF Tools',
+      link: '/pdf/add-comments-pdf',
+      desc: 'Add comments and notes to PDF files. Collaborate on documents with comments. Perfect for feedback and reviews. Works entirely in your browser.',
+      searchVolume: 60000,
+      status: 'coming-soon'
+    },
+    
+    // 🔍 Advanced Features
+    {
+      id: 'ocr-pdf',
+      title: 'OCR PDF',
+      category: 'PDF Tools',
+      link: '/pdf/ocr-pdf',
+      desc: 'Convert scanned PDFs to searchable and editable text. Extract text from images using OCR technology. Perfect for digitizing scanned documents.',
+      searchVolume: 400000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'make-pdf-searchable',
+      title: 'Make PDF Searchable',
+      category: 'PDF Tools',
+      link: '/pdf/make-pdf-searchable',
+      desc: 'Make scanned PDFs searchable by adding text layer. Enable text search in image-based PDFs. Perfect for scanned documents. Uses OCR technology.',
+      searchVolume: 150000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'optimize-pdf',
+      title: 'Optimize PDF',
+      category: 'PDF Tools',
+      link: '/pdf/optimize-pdf',
+      desc: 'Optimize PDF files for web, email, or storage. Reduce file size while maintaining quality. Perfect for faster loading and sharing. Works entirely in your browser.',
+      searchVolume: 120000,
+      status: 'coming-soon'
+    },
+    {
+      id: 'repair-pdf',
+      title: 'Repair PDF',
+      category: 'PDF Tools',
+      link: '/pdf/repair-pdf',
+      desc: 'Repair corrupted or damaged PDF files. Fix PDF errors and restore functionality. Perfect for recovering broken PDF documents.',
+      searchVolume: 90000,
+      status: 'coming-soon'
+    }
+  ];
   
   return {
     props: {
