@@ -638,18 +638,16 @@ export async function getStaticProps() {
       title: 'Excel to PDF',
       category: 'PDF Tools',
       link: '/pdf/excel-to-pdf',
-      desc: 'Convert Excel spreadsheets (.xlsx) to PDF format. Preserve charts, tables, and formatting. Perfect for sharing spreadsheets as PDFs. Maintains print-ready quality.',
-      searchVolume: 250000,
-      status: 'coming-soon'
+      desc: 'Convert Excel spreadsheets (.xlsx, .xls) to PDF format. Preserve tables, data, and formatting. Batch processing supported. Free for files up to 10MB.',
+      searchVolume: 250000
     },
     {
       id: 'powerpoint-to-pdf',
       title: 'PowerPoint to PDF',
       category: 'PDF Tools',
       link: '/pdf/powerpoint-to-pdf',
-      desc: 'Convert PowerPoint presentations (.pptx) to PDF format. Preserve slides, animations, and formatting. Perfect for sharing presentations as PDFs. Maintains slide quality.',
-      searchVolume: 200000,
-      status: 'coming-soon'
+      desc: 'Convert PowerPoint presentations (.pptx, .ppt) to PDF format. Preserve slides, text, and formatting. Batch processing supported. Free for files up to 10MB.',
+      searchVolume: 200000
     },
     {
       id: 'pdf-to-powerpoint',
@@ -665,9 +663,8 @@ export async function getStaticProps() {
       title: 'Image to PDF',
       category: 'PDF Tools',
       link: '/pdf/image-to-pdf',
-      desc: 'Convert images (JPG, PNG, GIF, etc.) to PDF format. Combine multiple images into a single PDF. Perfect for creating PDFs from photos or screenshots. Works entirely in your browser.',
-      searchVolume: 180000,
-      status: 'coming-soon'
+      desc: 'Convert images (JPG, PNG, GIF, WebP, BMP) to PDF format. Combine multiple images into a single PDF. Perfect for creating PDFs from photos or screenshots. Works entirely in your browser with payment support for large files and batch processing.',
+      searchVolume: 180000
     },
     {
       id: 'pdf-to-txt',
@@ -683,9 +680,8 @@ export async function getStaticProps() {
       title: 'TXT to PDF',
       category: 'PDF Tools',
       link: '/pdf/txt-to-pdf',
-      desc: 'Convert text files (.txt) to PDF format. Create PDFs from plain text documents. Perfect for converting notes, documents, or code to PDF. Works entirely in your browser.',
-      searchVolume: 80000,
-      status: 'coming-soon'
+      desc: 'Convert text files (.txt) to PDF format. Create PDFs from plain text documents. Perfect for converting notes, documents, or code to PDF. Batch processing supported for paid users.',
+      searchVolume: 80000
     },
     {
       id: 'pdf-to-html',
@@ -721,9 +717,9 @@ export async function getStaticProps() {
       title: 'Unlock PDF',
       category: 'PDF Tools',
       link: '/pdf/unlock-pdf',
-      desc: 'Remove password protection from PDF files. Unlock encrypted PDFs with the correct password. Perfect for accessing protected documents. Works entirely in your browser.',
+      desc: 'Remove password protection from PDF files. Unlock encrypted PDFs with the correct password. Perfect for accessing protected documents. Batch processing supported for paid users.',
       searchVolume: 150000,
-      status: 'coming-soon'
+      status: 'active'
     },
     {
       id: 'watermark-pdf',
@@ -777,9 +773,8 @@ export async function getStaticProps() {
       title: 'Delete PDF Pages',
       category: 'PDF Tools',
       link: '/pdf/delete-pdf-pages',
-      desc: 'Remove pages from PDF files. Delete specific pages or page ranges. Perfect for cleaning up PDF documents. Works entirely in your browser.',
-      searchVolume: 70000,
-      status: 'coming-soon'
+      desc: 'Remove pages from PDF files. Delete specific pages or page ranges. Perfect for cleaning up PDF documents. Batch processing supported for paid users.',
+      searchVolume: 70000
     },
     {
       id: 'extract-pdf-pages',
@@ -788,7 +783,7 @@ export async function getStaticProps() {
       link: '/pdf/extract-pdf-pages',
       desc: 'Extract specific pages from PDF files. Create new PDFs from selected pages. Perfect for extracting important sections. Works entirely in your browser.',
       searchVolume: 60000,
-      status: 'coming-soon'
+      status: 'active'
     },
     
     // 📝 Annotation & Collaboration Tools
@@ -808,7 +803,7 @@ export async function getStaticProps() {
       link: '/pdf/highlight-pdf',
       desc: 'Highlight text in PDF documents. Mark important sections with colored highlights. Perfect for studying and reviewing documents. Works entirely in your browser.',
       searchVolume: 80000,
-      status: 'coming-soon'
+      status: 'active'
     },
     {
       id: 'add-comments-pdf',
@@ -817,7 +812,7 @@ export async function getStaticProps() {
       link: '/pdf/add-comments-pdf',
       desc: 'Add comments and notes to PDF files. Collaborate on documents with comments. Perfect for feedback and reviews. Works entirely in your browser.',
       searchVolume: 60000,
-      status: 'coming-soon'
+      status: 'active'
     },
     
     // 🔍 Advanced Features
@@ -826,36 +821,32 @@ export async function getStaticProps() {
       title: 'OCR PDF',
       category: 'PDF Tools',
       link: '/pdf/ocr-pdf',
-      desc: 'Convert scanned PDFs to searchable and editable text. Extract text from images using OCR technology. Perfect for digitizing scanned documents.',
-      searchVolume: 400000,
-      status: 'coming-soon'
+      desc: 'Extract text from scanned PDFs and image-based PDFs using OCR technology. Convert scanned documents to editable, searchable text. Works 100% in your browser.',
+      searchVolume: 400000
     },
     {
       id: 'make-pdf-searchable',
       title: 'Make PDF Searchable',
       category: 'PDF Tools',
       link: '/pdf/make-pdf-searchable',
-      desc: 'Make scanned PDFs searchable by adding text layer. Enable text search in image-based PDFs. Perfect for scanned documents. Uses OCR technology.',
-      searchVolume: 150000,
-      status: 'coming-soon'
+      desc: 'Make scanned or image-based PDFs searchable by adding invisible text layer using OCR. Enable text search, selection, and copying. Batch processing supported. Free for files up to 10MB.',
+      searchVolume: 150000
     },
     {
       id: 'optimize-pdf',
       title: 'Optimize PDF',
       category: 'PDF Tools',
       link: '/pdf/optimize-pdf',
-      desc: 'Optimize PDF files for web, email, or storage. Reduce file size while maintaining quality. Perfect for faster loading and sharing. Works entirely in your browser.',
-      searchVolume: 120000,
-      status: 'coming-soon'
+      desc: 'Optimize PDF files for web, email, or storage. Reduce file size while maintaining quality. Remove unused resources and optimize structure. Batch processing supported. Free for files up to 10MB.',
+      searchVolume: 120000
     },
     {
       id: 'repair-pdf',
       title: 'Repair PDF',
       category: 'PDF Tools',
       link: '/pdf/repair-pdf',
-      desc: 'Repair corrupted or damaged PDF files. Fix PDF errors and restore functionality. Perfect for recovering broken PDF documents.',
-      searchVolume: 90000,
-      status: 'coming-soon'
+      desc: 'Repair corrupted or damaged PDF files. Extract valid pages and rebuild clean PDFs. Fix PDF errors and restore functionality. Batch processing supported. Free for files up to 10MB.',
+      searchVolume: 90000
     }
   ];
   
