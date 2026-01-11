@@ -5,7 +5,7 @@ import Image from 'next/image';
 import PaymentModal from '../../components/PaymentModal';
 import { checkPaymentRequirement as checkPaymentRequirementNew, getUserPlan, hasValidProcessingPass as hasValidProcessingPassNew } from '../../lib/config/pricing';
 
-const siteHost = process.env.NEXT_PUBLIC_HOST || 'https://fixtools.io';
+const siteHost = (process.env.NEXT_PUBLIC_HOST || 'https://fixtools.io').replace(/\/$/, '');
 
 export default function UnlockPDF() {
   const [pdfFiles, setPdfFiles] = useState([]);

@@ -1,0 +1,14 @@
+# Modern browsers only - reduces legacy JavaScript polyfills
+# This configuration targets browsers that support modern ES6+ features
+# which reduces bundle size by ~13 KiB (as reported by Lighthouse)
+
+# Last 2 versions of major browsers
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+
+# Modern mobile browsers
+iOS >= 14
+Android >= 10
+

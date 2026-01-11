@@ -41,7 +41,7 @@ export default function CookieConsent() {
             We use cookies to improve your experience and analyze site traffic.
             By clicking "Accept", you consent to our use of cookies.{' '}
             <a href="/privacy" className={styles.link}>
-              Learn more
+              Learn more about our privacy policy
             </a>
           </p>
         </div>
@@ -65,4 +65,5 @@ export default function CookieConsent() {
     </div>
   );
 }
+
 
