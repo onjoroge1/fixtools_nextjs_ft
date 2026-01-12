@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import CssTool from '@/dbTools/CssTool';
 

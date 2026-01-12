@@ -151,6 +151,20 @@ export default function ToolsIndex({ categoryStats }) {
       badgeColor: 'blue',
       link: '/tools/utilities',
       toolCount: 5
+    },
+    {
+      name: 'Web Tools',
+      slug: 'web-tools',
+      description: 'Analyze websites, take screenshots, test performance, and more.',
+      icon: '🌐',
+      color: 'violet',
+      gradient: 'from-violet-600 via-purple-600 to-violet-600',
+      borderColor: 'border-violet-300',
+      bgColor: 'from-violet-50 to-purple-50',
+      textColor: 'text-violet-700',
+      badgeColor: 'violet',
+      link: '/tools/web-tools',
+      toolCount: categoryStats['Web Tools'] || 0
     }
   ];
 
@@ -466,6 +480,7 @@ export default function ToolsIndex({ categoryStats }) {
                         category.color === 'emerald' ? 'group-hover:text-emerald-600' :
                         category.color === 'blue' ? 'group-hover:text-blue-600' :
                         category.color === 'purple' ? 'group-hover:text-purple-600' :
+                        category.color === 'violet' ? 'group-hover:text-violet-600' :
                         category.color === 'red' ? 'group-hover:text-red-600' :
                         category.color === 'indigo' ? 'group-hover:text-indigo-600' :
                         category.color === 'amber' ? 'group-hover:text-amber-600' :
@@ -479,6 +494,7 @@ export default function ToolsIndex({ categoryStats }) {
                           category.badgeColor === 'emerald' ? 'bg-emerald-100 text-emerald-700' :
                           category.badgeColor === 'blue' ? 'bg-blue-100 text-blue-700' :
                           category.badgeColor === 'purple' ? 'bg-purple-100 text-purple-700' :
+                          category.badgeColor === 'violet' ? 'bg-violet-100 text-violet-700' :
                           category.badgeColor === 'red' ? 'bg-red-100 text-red-700' :
                           category.badgeColor === 'indigo' ? 'bg-indigo-100 text-indigo-700' :
                           category.badgeColor === 'amber' ? 'bg-amber-100 text-amber-700' :

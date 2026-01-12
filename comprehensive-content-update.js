@@ -266,3 +266,4 @@ console.log('  - All remaining HTML/minify references');
 console.log('\n🎯 Page is now 100% JSON-focused!\n');
 
 
+

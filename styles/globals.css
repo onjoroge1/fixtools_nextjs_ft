@@ -1,5 +1,10 @@
 /* Remove Google Fonts imports - now handled by next/font */
 
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ========== CSS VARIABLES FOR THEMING ========== */
 :root {
   /* Light mode colors */

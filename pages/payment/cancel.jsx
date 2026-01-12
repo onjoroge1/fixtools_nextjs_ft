@@ -5,13 +5,26 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import CustomHead from '@/components/CustomHead';
+
+const siteHost = process.env.NEXT_PUBLIC_HOST || 'https://fixtools.io';
 
 export default function PaymentCancel() {
   const router = useRouter();
   const returnUrl = router.query.return;
+  const canonicalUrl = `${siteHost}/payment/cancel`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4">
+    <>
+      <CustomHead
+        title="Payment Cancelled"
+        metaDescription="Your payment was cancelled. No charges were made to your account. You can continue using FixTools free features or try again later."
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Payment cancelled - FixTools"
+        ogUrl={canonicalUrl}
+        keywords="payment cancelled, payment cancel, fix tools payment"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
         <div className="flex justify-center mb-4">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100">
@@ -41,7 +54,8 @@ export default function PaymentCancel() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

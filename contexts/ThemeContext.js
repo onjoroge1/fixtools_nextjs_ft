@@ -16,29 +16,43 @@ export const ThemeProvider = ({ children }) => {
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+
     const storedTheme = localStorage.getItem('theme');
 
     if (storedTheme) {
       setTheme(storedTheme);
+      // Set immediately to prevent flash
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      if (storedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.add('dark');
+    } else {
+      // Set light theme immediately
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.classList.remove('dark');
     }
 
     setMounted(true);
   }, []);
 
-  // Update localStorage and document class when theme changes
+  // Update localStorage and document class when theme changes (only after mount)
   useEffect(() => {
-    if (mounted) {
-      localStorage.setItem('theme', theme);
-      document.documentElement.setAttribute('data-theme', theme);
+    if (!mounted || typeof window === 'undefined') return;
 
-      // Also add class for easier CSS targeting
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // Also add class for easier CSS targeting
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   }, [theme, mounted]);
 
@@ -46,15 +60,13 @@ export const ThemeProvider = ({ children }) => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  // Prevent flash of unstyled content
-  if (!mounted) {
-    return null;
-  }
-
+  // Always render children to prevent unmount/remount cycles
+  // Theme will be applied via useEffect even if not yet mounted
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
+
 

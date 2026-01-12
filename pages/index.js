@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import ThemeToggle from '@/components/ThemeToggle';
 import Data from '@/dbTools';
@@ -19,13 +19,27 @@ export default function Home() {
   const inputRef = useRef(null);
   const resultsRef = useRef(null);
 
-  // Configure Fuse.js for fuzzy search
-  const fuse = new Fuse(Data, {
+  // Use refs for frequently changing values to keep handleKeyDown stable
+  const searchQueryRef = useRef('');
+  const searchResultsRef = useRef([]);
+  const selectedIndexRef = useRef(0);
+  const isSearchFocusedRef = useRef(false);
+
+  // Keep refs in sync with state
+  useEffect(() => {
+    searchQueryRef.current = searchQuery;
+    searchResultsRef.current = searchResults;
+    selectedIndexRef.current = selectedIndex;
+    isSearchFocusedRef.current = isSearchFocused;
+  }, [searchQuery, searchResults, selectedIndex, isSearchFocused]);
+
+  // Configure Fuse.js for fuzzy search - memoized to prevent recreation on every render
+  const fuse = useMemo(() => new Fuse(Data, {
     keys: ['title', 'desc', 'category'],
     threshold: 0.3,
     includeScore: true,
     minMatchCharLength: 2,
-  });
+  }), []);
 
   // Search function
   useEffect(() => {
@@ -37,12 +51,12 @@ export default function Home() {
     const results = fuse.search(searchQuery).slice(0, 8);
     setSearchResults(results.map((result) => result.item));
     setSelectedIndex(0);
-  }, [searchQuery]);
+  }, [searchQuery, fuse]);
 
-  // Keyboard navigation
+  // Keyboard navigation - stable callback using refs to prevent re-registration
   const handleKeyDown = useCallback(
     (e) => {
-      if (!isSearchFocused) {
+      if (!isSearchFocusedRef.current) {
         // Global keyboard shortcut (Cmd/Ctrl + K)
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
           e.preventDefault();
@@ -56,7 +70,7 @@ export default function Home() {
         case 'ArrowDown':
           e.preventDefault();
           setSelectedIndex((prev) =>
-            prev < searchResults.length - 1 ? prev + 1 : prev
+            prev < searchResultsRef.current.length - 1 ? prev + 1 : prev
           );
           break;
         case 'ArrowUp':
@@ -65,8 +79,8 @@ export default function Home() {
           break;
         case 'Enter':
           e.preventDefault();
-          if (searchResults[selectedIndex]) {
-            router.push(searchResults[selectedIndex].link);
+          if (searchResultsRef.current[selectedIndexRef.current]) {
+            router.push(searchResultsRef.current[selectedIndexRef.current].link);
             setSearchQuery('');
             setSearchResults([]);
             setIsSearchFocused(false);
@@ -81,7 +95,7 @@ export default function Home() {
           break;
       }
     },
-    [isSearchFocused, searchResults, selectedIndex, router]
+    [router] // Only router needs to be in dependencies now
   );
 
   useEffect(() => {
@@ -319,7 +333,7 @@ export default function Home() {
                       <Image src="/sparkle.svg" alt="" width={18} height={18} />
                       <span>JSON Formatter</span>
                     </Link>
-                    <Link href="/tools/image-compressor" className="pill">
+                    <Link href="/image-tools/image-compressor" className="pill">
                       <Image src="/sparkle.svg" alt="" width={18} height={18} />
                       <span>Image Compressor</span>
                     </Link>

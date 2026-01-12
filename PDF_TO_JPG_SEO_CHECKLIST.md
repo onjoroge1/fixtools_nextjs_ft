@@ -394,3 +394,4 @@ Before launch, verify:
 **Last Updated**: January 2026  
 **Next Review**: After Lighthouse audit and OG image verification
 
+

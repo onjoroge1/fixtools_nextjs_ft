@@ -5,6 +5,7 @@ import CssTool from './CssTool';
 import conversionToolsDb from './conversionToolsDb';
 import textTool from './textTools';
 import seoTools from './seoTools';
+import webTools from './webTools';
 
 const Data = [
   ...AiTool,
@@ -13,6 +14,7 @@ const Data = [
   ...JsonTool,
   ...CssTool,
   ...textTool,
-  ...seoTools,
+  ...(seoTools && Array.isArray(seoTools) ? seoTools : []),
+  ...(webTools && Array.isArray(webTools) ? webTools : []),
 ];
 export default Data;

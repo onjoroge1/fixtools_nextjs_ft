@@ -267,3 +267,4 @@ Desktop (1200px): Full layout, optimal spacing
 🎉 **This should finally fix the "zoomed in" appearance!** The :has() selector approach solves the problem at its root cause.
 
 
+

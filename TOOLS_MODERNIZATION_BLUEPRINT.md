@@ -1502,10 +1502,77 @@ Follow it precisely, and your tool pages will dominate search results.
 
 ---
 
-**Version**: 1.0  
-**Last Updated**: December 31, 2025  
+---
+
+## 💳 PRICING CONFIGURATION
+
+### Centralized Pricing System
+
+All pricing, limits, and feature flags are managed through a centralized configuration file located at `lib/config/pricing.js`. This ensures consistency across all tools and makes it easy to update pricing and limits globally.
+
+### Configuration Structure
+
+```javascript
+import { PRICING_CONFIG, checkPaymentRequirement, getUserPlan } from '@/lib/config/pricing';
+
+// Check if payment is required
+const requirement = checkPaymentRequirement('image', fileSizeBytes, fileCount, userPlan);
+
+// Get user plan
+const userPlan = getUserPlan(userSession);
+```
+
+### Pricing Plans
+
+- **Free**: Basic features, limited file sizes and batch processing
+- **Day Pass** ($3.99): 24-hour access to all premium features
+- **Pro** ($7.99/month): Monthly subscription with all features
+
+### Tool-Specific Limits
+
+Each tool type (PDF, Image, Video) has its own free and paid limits:
+
+- **PDF Tools**: Free up to 10MB, single file. Paid up to 500MB, 20 files per job
+- **Image Tools**: Free up to 5MB, single file. Paid up to 100MB, 50 files per job
+- **Video Tools**: Free up to 50MB, single file. Paid up to 500MB, 5 files per job
+
+### Implementation in Tools
+
+```javascript
+// Import pricing utilities
+import { checkPaymentRequirement, getUserPlan } from '@/lib/config/pricing';
+import PaymentModal from '@/components/PaymentModal';
+
+// Check payment requirement
+const userPlan = getUserPlan(userSession);
+const requirement = checkPaymentRequirement('image', totalSize, fileCount, userPlan);
+
+// Show payment modal if needed
+if (requirement.requiresPayment) {
+  setPaymentRequirement(requirement);
+  setShowPaymentModal(true);
+}
+```
+
+### Environment Variables
+
+Pricing configuration is stored in code, but Stripe keys should be in environment variables:
+
+```bash
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_PROCESSING_PASS_PRICE_ID=price_...
+```
+
+For more details, see `lib/config/pricing.js` and `PAYMENT_STRATEGY.md`.
+
+---
+
+**Version**: 1.1  
+**Last Updated**: January 2026  
 **Maintained By**: FixTools Development Team  
-**Questions?**: Reference implementation at `/pages/html/html-minify.jsx`
+**Questions?**: Reference implementation at `/pages/html/html-minify.jsx`  
+**Pricing Config**: See `lib/config/pricing.js`
 
 🚀 **Now go build amazing tool pages that rank #1 on Google!**
 

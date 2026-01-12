@@ -380,3 +380,4 @@ For future developers working on this:
 *This fix resolves the root cause of the "zoomed in" appearance and provides a clear path forward for applying the same solution to all tool pages. The template document (`TOOL_PAGE_TEMPLATE.md`) serves as the definitive guide for implementing tool pages going forward.*
 
 
+

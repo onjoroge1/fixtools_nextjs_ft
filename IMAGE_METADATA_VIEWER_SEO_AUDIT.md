@@ -407,3 +407,4 @@ The Image Metadata Viewer page is **fully optimized** and ready for production. 
 **Last Updated:** January 2026  
 **Next Review:** After 3 months of live data
 
+

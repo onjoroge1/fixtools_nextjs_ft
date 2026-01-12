@@ -326,3 +326,4 @@ Once all tool pages have the fix applied:
 **That's it!** Follow these 3 steps for each tool page and the "zoomed in" issue will be resolved. 🎉
 
 
+

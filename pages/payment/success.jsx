@@ -6,12 +6,16 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import CustomHead from '@/components/CustomHead';
+
+const siteHost = process.env.NEXT_PUBLIC_HOST || 'https://fixtools.io';
 
 export default function PaymentSuccess() {
   const router = useRouter();
   const [isVerifying, setIsVerifying] = useState(true);
   const [isValid, setIsValid] = useState(false);
   const [error, setError] = useState(null);
+  const canonicalUrl = `${siteHost}/payment/success`;
 
   useEffect(() => {
     const verifyPayment = async () => {
@@ -65,7 +69,16 @@ export default function PaymentSuccess() {
   }, [router.isReady, router.query]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center p-4">
+    <>
+      <CustomHead
+        title="Payment Successful"
+        metaDescription="Your payment was processed successfully. Your Processing Pass is now active and you can use premium features on FixTools."
+        ogImageUrl="/programming_tools.jpg"
+        ogImageAlt="Payment successful - FixTools"
+        ogUrl={canonicalUrl}
+        keywords="payment successful, processing pass, premium features, fix tools payment"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
         {isVerifying ? (
           <>
@@ -113,7 +126,8 @@ export default function PaymentSuccess() {
           </>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

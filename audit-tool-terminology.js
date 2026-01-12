@@ -248,3 +248,4 @@ ${colors.bold}Auto-detect mode:${colors.reset}
 module.exports = { auditToolPage, TOOL_TYPES };
 
 
+

@@ -74,3 +74,4 @@ After generating icons:
 
 **Next:** Generate the icons using one of the methods above!
 
+

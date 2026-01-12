@@ -1,65 +1,26 @@
 import '../styles/globals.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import Script from 'next/script';
-import { inter, poppins, roboto } from '../lib/fonts';
-import * as analytics from '../lib/analytics';
+import { inter, poppins } from '../lib/fonts';
 import CookieConsent from '../components/CookieConsent';
 import { ThemeProvider } from '../contexts/ThemeContext';
+
+// Vercel Analytics
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
-
-  // Track page views
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      analytics.pageview(url);
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-
   return (
     <ThemeProvider>
-      {/* Google Analytics */}
-      {analytics.GA_MEASUREMENT_ID && (
-        <>
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${analytics.GA_MEASUREMENT_ID}`}
-          />
-          <Script
-            id="google-analytics"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${analytics.GA_MEASUREMENT_ID}', {
-                  page_path: window.location.pathname,
-                  send_page_view: true
-                });
-              `,
-            }}
-          />
-        </>
-      )}
 
       <style jsx global>{`
         :root {
           --font-inter: ${inter.style.fontFamily};
           --font-poppins: ${poppins.style.fontFamily};
-          --font-roboto: ${roboto.style.fontFamily};
         }
       `}</style>
       {/* Global Head */}
@@ -114,13 +75,6 @@ export default function App({ Component, pageProps }) {
           href="/fixtools-logos/fixtools-logos_black.svg"
         />
         <link rel="canonical" href={siteHost} key="canonical-url" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -128,6 +82,8 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <CookieConsent />
+      <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 }

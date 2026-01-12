@@ -379,3 +379,4 @@ The page meets the target score of 95/100 and is optimized for search engine ran
 **Last Updated**: January 2026  
 **Next Review**: After OG image creation and Lighthouse audit
 
+

@@ -69,3 +69,4 @@ This makes Tailwind rem calculations work correctly!
 **Next**: Test and verify → Apply to other pages
 
 
+

@@ -386,3 +386,4 @@ rounded-full: 50%   ← Pills, badges, dots
 **Use this as a quick visual reference when building or fixing tool pages!** 📐
 
 
+

@@ -42,10 +42,40 @@ export default async function handler(req, res) {
       ? process.env.STRIPE_PROCESSING_PASS_PRICE_ID
       : process.env.STRIPE_SINGLE_FILE_PRICE_ID;
 
+    const envVarName = productType === 'processing-pass'
+      ? 'STRIPE_PROCESSING_PASS_PRICE_ID'
+      : 'STRIPE_SINGLE_FILE_PRICE_ID';
+
+    // Validate price ID exists and is in correct format
     if (!priceId) {
       return res.status(500).json({ 
         error: 'Price ID not configured',
-        message: `STRIPE_${productType.toUpperCase().replace('-', '_')}_PRICE_ID environment variable is not set. Please create a product and price in Stripe Dashboard and add the price ID to your environment variables.` 
+        message: `${envVarName} environment variable is not set. Please create a product and price in Stripe Dashboard and add the price ID (starts with 'price_') to your environment variables.`,
+        help: 'Steps: 1) Go to Stripe Dashboard → Products → Create/Select Product → Add Price → Copy the Price ID (starts with "price_") → Add to .env.local file'
+      });
+    }
+
+    // Trim whitespace in case there are any
+    const trimmedPriceId = priceId.trim();
+
+    // Validate price ID format (should start with 'price_')
+    if (!trimmedPriceId.startsWith('price_')) {
+      // Log the actual value for debugging
+      console.error(`[${envVarName}] Invalid Price ID format. Received: "${priceId}" (trimmed: "${trimmedPriceId}", length: ${priceId.length})`);
+      
+      // Check if it looks like a number (common mistake)
+      const isNumeric = !isNaN(parseFloat(priceId)) && isFinite(priceId);
+      const errorMessage = isNumeric
+        ? `The ${envVarName} is set to a number (${priceId}), but it must be a Stripe Price ID (starts with 'price_'). You cannot use the price amount directly.`
+        : `The ${envVarName} must be a Stripe Price ID (starts with 'price_'), but received: "${priceId}"`;
+      
+      return res.status(500).json({ 
+        error: 'Invalid Price ID format',
+        message: errorMessage,
+        received: priceId,
+        expected: 'A value starting with "price_" (e.g., "price_1234567890abcdef")',
+        help: 'To fix: 1) Go to Stripe Dashboard → Products → Create/Select Product → Add Price → Copy the Price ID (starts with "price_") → Update .env.local file → Restart dev server',
+        note: isNumeric ? 'You copied the price amount instead of the Price ID. The Price ID is different from the price amount.' : ''
       });
     }
 
@@ -57,7 +87,7 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: priceId,
+          price: trimmedPriceId,
           quantity: 1,
         },
       ],
@@ -85,9 +115,24 @@ export default async function handler(req, res) {
     
     // Handle Stripe-specific errors
     if (error.type === 'StripeInvalidRequestError') {
+      // Check if it's a price ID issue
+      if (error.param === 'line_items[0][price]' || error.message?.includes('price')) {
+        const reqProductType = req.body?.productType || 'processing-pass';
+        const envVarName = reqProductType === 'processing-pass'
+          ? 'STRIPE_PROCESSING_PASS_PRICE_ID'
+          : 'STRIPE_SINGLE_FILE_PRICE_ID';
+        
+        return res.status(400).json({
+          error: 'Invalid Price ID',
+          message: `The ${envVarName} environment variable must be a Stripe Price ID (starts with 'price_'), not a numerical value. Please create a product and price in Stripe Dashboard, then copy the Price ID (e.g., 'price_1234567890') to your environment variables.`,
+          help: 'To fix this: 1) Go to Stripe Dashboard → Products → Create/Select Product → Add Price → Copy the Price ID (starts with "price_") → Add to .env.local file',
+        });
+      }
+      
       return res.status(400).json({
         error: 'Invalid Stripe request',
         message: error.message,
+        param: error.param,
       });
     }
 

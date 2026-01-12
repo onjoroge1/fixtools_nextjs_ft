@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { toast, ToastContainer } from 'react-toastify';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import HtmlTool from '@/dbTools/HtmlTool';
 

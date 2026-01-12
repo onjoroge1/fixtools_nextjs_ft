@@ -94,3 +94,4 @@ STRIPE_SINGLE_FILE_PRICE_ID=price_...
 
 **Integration is complete! Just needs Stripe account configuration. 🚀**
 
+

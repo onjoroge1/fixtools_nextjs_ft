@@ -44,23 +44,15 @@ export default class MyDocument extends Document {
             content="default"
           />
           <meta name="apple-mobile-web-app-title" content="Fixtools" />
-          {/* Tailwind CSS CDN for tool pages */}
-          <script src="https://cdn.tailwindcss.com"></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                tailwind.config = {
-                  theme: {
-                    extend: {
-                      boxShadow: {
-                        soft: "0 12px 40px rgba(2, 6, 23, 0.08)"
-                      }
-                    }
-                  }
-                }
-              `,
-            }}
-          />
+          {/* Preconnect to critical origins for faster loading */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         </Head>
         <body>
           <Main />

@@ -2,6 +2,24 @@ import Data from '@/dbTools';
 
 const siteHost = process.env.NEXT_PUBLIC_HOST || 'http://localhost:3000';
 
+// Normalize URL to prevent double slashes
+const normalizeUrl = (host, path) => {
+  const cleanHost = host.replace(/\/+$/, ''); // Remove trailing slashes
+  const cleanPath = path.startsWith('/') ? path : `/${path}`; // Ensure path starts with /
+  return `${cleanHost}${cleanPath}`;
+};
+
+// Escape XML special characters
+const escapeXml = (unsafe) => {
+  if (!unsafe) return '';
+  return String(unsafe)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+};
+
 // Category URLs - these are important landing pages
 const categoryPaths = [
   '/tools/ai-tools',
@@ -39,7 +57,12 @@ const specialPaths = [
 ];
 
 // SEO tools
-const seoPaths = ['/seo-tools/site-map-generator', '/seo-tools/ip-location'];
+const seoPaths = [
+  '/seo-tools/site-map-generator',
+  '/seo-tools/ip-location',
+  '/seo-tools/meta-tags',
+  '/seo-tools/robots-txt',
+];
 
 // Popular tools (higher priority)
 const popularTools = [
@@ -56,8 +79,8 @@ const popularTools = [
   '/utilities/password-generator',
   '/text/word-counter',
   '/text/text-case-converter',
-  '/tools/image-compressor',
-  '/tools/image-resizer',
+  '/image-tools/image-compressor',
+  '/image-tools/image-resizer',
 ];
 
 // Learn pages
@@ -67,22 +90,16 @@ const learnPages = [
 ];
 
   // Additional tool paths that may not be in Data
+  // Note: Tools already in popularTools are not duplicated here
   const additionalToolPaths = [
-    // Utilities
-    '/utilities/qr-code-generator',
-    '/utilities/barcode-generator',
-    '/utilities/password-generator',
+    // Utilities (excluding duplicates from popularTools)
     '/utilities/url-encoder',
     '/utilities/url-decoder',
-    // Text Tools
-    '/text/word-counter',
-    '/text/text-case-converter',
+    // Text Tools (excluding duplicates from popularTools)
     '/text-tools/remove-spaces',
     '/text-tools/extract-links',
     '/text-tools/extract-email',
-    // Image Tools
-    '/image-tools/image-resizer',
-    '/image-tools/image-compressor',
+    // Image Tools (excluding duplicates from popularTools)
     '/image-tools/image-to-base64',
     '/image-tools/base64-to-image',
     '/image-tools/image-format-converter',
@@ -106,6 +123,15 @@ const learnPages = [
     '/pdf/pdf-to-png',
     '/pdf/pdf-to-word',
     '/pdf/word-to-pdf',
+    '/pdf/image-to-pdf',
+    '/pdf/ocr-pdf',
+    '/pdf/optimize-pdf',
+    '/pdf/highlight-pdf',
+    '/pdf/add-comments-pdf',
+    '/pdf/make-pdf-searchable',
+    '/pdf/repair-pdf',
+    '/pdf/excel-to-pdf',
+    '/pdf/powerpoint-to-pdf',
   ];
 
 const uniquePaths = () => {
@@ -149,7 +175,7 @@ const generateSiteMap = (paths) => {
     .map(
       (page) => `
   <url>
-    <loc>${siteHost}${page.path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, page.path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
@@ -162,7 +188,7 @@ const generateSiteMap = (paths) => {
     .map(
       (path) => `
   <url>
-    <loc>${siteHost}${path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${getChangeFreq(path, 'category')}</changefreq>
     <priority>${getPriority(path, 'category')}</priority>
@@ -175,7 +201,7 @@ const generateSiteMap = (paths) => {
     .map(
       (path) => `
   <url>
-    <loc>${siteHost}${path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -188,7 +214,7 @@ const generateSiteMap = (paths) => {
     .map(
       (path) => `
   <url>
-    <loc>${siteHost}${path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${getChangeFreq(path, 'popular')}</changefreq>
     <priority>${getPriority(path, 'popular')}</priority>
@@ -201,7 +227,7 @@ const generateSiteMap = (paths) => {
     .map(
       (path) => `
   <url>
-    <loc>${siteHost}${path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${getChangeFreq(path, 'special')}</changefreq>
     <priority>${getPriority(path, 'special')}</priority>
@@ -214,7 +240,7 @@ const generateSiteMap = (paths) => {
     .map(
       (path) => `
   <url>
-    <loc>${siteHost}${path}</loc>
+    <loc>${escapeXml(normalizeUrl(siteHost, path))}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${getChangeFreq(path, 'regular')}</changefreq>
     <priority>${getPriority(path, 'regular')}</priority>
@@ -235,16 +261,28 @@ const generateSiteMap = (paths) => {
 };
 
 export async function getServerSideProps({ res }) {
-  const paths = uniquePaths();
-  const sitemap = generateSiteMap(paths);
+  try {
+    const paths = uniquePaths();
+    const sitemap = generateSiteMap(paths);
 
-  res.setHeader('Content-Type', 'text/xml');
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=86400, stale-while-revalidate'
-  );
-  res.write(sitemap);
-  res.end();
+    res.setHeader('Content-Type', 'text/xml');
+    res.setHeader(
+      'Cache-Control',
+      'public, s-maxage=86400, stale-while-revalidate'
+    );
+    res.write(sitemap);
+    res.end();
+  } catch (error) {
+    console.error('Sitemap generation error:', error);
+    // Return empty sitemap on error to prevent 500 errors
+    res.setHeader('Content-Type', 'text/xml');
+    res.status(500);
+    res.write(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Sitemap generation failed -->
+</urlset>`);
+    res.end();
+  }
 
   return {
     props: {},

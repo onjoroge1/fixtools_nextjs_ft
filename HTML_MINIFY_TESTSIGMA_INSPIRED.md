@@ -262,3 +262,4 @@ Your HTML Minify tool now:
 
 **Want to apply this design to other tools?** 🎨
 
+
