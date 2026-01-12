@@ -20,6 +20,11 @@ STRIPE_SINGLE_FILE_PRICE_ID=price_xxxxxxxxxxxxxxxxxxxxx
 # Development: http://localhost:3000
 # Production: https://fixtools.io
 NEXT_PUBLIC_HOST=http://localhost:3000
+
+# IndexNow Configuration
+# Key file is located at: /public/fixtools-indexnow-f5cd607761931bc5e0f10b4f1e6fb71752740f1731bbd342c2c6c3263d3c8400.txt
+# This key is used to verify domain ownership for IndexNow API
+INDEXNOW_KEY=f5cd607761931bc5e0f10b4f1e6fb71752740f1731bbd342c2c6c3263d3c8400
 ```
 
 ## Quick Setup Steps:

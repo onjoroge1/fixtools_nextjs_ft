@@ -12,7 +12,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "indexnow:submit-all": "node scripts/submit-all-to-indexnow-standalone.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
