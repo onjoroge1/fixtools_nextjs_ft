@@ -219,7 +219,7 @@ export default function HTMLFormatter() {
             <a href="/html/html-minify">Minify HTML</a>
           </li>
           <li>
-            <a href="/html/html-highlight-gen">HTML highlighter</a>
+            <a href="/html/html-element-builder">HTML Element Builder</a>
           </li>
           <li>
             <a href="/css-tool/gradient">CSS gradient generator</a>

@@ -1338,14 +1338,14 @@ rangeSlider.addEventListener('input', (e) => {
                 <p className="text-sm text-slate-600">Create HTML date picker input fields.</p>
               </Link>
               
-              <Link href="/html/html-progress-gen" className="group rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 transition-all duration-300 hover:border-teal-300 hover:shadow-lg hover:-translate-y-1">
+              <Link href="/html/html-element-builder" className="group rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 transition-all duration-300 hover:border-teal-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600">
-                    <span className="text-xl">📊</span>
+                    <span className="text-xl">🔧</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900">Progress Bar Generator</h3>
+                  <h3 className="text-lg font-bold text-slate-900">HTML Element Builder</h3>
                 </div>
-                <p className="text-sm text-slate-600">Generate HTML progress bar elements.</p>
+                <p className="text-sm text-slate-600">Generate HTML elements including progress bars, text formatting, links, and more.</p>
               </Link>
               
               <Link href="/html/html-button-gen" className="group rounded-2xl border-2 border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 transition-all duration-300 hover:border-yellow-300 hover:shadow-lg hover:-translate-y-1">
